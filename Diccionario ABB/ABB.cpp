@@ -134,7 +134,7 @@ bool ABB::arbolVacio() {
 
 void ABB::borrarNodo(string eliminar){
     if(eliminar == raiz->obtenerClave())
-        eliminarRaiz(eliminar);
+        eliminarRaiz();
     else
         this->raiz = eliminarNodo(this->raiz, eliminar);
 }
@@ -173,7 +173,7 @@ Nodo* ABB::eliminarNodo(Nodo* actual, string eliminar){
     return actual;
 }
 
-void ABB::eliminarRaiz(string eliminar) {
+void ABB::eliminarRaiz() {
     if(raiz->esHoja())
         delete raiz;
     else if(raiz->soloHijoDerecho()){

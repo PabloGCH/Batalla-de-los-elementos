@@ -2,7 +2,6 @@
 #include <iostream>
 
 PersonajeFuego::PersonajeFuego(string nombre, int escudo, int vida): Personaje(nombre, escudo, vida) {
-    elemento = "Fuego";
     cantMadera = rand() % 5;
 }
 

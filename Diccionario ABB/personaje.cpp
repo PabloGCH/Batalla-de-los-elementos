@@ -14,10 +14,6 @@ void Personaje::asignarEnergia(){
     energia  = rand() % 21;
 }
 
-string Personaje::obtenerElemento() {
-    return elemento;
-}
-
 string Personaje::obtenerNombre(){
     return nombre;
 }
@@ -36,7 +32,6 @@ int Personaje::obtenerEnergia() {
 
 void Personaje::mostrarAtributos() {
     cout << "--------------------------" << endl
-         << "Elemento: " << obtenerElemento() << endl
          << "Nombre: " << obtenerNombre() << endl
          << "Escudo: " << obtenerEscudo() << endl
          << "Vida: " << obtenerVida() << endl

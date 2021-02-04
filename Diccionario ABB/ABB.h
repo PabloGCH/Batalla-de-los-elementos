@@ -59,7 +59,7 @@ private:
 
     Nodo* eliminarNodo(Nodo* actual, string eliminar);
 
-    void eliminarRaiz(string eliminar);
+    void eliminarRaiz();
 
     void borrarTodo(Nodo* actual);
 };

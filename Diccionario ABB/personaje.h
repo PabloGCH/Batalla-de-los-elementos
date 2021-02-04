@@ -13,7 +13,6 @@ class Personaje{
 protected:
 
     //Atributos.
-    string elemento;
     string nombre;
     int escudo;
     int vida;
@@ -26,10 +25,6 @@ public:
 
     // Metodo abstracto. Cada clase hija debe implementar su metodo alimentar.
     virtual void alimentar() = 0;
-
-    // PRE: -
-    // POS: Retorna el tipo de elemento del personaje.
-    string obtenerElemento();
 
     // PRE: -
     // POS: Retorna el nombre el personaje.

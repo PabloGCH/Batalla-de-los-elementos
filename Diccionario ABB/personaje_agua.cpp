@@ -2,7 +2,6 @@
 #include <iostream>
 
 PersonajeAgua::PersonajeAgua(string nombre, int escudo, int vida) : Personaje(nombre, escudo, vida){
-    elemento = "Agua";
     vecesAlimentado = 0;
 }
 

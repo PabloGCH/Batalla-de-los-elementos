@@ -2,7 +2,7 @@
 #include <iostream>
 
 PersonajeTierra::PersonajeTierra(string nombre, int escudo, int vida) : Personaje(nombre, escudo, vida) {
-    elemento = "Tierra";
+
 }
 
 void PersonajeTierra::alimentar() {

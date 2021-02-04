@@ -3,7 +3,8 @@
 #define CASILLERO_H_
 #include<iostream>
 #include<string>
-#include "character.h"
+#include "personaje.h"
+typedef Personaje Character;
 using namespace std;
 
 const int MOUNTAIN = 1;

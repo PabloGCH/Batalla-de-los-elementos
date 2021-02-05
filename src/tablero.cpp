@@ -51,7 +51,7 @@ Tablero::Tablero(){
 	if(!map.fail()){
 		fillBoard(map);
 	} else {
-		cout << "Error al abrir el archivo de personajes" <<endl << endl;
+		cout << "Error al abrir el archivo de mapa" <<endl << endl;
 	}
 	map.close();
 }

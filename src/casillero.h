@@ -7,12 +7,14 @@
 typedef Personaje Character;
 using namespace std;
 
-const int MOUNTAIN = 1;
-const int PRECIPICE = 2;
-const int VOLCANO = 3;
-const int LAKE = 4;
-const int ROAD = 5;
-const int VOID = 6;
+enum terreno {
+	MOUNTAIN = 1,
+	PRECIPICE = 2,
+	VOLCANO = 3,
+	LAKE = 4,
+	ROAD = 5,
+	VOID = 6,
+};
 
 class Casillero{
 	protected:

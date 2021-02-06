@@ -8,12 +8,18 @@ using namespace std;
 const int MAX_ENERGIA = 20;
 const int MAX_VIDA = 100;
 
+enum jugador{
+    JUGADOR1 = 1,
+    JUGADOR2 = 2,
+};
+
 class Personaje{
 
 protected:
 
     //Atributos.
     string nombre;
+    int jugador;
     int escudo;
     int vida;
     int energia;
@@ -45,6 +51,10 @@ public:
     // PRE: -
     // POS: Muestra por pantalla los atributos del personaje en fila.
     void mostrarAtributos();
+
+    //PRE: recibe un entero que representa al jugador, debe ser 1 o 2
+    //POS: guarda el valor en la variable jugador
+    void asignarJugador(int per);
 
     virtual ~Personaje(){};
 

@@ -7,6 +7,7 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->nombre = nombre;
     this->escudo = escudo;
     this->vida = vida;
+    jugador = 0;
     asignarEnergia();
 }
 
@@ -37,4 +38,8 @@ void Personaje::mostrarAtributos() {
          << "Vida: " << obtenerVida() << endl
          << "Energia: " << obtenerEnergia() << endl
          << "--------------------------" << endl;
+}
+
+void Personaje::asignarJugador(int per){
+    jugador = per;
 }

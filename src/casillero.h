@@ -4,7 +4,6 @@
 #include<iostream>
 #include<string>
 #include "personaje.h"
-typedef Personaje Character;
 using namespace std;
 
 enum terreno {
@@ -22,7 +21,7 @@ class Casillero{
 		Casillero* right;
 		Casillero* down;
 		Casillero* left;
-		Character* character;
+		Personaje* character;
 		int type;
 	public:
 		//PRE: recibe un puntero a un cacillero
@@ -39,7 +38,7 @@ class Casillero{
 		void setLeft(Casillero* ptr);
 		//PRE: recibe un puntero a un personaje
 		//POS: asigna ptr a character
-		void setCharacter(Character* ptr);
+		void setCharacter(Personaje* ptr);
 		//POS: devuelve up
 		Casillero* getUp();
 		//POS: devuelve right
@@ -49,7 +48,7 @@ class Casillero{
 		//POS: devuelve left
 		Casillero* getLeft();
 		//POS: devuelve character
-		Character* getCharacter();
+		Personaje* getCharacter();
 		//PRE: recibe el tipo de casillero el cual debe ser un
 		// numero entero entre 1 y 6 inclusives
 		//POS: Construye un objeto casillero

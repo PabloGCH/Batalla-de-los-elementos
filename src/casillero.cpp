@@ -54,7 +54,7 @@ void Casillero::setLeft(Casillero* ptr){
 	left = ptr;
 }
 
-void Casillero::setCharacter(Character* ptr){
+void Casillero::setCharacter(Personaje* ptr){
 	character = ptr;
 }
 
@@ -74,7 +74,7 @@ Casillero* Casillero::getLeft(){
 	return left;
 }
 
-Character* Casillero::getCharacter(){
+Personaje* Casillero::getCharacter(){
 	return character;
 }
 

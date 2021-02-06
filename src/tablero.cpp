@@ -68,6 +68,10 @@ void Tablero::fillBoard(ifstream &map){
 	}
 }
 
+Casillero* Tablero::returnFirst(){
+	return first;
+}
+
 Tablero::~Tablero(){
 	Casillero* current;
 	Casillero* below;

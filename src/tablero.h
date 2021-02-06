@@ -29,6 +29,9 @@ class Tablero{
 		// especifica el tipo de cada cacillero
 		//POS: crea los cacilleros del tablero
 		void fillBoard(ifstream &map);
+		//PRE:
+		//POS: devuelve la primera posicion del tablero
+		Casillero* returnFirst();
 		Tablero();
 		~Tablero();
 };

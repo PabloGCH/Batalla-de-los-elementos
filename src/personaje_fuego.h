@@ -3,7 +3,8 @@
 
 #include "personaje.h"
 
-const int ALIMENTO_FUEGO = 15;
+const int ALIMENTO_FUEGO = 5;
+const int ALIMENTO_FUEGO_ENERGIA = 10;
 
 class PersonajeFuego : public Personaje {
 private:
@@ -19,8 +20,16 @@ public:
     PersonajeFuego(string nombre, int escudo, int vida);
 
     // PRE: -
-    // POS: Si tiene madera le recarga la vida el valor que determina el metodo 'recargarVida', si no tiene madera no hace nada.
+    // POS: Si tiene madera le recarga la vida el valor que determina el metodo 'recargarVida' y la energia que determina el metodo 'recargarEnergia', si no tiene madera no hace nada.
     void alimentar();
+
+    // PRE: -
+    // POS: resta vida
+    void recibirAtaque(string tipo);
+
+    //PRE: -
+    //POS: energia - 10 & vida + 10
+    void defender();
 
 private:
 
@@ -29,8 +38,12 @@ private:
     bool tieneMadera();
 
     // PRE: -
-    // POS: le aumenta 15 puntos de vida si 'vida' <= 85, sino aumenta la vida a 100.
+    // POS: le aumenta 5 puntos de vida si 'vida' <= 95, sino aumenta la vida a 100.
     void recargarVida();
+
+    //PRE:-
+    //POS: aumenta 10 puntos de energia si energia <= 10, sino aumenta energia a 20
+    void recargarEnergia();
 
 };
 

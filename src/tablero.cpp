@@ -72,6 +72,18 @@ Casillero* Tablero::returnFirst(){
 	return first;
 }
 
+Casillero* Tablero::returnItem(int coord[2]){
+	Casillero* aux;
+	aux = first;
+	for(int i = 0; i < coord[0] - 1; i++){
+		aux = aux->getDown();
+	}
+	for(int i = 0; i < coord[1] - 1; i++){
+		aux = aux->getRight();
+	}
+	return aux;
+}
+
 Tablero::~Tablero(){
 	Casillero* current;
 	Casillero* below;

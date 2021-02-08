@@ -24,6 +24,15 @@ public:
     // POS: aumenta el valor del atributo 'energia' en 10 puntos si 'energia' <= 10 ó deja 'energia' = 20 si 'energia' > 10.
     void alimentar();
 
+
+    //PRE: -
+    //POS: resta vida
+    void recibirAtaque(string tipo);
+
+    //PRE: -
+    //POS: energia - 12 & vida + 50 (los otros personajes del jugador tambien recibiran 10 de vida)
+    void defender();
+
 };
 
 

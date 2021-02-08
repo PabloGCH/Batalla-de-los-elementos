@@ -20,6 +20,14 @@ public:
     // PRE: -
     // POS: Si 'energia' <= 12 -> 'energia' + 8. sino 'energia' = 20.
     void alimentar();
+
+    //PRE:
+    //POS: resta vida
+    void recibirAtaque(string tipo);
+
+    //PRE:
+    //POS: escudo + 2 & energia - 5
+    void defender();
 };
 
 #endif //ESCRITORIO_PERSONAJE_TIERRA_H

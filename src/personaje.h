@@ -32,6 +32,12 @@ public:
     // Metodo abstracto. Cada clase hija debe implementar su metodo alimentar.
     virtual void alimentar() = 0;
 
+    //Metodo abstracto. Cada clase hija debe implementar su metodo recibirAtaque
+    virtual void recibirAtaque(string tipo) = 0;
+
+    //Metodo abstracto. Cada clase hija debe implementar su metodo defender
+    virtual void defender() = 0;
+
     // PRE: -
     // POS: Retorna el nombre el personaje.
     string obtenerNombre();

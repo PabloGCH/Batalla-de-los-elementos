@@ -34,7 +34,7 @@ class Tablero{
 		Casillero* returnFirst();
 		//PRE: necesita un vector con 2 enteros que marquen las coordenadas (fila/columna)
 		//POS: devuelve el casillero en la coordenada ingresada
-		Casillero* returnItem(int coord[2]);
+		Casillero* returnItem(int *coord);
 		Tablero();
 		~Tablero();
 };

@@ -72,7 +72,7 @@ Casillero* Tablero::returnFirst(){
 	return first;
 }
 
-Casillero* Tablero::returnItem(int coord[2]){
+Casillero* Tablero::returnItem(int *coord){
 	Casillero* aux;
 	aux = first;
 	for(int i = 0; i < coord[0] - 1; i++){

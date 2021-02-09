@@ -49,6 +49,8 @@ class Casillero{
 		Casillero* getLeft();
 		//POS: devuelve character
 		Personaje* getCharacter();
+		//POS: devuelve el tipo
+		int getType();
 		//PRE: recibe el tipo de casillero el cual debe ser un
 		// numero entero entre 1 y 6 inclusives
 		//POS: Construye un objeto casillero

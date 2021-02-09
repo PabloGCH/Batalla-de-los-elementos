@@ -78,3 +78,6 @@ Personaje* Casillero::getCharacter(){
 	return character;
 }
 
+int Casillero::getType(){
+	return type;
+}

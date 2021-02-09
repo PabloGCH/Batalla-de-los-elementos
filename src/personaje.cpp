@@ -31,6 +31,10 @@ int Personaje::obtenerEnergia() {
     return energia;
 }
 
+void Personaje::restarEnergia(int puntos) {
+    energia -= puntos;
+}
+
 void Personaje::mostrarAtributos() {
     cout << "--------------------------" << endl
          << "Nombre: " << obtenerNombre() << endl

@@ -54,6 +54,10 @@ public:
     // POS: Retorna el valor de energia del personaje.
     int obtenerEnergia();
 
+    //PRE: -
+    //POS: Resta la cantidad de energia ingresada(esto se determinara al momento de implementarla, ya que será para un ataque, defensa o movimiento)
+    void restarEnergia(int puntos);
+
     // PRE: -
     // POS: Muestra por pantalla los atributos del personaje en fila.
     void mostrarAtributos();

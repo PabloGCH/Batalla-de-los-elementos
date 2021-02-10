@@ -59,6 +59,12 @@ private:
 
     Nodo* eliminarNodo(Nodo* actual, string eliminar);
 
+    void eliminarHoja(Nodo* &actual);
+
+    void eliminarNodoConHijo(Nodo* &actual, Nodo* hijo);
+
+    void eliminarNodoConHijos(Nodo* &actual);
+
     void eliminarRaiz();
 
     void borrarTodo(Nodo* actual);

@@ -71,7 +71,7 @@ void ControladorPersonaje::imprimirOpciones2() {
 }
 
 
-void ControladorPersonaje::pathfind(){
+void ControladorPersonaje::encontrarCaminos(){
     Casillero* current = ptrCasillero;
     bool visto[64];
     int currentID = coordToId(ubicacion);

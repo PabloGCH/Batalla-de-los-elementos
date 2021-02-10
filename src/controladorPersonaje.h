@@ -50,7 +50,7 @@ class ControladorPersonaje
         // evalue coste de caminos
         virtual int evaluarDir(Casillero* dir) = 0;
         // busca camino minimo
-        void pathfind();
+        void encontrarCaminos();
         // evaluo Distancia, Nodos circundantes
         void evaluarNodos(int currentID, bool* visto, Casillero* current);
         // convierte coordenadas en numero de elemento

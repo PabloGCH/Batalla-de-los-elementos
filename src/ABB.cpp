@@ -144,33 +144,43 @@ Nodo* ABB::eliminarNodo(Nodo* actual, string eliminar){
         return nullptr;
     if(actual->obtenerClave() == eliminar){
         if(actual->esHoja()){
-            delete actual;
+            eliminarHoja(actual);
         }else if(actual->soloHijoDerecho()){
-            actual->obtenerDerecho()->cambiarPadre(actual->obtenerPadre());
-            Nodo* aux = actual;
-            actual = actual->obtenerDerecho();
-            delete aux;
+            eliminarNodoConHijo(actual, actual->obtenerDerecho());
         }else if(actual->soloHijoIzquierdo()){
-            actual->obtenerIzquierdo()->cambiarPadre(actual->obtenerPadre());
-            Nodo* aux = actual;
-            actual = actual->obtenerIzquierdo();
-            delete aux;
+            eliminarNodoConHijo(actual, actual->obtenerIzquierdo());
         }else{
-            Nodo* aux;
-            Nodo* sucesor = consultarPersonaje(actual, this->sucesor(actual)->obtenerNombre());
-            sucesor->cambiarIzquierdo(actual->obtenerIzquierdo(), sucesor);
-            sucesor->cambiarPadre(actual->obtenerPadre());
-            aux = actual;
-            actual = sucesor;// Aca pierdo a gimeno
-            delete aux;
-            actual->cambiarDerecho(eliminarNodo(actual->obtenerDerecho(),sucesor->obtenerClave()));
+            eliminarNodoConHijos(actual);
         }
     }else if(actual->obtenerClave() < eliminar)
         actual->cambiarDerecho(eliminarNodo(actual->obtenerDerecho(), eliminar));
-
     else
         actual->cambiarIzquierdo(eliminarNodo(actual->obtenerIzquierdo(), eliminar));
     return actual;
+}
+
+void ABB::eliminarHoja(Nodo* &actual){
+    Nodo* eliminarN = actual;
+    delete eliminarN;
+    actual = nullptr;
+}
+
+void ABB::eliminarNodoConHijo(Nodo* &actual, Nodo* hijo){
+    hijo->cambiarPadre(actual->obtenerPadre());
+    Nodo* aux = actual;
+    actual = hijo;
+    delete aux;
+}
+
+void ABB::eliminarNodoConHijos(Nodo* &actual) {
+    Nodo* aux;
+    Nodo* sucesor = consultarPersonaje(actual, this->sucesor(actual)->obtenerNombre());
+    sucesor->cambiarIzquierdo(actual->obtenerIzquierdo(), sucesor);
+    sucesor->cambiarPadre(actual->obtenerPadre());
+    aux = actual;
+    actual = sucesor;
+    delete aux;
+    actual->cambiarDerecho(eliminarNodo(actual->obtenerDerecho(),sucesor->obtenerClave()));
 }
 
 void ABB::eliminarRaiz() {
@@ -216,5 +226,4 @@ void ABB::borrarTodo(Nodo* actual) {
     borrarTodo(actual->obtenerIzquierdo());
     borrarTodo(actual->obtenerDerecho());
     delete actual;
-
 }

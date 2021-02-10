@@ -1,4 +1,5 @@
 #include "pila.h"
+
 Pila::Pila(){
      ultimo = NULL;
 }
@@ -42,6 +43,6 @@ Pila::~Pila()
     {
         nodo* temporal = ultimo;
         ultimo = ultimo -> siguiente;
-        delete ultimo;
+        delete temporal;
     }
 }

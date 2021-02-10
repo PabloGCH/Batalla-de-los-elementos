@@ -31,3 +31,10 @@ int ControladorAgua::evaluarDir(Casillero* dir){
 void ControladorAgua::atacar(){
     
 }
+
+ControladorAgua::ControladorAgua(Personaje* personaje, Tablero* tablero) {
+	this->personaje = personaje;
+    this->tablero = tablero;
+    for(int i = 0; i<2; i++){ubicacion[i] = 0;};
+    ptrCasillero = 0;
+}

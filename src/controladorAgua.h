@@ -3,10 +3,11 @@
 #include "controladorPersonaje.h"
 
 class ControladorAgua : public ControladorPersonaje{
-    public:
     private:
+    public:
         void atacar();
         int evaluarDir(Casillero* dir);
+        ControladorAgua(Personaje* personaje, Tablero* tablero);
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <iostream>
 using namespace std;
 typedef int Dato;
+const int finPila = 1000;
 
 struct nodo{
     Dato dato;

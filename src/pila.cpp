@@ -32,8 +32,14 @@ void Pila::mostrarPila()
 
 Dato Pila::consulta()
 {
-    nodo* temporal = ultimo;
-    return temporal -> dato;
+    Dato valor;
+    if(ultimo != 0){
+        nodo* temporal = ultimo;
+        valor = temporal -> dato;
+    } else{
+        valor = finPila;
+    }
+    return valor;
 }
 
 

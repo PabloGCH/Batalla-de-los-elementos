@@ -1,5 +1,8 @@
 #ifndef CONTROLADORPERSONAJE_H
 #define CONTROLADORPERSONAJE_H
+#include <cstdlib>
+#include <unistd.h>
+#include "pila.h"
 #include "tablero.h"
 #include "personaje_agua.h"
 
@@ -31,7 +34,7 @@ class ControladorPersonaje
         int costo[64];
         int anterior[64];
     public:
-        ControladorPersonaje();
+        //ControladorPersonaje(Personaje* personaje, Tablero* tablero);
         // Da a elegir Alimentarse, Moverse, Pasar Opcion
         void etapa1();
         // Da a elegir Defenderse, Atacar, Pasar Opcion
@@ -47,9 +50,7 @@ class ControladorPersonaje
         // evalue coste de caminos
         virtual int evaluarDir(Casillero* dir) = 0;
         // busca camino minimo
-        void pathfind(int *actualCoord, Casillero* actualPtr);
-        // extrae camino del vector anterior
-        void getPath(int destino);
+        void pathfind();
         // evaluo Distancia, Nodos circundantes
         void evaluarNodos(int currentID, bool* visto, Casillero* current);
         // convierte coordenadas en numero de elemento
@@ -58,9 +59,14 @@ class ControladorPersonaje
         void idToCoord(int ID, int* coord);
         // convierte numero en coordenadas
         int buscarMinimo(int* vector, bool* visto);
-        // Si el personaje tiene energia lo mueve en esa direccion
-        void moverse();
-        
+        // PRE: recibe las coordenadas del destino
+        // POS: lo mueve a esa posicion si tiene la energia suficiente
+        void moverse(int *destino);
+        // PRE: recibe una posicion del tablero (fila/columna)
+        // POS: ubica el personaje en la posicion indicada 
+        // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
+        void ubicarPersonaje(int* destino);
+        virtual ~ControladorPersonaje();
 
 };
 

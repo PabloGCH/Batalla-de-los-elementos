@@ -12,7 +12,7 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
 }
 
 void Personaje::asignarEnergia(){
-    energia  = rand() % 21;
+    energia  = 100;
 }
 
 string Personaje::obtenerNombre(){

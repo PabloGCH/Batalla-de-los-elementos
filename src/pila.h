@@ -1,5 +1,5 @@
-#ifndef PILA_PILA_H
-#define PILA_PILA_H
+#ifndef PILA_H
+#define PILA_H
 
 #include <iostream>
 using namespace std;
@@ -9,6 +9,7 @@ struct nodo{
     Dato dato;
     nodo* siguiente;
 };
+
 class Pila
 {
 private:
@@ -41,4 +42,4 @@ public :
 };
 
 
-#endif //PILA_PILA_H
+#endif //PILA_H

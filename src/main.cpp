@@ -16,7 +16,7 @@ int main(){
     while(salir == false){
         system("clear");
         tablero->printBoard();
-        contPoseidon->pathfind();
+        contPoseidon->encontrarCaminos();
         cout << "1. Moverse\n";
         cout << "2. Salir\n";
         cout << "Ingrese una opcion: ";

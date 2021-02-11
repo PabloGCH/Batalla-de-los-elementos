@@ -1,7 +1,7 @@
 #ifndef JUGADOR_H_
 #define JUGADOR_H_
 
-#include "controladorersonaje.h"
+#include "controladorpersonaje.h"
 
 class Jugador {
 protected:

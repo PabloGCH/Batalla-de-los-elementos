@@ -1,76 +1,5 @@
 #include "controladorPersonaje.h"
 
-/*ControladorPersonaje::ControladorPersonaje(Personaje* personaje, Tablero* tablero) {
-	this->personaje = personaje;
-    this->tablero = tablero;
-    for(int i = 0; i<2; i++){ubicacion[i] = 0;};
-    ptrCasillero = 0;
-}*/
-
-void ControladorPersonaje::etapa1() {
-    bool salir = false;
-    int opcion;
-	imprimirOpciones1();
-    cin >> opcion;
-    while (!salir)
-    {
-        switch (opcion)
-        {
-            case ALIMENTARSE:
-                personaje->alimentar();
-                salir = true;
-                break;
-            case MOVERSE:
-                salir = true;
-                break;
-            case PASAR:
-                salir = true;
-                break;
-            default:
-                cout << "\nIngrese una opcion valida: ";
-                cin >> opcion;
-                break;
-        }
-    }
-}
-
-void ControladorPersonaje::etapa2() {
-	bool salir = false;
-    int opcion;
-	imprimirOpciones1();
-    cin >> opcion;
-    while (!salir)
-    {
-        switch (opcion)
-        {
-            case ATACAR:
-                atacar();
-                salir = true;
-                break;
-            case DEFENDERSE:
-                // personaje.defenderse();
-                salir = true;
-                break;
-            case PASAR:
-                salir = true;
-                break;
-            default:
-                cout << "\nIngrese una opcion valida: ";
-                cin >> opcion;
-                break;
-        }
-    }
-}
-
-void ControladorPersonaje::imprimirOpciones1() {
-	
-}
-
-void ControladorPersonaje::imprimirOpciones2() {
-	
-}
-
-
 void ControladorPersonaje::encontrarCaminos(){
     Casillero* current = ptrCasillero;
     bool visto[64];
@@ -88,7 +17,7 @@ void ControladorPersonaje::encontrarCaminos(){
     evaluarNodos(currentID, visto, current);
     cantVistos++;
     while(cantVistos < 64){
-        currentID = buscarMinimo(costo, visto);
+        currentID = buscarMinimo(visto);
         idToCoord(currentID, currentCoord);
         current = tablero->returnItem(currentCoord);
         evaluarNodos(currentID, visto, current);
@@ -107,12 +36,12 @@ void ControladorPersonaje::idToCoord(int ID, int* coord){
     coord[1] = (ID % 8) + 1;
 }
 
-int ControladorPersonaje::buscarMinimo(int* vector, bool* visto){
+int ControladorPersonaje::buscarMinimo(bool* visto){
     int minimo = 1000;
     int minPos = 0;
     for(int i = 0; i < 64 ; i++){
-        if((vector[i] < minimo) && (visto[i] == false)){
-            minimo = vector[i];
+        if((costo[i] < minimo) && (visto[i] == false)){
+            minimo = costo[i];
             minPos = i;
         }
     }

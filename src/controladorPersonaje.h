@@ -33,32 +33,13 @@ class ControladorPersonaje
         int ubicacion[2];
         int costo[64];
         int anterior[64];
-    public:
-        //ControladorPersonaje(Personaje* personaje, Tablero* tablero);
-        // Da a elegir Alimentarse, Moverse, Pasar Opcion
-        void etapa1();
-        // Da a elegir Defenderse, Atacar, Pasar Opcion
-        void etapa2();
-
-        // POS: imprime las opciones para la primera etapa
-        void imprimirOpciones1();
-        // POS: imprime las opciones para la primera etapa
-        void imprimirOpciones2();
-
-
-        virtual void atacar() = 0;
-        // evalue coste de caminos
+        // PRE: Recibe un puntero casillero
+        // POS: Devuelve el coste que supondria moverse a ese casillero
         virtual int evaluarDir(Casillero* dir) = 0;
-        // busca camino minimo
+    public:
+        // PRE:
+        // POS: Busca los caminos minimos
         void encontrarCaminos();
-        // evaluo Distancia, Nodos circundantes
-        void evaluarNodos(int currentID, bool* visto, Casillero* current);
-        // convierte coordenadas en numero de elemento
-        int coordToId(int *coord);
-        // convierte ID en coordenadas
-        void idToCoord(int ID, int* coord);
-        // convierte numero en coordenadas
-        int buscarMinimo(int* vector, bool* visto);
         // PRE: recibe las coordenadas del destino
         // POS: lo mueve a esa posicion si tiene la energia suficiente
         void moverse(int *destino);
@@ -66,7 +47,25 @@ class ControladorPersonaje
         // POS: ubica el personaje en la posicion indicada 
         // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
         void ubicarPersonaje(int* destino);
+        // PRE:
+        // POS: Ataca
+        virtual void atacar() = 0;
         virtual ~ControladorPersonaje();
+    private:
+        // POS: Evalua el coste de los nodos circundantes y guarda su en costo[]
+        // y su identificador anterior[]
+        void evaluarNodos(int currentID, bool* visto, Casillero* current);
+        // PRE: Recibe una coordenada
+        // POS: Devuelve un identificador
+        int coordToId(int *coord);
+        // PRE: Recibe un identificador y una cordenada
+        // POS: Crea una coordenada a partir del identificador
+        // y la guarda en la coordenada ingresada
+        void idToCoord(int ID, int* coord);
+        // PRE: Recibe un vector de booleanos que indique por que nodos ya se paso
+        // POS: Devuelve el identificador del grafo con menor coste y que no haya sido
+        // visitado
+        int buscarMinimo(bool* visto);
 
 };
 

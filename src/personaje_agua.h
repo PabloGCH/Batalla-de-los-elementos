@@ -31,7 +31,7 @@ public:
 
     //PRE: -
     //POS: energia - 12 & vida + 50 (los otros personajes del jugador tambien recibiran 10 de vida)
-    void defender();
+    bool defender();
 
 };
 

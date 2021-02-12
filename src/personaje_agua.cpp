@@ -46,14 +46,16 @@ void PersonajeAgua::recibirAtaque(string tipo) {
     cout<<"VIDA: "<< obtenerVida() <<endl;
 }
 
-void PersonajeAgua::defender(){
+bool PersonajeAgua::defender(){
     if (obtenerEnergia() >= 12){
         energia -= 12;
         vida += 50;
         cout<<"El personaje "<< obtenerNombre() <<" utilizó aumentó su vida"<<endl;
         cout<< "VIDA: "<< obtenerVida()  <<endl;
+        return true;
     }
     else{
         cout<<"El personaje "<< obtenerNombre() << "no cuenta con la energia necesaria para defenderse"<<endl;
+        return false;
     }
 }

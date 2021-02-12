@@ -29,7 +29,17 @@ int ControladorAire::evaluarDir(Casillero* dir){
 }
 
 void ControladorAire::atacar(){
-    
+    if(personaje->obtenerEnergia() >= 8){
+        personaje->restarEnergia(8);
+        for(int i = 1; i < NUM_FILAS; i++){
+            for(int j = 1; j <= NUM_COLUMNAS; j++){
+                int auxCoord[2] = {i,j};
+                Personaje* enemigo = tablero->returnItem(auxCoord)->getCharacter();
+                if(enemigo && (enemigo->obtenerJugador() != personaje->obtenerJugador()))
+                    enemigo->recibirAtaque("aire");
+            }
+        }
+    }
 }
 
 ControladorAire::ControladorAire(Personaje* personaje, Tablero* tablero) {

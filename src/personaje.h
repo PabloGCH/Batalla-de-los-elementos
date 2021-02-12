@@ -66,6 +66,10 @@ public:
     //POS: guarda el valor en la variable jugador
     void asignarJugador(int per);
 
+    // PRE: -
+    // POS: Devuelve 1 o 2 dependiendo de a que jugador esta asignado el personaje.
+    int obtenerJugador();
+
     virtual ~Personaje(){};
 
 private:

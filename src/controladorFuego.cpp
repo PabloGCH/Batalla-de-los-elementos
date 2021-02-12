@@ -30,6 +30,7 @@ int ControladorFuego::evaluarDir(Casillero* dir){
 
 void ControladorFuego::atacar(){
     if(personaje->obtenerEnergia() >= 5){
+        personaje->restarEnergia(5);
         for(int i = (ubicacion[0]-1); i < (ubicacion[0]-1)+3; i++){
             for(int j = 1; j <= NUM_COLUMNAS; j++){
                 int auxCoord[2] = {i,j};

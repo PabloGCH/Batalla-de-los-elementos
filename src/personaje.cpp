@@ -47,3 +47,7 @@ void Personaje::mostrarAtributos() {
 void Personaje::asignarJugador(int per){
     jugador = per;
 }
+
+int Personaje::obtenerJugador() {
+    return jugador;
+}

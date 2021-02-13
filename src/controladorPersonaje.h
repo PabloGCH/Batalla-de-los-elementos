@@ -43,6 +43,9 @@ class ControladorPersonaje
         //PRE:
         //POS: devuelve un ptr con la ubicacion del personaje
         int* devolverUbicacion();
+        //PRE:
+        //POS: devuelve puntero a personaje
+        Personaje* devolverPersonaje();
         // PRE: recibe las coordenadas del destino
         // POS: lo mueve a esa posicion si tiene la energia suficiente
         void moverse(int *destino);

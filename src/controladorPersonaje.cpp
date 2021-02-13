@@ -32,6 +32,10 @@ int* ControladorPersonaje::devolverUbicacion(){
     return auxUbicacion;
 }
 
+Personaje* ControladorPersonaje::devolverPersonaje(){
+    return personaje;
+}
+
 int ControladorPersonaje::coordToId(int *coord){
     int ID = (((coord[0] - 1) * 8) + coord[1]) -1;
     return ID;

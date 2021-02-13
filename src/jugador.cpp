@@ -12,13 +12,13 @@ void Jugador::asignar_rival(Jugador* rival) {
 	oponente = rival;
 }
 
-void Jugador::asignar_controlador(ControladorPersonaje* 1, ControladorPersonaje* 2, ControladorPersonaje* 3) {
-	ctrlpersonaje1 = 1;
-	ctrlpersonaje2 = 2;
-	ctrlpersonaje3 = 3;
+void Jugador::asignar_controlador(ControladorPersonaje* uno, ControladorPersonaje* dos, ControladorPersonaje* tres) {
+	ctrlpersonaje1 = uno;
+	ctrlpersonaje2 = dos;
+	ctrlpersonaje3 = tres;
 }
 
-int Jugador::ubicacion_personajes() {
+int* Jugador::ubicacion_personajes() {
 	int* aux[3];
 	aux[0] = ctrlpersonaje1->ubicacion;
 	aux[1] = ctrlpersonaje2->ubicacion;

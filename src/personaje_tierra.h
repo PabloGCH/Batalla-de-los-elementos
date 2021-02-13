@@ -27,7 +27,7 @@ public:
 
     //PRE:
     //POS: escudo + 2 & energia - 5
-    void defender();
+    bool defender();
 };
 
 #endif //ESCRITORIO_PERSONAJE_TIERRA_H

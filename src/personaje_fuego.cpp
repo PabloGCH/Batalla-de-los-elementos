@@ -64,14 +64,16 @@ void PersonajeFuego::recibirAtaque(string tipo) {
 
 }
 
-void PersonajeFuego::defender(){
+bool PersonajeFuego::defender(){
     if (obtenerEnergia() >= 10){
         energia -= 10;
         vida += 10;
         cout<<"El personaje "<< obtenerNombre() <<" aumentó su vida"<<endl;
         cout<<"VIDA: "<< obtenerVida() <<endl;
+        return true;
     }
     else{
         cout<<"El personaje "<< obtenerNombre() <<" no cuenta con la energía suficiente para utilizar su defensa"<<endl;
+        return false;
     }
 }

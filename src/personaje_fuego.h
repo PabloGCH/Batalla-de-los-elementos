@@ -29,7 +29,7 @@ public:
 
     //PRE: -
     //POS: energia - 10 & vida + 10
-    void defender();
+    bool defender();
 
 private:
 

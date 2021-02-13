@@ -36,7 +36,7 @@ public:
     virtual void recibirAtaque(string tipo) = 0;
 
     //Metodo abstracto. Cada clase hija debe implementar su metodo defender
-    virtual void defender() = 0;
+    virtual bool defender() = 0;
 
     // PRE: -
     // POS: Retorna el nombre el personaje.

@@ -60,14 +60,16 @@ void PersonajeTierra::recibirAtaque(string tipo) {
 }
 
 
-void PersonajeTierra::defender(){
+bool PersonajeTierra::defender(){
     if (obtenerEnergia() >= 5){
         energia -= 5;
         escudo += 2;
-        cout <<"El personaje "<< obtenerNombre()  <<" aumentó su escudo "<< endl;
+        cout <<"El personaje "<< obtenerNombre()  <<" aumentó su escudo " << endl;
         cout <<"ESCUDO: "<< obtenerEscudo() << endl;
+        return true;
     }
     else{
-        cout <<"El personaje "<< obtenerNombre() <<" no cuenta con la energia necesaria para defenderse"<< endl;
+        cout <<"El personaje "<< obtenerNombre() <<" no cuenta con la energia necesaria para defenderse" << endl;
+        return false;
     }
 }

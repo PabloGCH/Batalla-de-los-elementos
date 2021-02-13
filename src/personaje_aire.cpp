@@ -25,16 +25,18 @@ void PersonajeAire::recibirAtaque(string tipo) {
         danio = 10 - (obtenerEscudo() * 100 / 100);
     }
     vida -= danio;
-    cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<<danio<<endl;
-    cout<<"VIDA: "<< obtenerVida() <<endl ;
+    cout << "El personaje "<< obtenerNombre() <<" recibió un daño de " << danio << endl;
+    cout <<"VIDA: "<< obtenerVida() << endl ;
 }
 
-void PersonajeAire::defender() {
+bool PersonajeAire::defender() {
     if (obtenerEnergia() >= 15){
-        energia -= 15;
+        restarEnergia(DEFENSA_AIRE);
         cout<<"El personaje "<< obtenerNombre() <<" cambió su posición"<<endl;
+        return true;
     }
     else{
         cout<<"El personaje "<< obtenerNombre() <<" no cuenta con la energía necesaria para defenderse"<<endl;
+        return false;
     }
 }

@@ -2,6 +2,8 @@
 #define PERSONAJE_AIRE_H_INCLUDED
 
 #include "personaje.h"
+const int ATAQUE_AIRE = 8;
+const int DEFENSA_AIRE = 15;
 
 class PersonajeAire: public Personaje{
 
@@ -26,7 +28,7 @@ public:
 
     //PRE: -
     //POS: energia - 15
-    void defender();
+    bool defender();
 
 
 

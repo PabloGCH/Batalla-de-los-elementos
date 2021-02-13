@@ -5,6 +5,8 @@
 
 const int ALIMENTO_AGUA = 10;
 const int LIMITE_ALIMENTACION = 3;
+const int ATAQUE_AGUA = 5;
+const int DEFENSA_AGUA = 12;
 
 class PersonajeAgua : public Personaje{
 

@@ -26,6 +26,12 @@ void ControladorPersonaje::encontrarCaminos(){
     }
 }
 
+int* ControladorPersonaje::devolverUbicacion(){
+    int* auxUbicacion;
+    auxUbicacion = ubicacion;
+    return auxUbicacion;
+}
+
 int ControladorPersonaje::coordToId(int *coord){
     int ID = (((coord[0] - 1) * 8) + coord[1]) -1;
     return ID;

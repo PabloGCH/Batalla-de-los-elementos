@@ -7,14 +7,15 @@ using namespace std;
 class Juego{
     public:
         void iniciar();
+        Juego();
+    private:
         void opcionesPersonaje();
         void comenzarJuego();
         void partida();
-        Juego();
-    private:
         void imprimirOpcionesPersonajes();
         void imprimirOpcionesComenzar();
         int recibirOpcion();
+        void pedirOpcionJugador(int i);
         ABB diccionario;
 };
 

@@ -76,5 +76,41 @@ void Juego::opcionesPersonaje(){
 
 
 void Juego::comenzarJuego(){
+    bool salir = false;
+    int opcion;
+    int per = 0;
+    int jug = 0;
+    while(!salir && jug < 2){
+        while(!salir && per < 3){
+            imprimirOpcionesComenzar();
+            opcion = recibirOpcion();
+            switch (opcion)
+            {
+            case 1:
+                // buscar detalles personaje
+                break;
+            case 2:
+                // mostrar nombre personajes
+                break;
+            case 3:
+                per += 0;// seleccionar personaje
+                break;
+            case 4:
+                salir = true;
+                break;
+            default:
+                cout << "\nIngrese una opcion valida\n";
+                break;
+            }
+        }
+        jug++;
+    }
+    if(!salir){
+        partida();
+    }
+}
+
+
+void Juego::partida(){
     
 }

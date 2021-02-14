@@ -39,6 +39,17 @@ void ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
     }
 }
 
+void ControladorAire::defensa() {
+	bool seDefiende = personaje->defender();
+	if (seDefiende) {
+		int aux[2];
+		ubicacion = 0;
+		cout << "ingrese la ubicacion a donde desea moverse" << endl;
+		cin >> aux[0] >> aux[1];
+		ubicarPersonaje(aux);
+	}
+}
+
 ControladorAire::ControladorAire(Personaje* personaje, Tablero* tablero) {
 	this->personaje = personaje;
     this->tablero = tablero;

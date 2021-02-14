@@ -24,6 +24,7 @@ protected:
     int vida;
     int energia;
 
+
 public:
     //Metodos.
 
@@ -33,7 +34,7 @@ public:
     virtual void alimentar() = 0;
 
     //Metodo abstracto. Cada clase hija debe implementar su metodo recibirAtaque
-    virtual void recibirAtaque(string tipo) = 0;
+    virtual void recibirAtaque(string tipo, int casosTierra) = 0;
 
     //Metodo abstracto. Cada clase hija debe implementar su metodo defender
     virtual bool defender() = 0;

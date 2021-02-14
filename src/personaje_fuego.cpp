@@ -44,7 +44,7 @@ bool PersonajeFuego::tieneMadera() {
     return (cantMadera > 0);
 }
 
-void PersonajeFuego::recibirAtaque(string tipo) {
+void PersonajeFuego::recibirAtaque(string tipo, int casosTierra) {
     int danio = 0;
     if (tipo == "agua"){
         danio = 30 - (obtenerEscudo() * 300 / 100);
@@ -56,7 +56,14 @@ void PersonajeFuego::recibirAtaque(string tipo) {
         danio = 20 - (obtenerEscudo() * 200 / 100);
     }
     else if (tipo == "tierra"){
-        //por ahora no hace nada;
+        switch(casosTierra){
+            case 1: danio = 30 - (obtenerEscudo() * 300 / 100);
+                break;
+            case 2: danio = 20 - (obtenerEscudo() * 200 / 100);
+                break;
+            case 3: danio = 10 - (obtenerEscudo() * 100 / 100);
+                break;
+        }
     }
     vida -= danio;
     cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<< danio <<endl;

@@ -28,7 +28,39 @@ int ControladorAgua::evaluarDir(Casillero* dir){
     return valor; 
 }
 
+bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
+    if ( 1 <= posicionAtacada[0] <= NUM_FILAS or 1 <= posicionAtacada[1] <= NUM_COLUMNAS) {
+        cout << "Posición fuera de rango, ingrese una posición válida: " << endl;
+        return false;
+    }
+    Personaje* enemigo = tablero->returnItem(posicionAtacada)->getCharacter();
+    if ( !enemigo ){
+        cout << "No hay ningún personaje en al posición ingresada " << endl;
+        return false;
+    }
+    return true;
+}
+
 void ControladorAgua::atacar(){
+    if (personaje -> obtenerEnergia() >= ATAQUE_AGUA){
+        int posicionAtacada[2];
+        bool verificado = false;
+        cout << "Ingrese una posición para atacar " << endl;
+        while (!verificado){
+            cout << "Fila: ";
+            cin >> posicionAtacada[0];
+            cout << "" << endl;
+            cout << "Columna: ";
+            cin >> posicionAtacada[1];
+            cout << "" << endl;
+            verificado = comprobarPosicon(posicionAtacada);
+        }
+        Personaje* enemigo = tablero->returnItem(posicionAtacada)->getCharacter();
+        enemigo -> recibirAtaque("agua", 0);
+    }
+    else{
+        cout << "El personaje no cuenta con la energia necesaria para atacar " << endl;
+    }
     
 }
 

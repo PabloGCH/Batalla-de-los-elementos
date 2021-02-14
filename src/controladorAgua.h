@@ -4,6 +4,9 @@
 
 class ControladorAgua : public ControladorPersonaje{
     private:
+        //PRE: -
+        //POS: devuelve un bool dependiendo de si existe un personaje oara atacar o no
+        bool comprobarPosicon(int posicionAtacada[2]);
     public:
         void atacar();
         int evaluarDir(Casillero* dir);

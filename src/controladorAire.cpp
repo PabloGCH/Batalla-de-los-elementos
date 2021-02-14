@@ -36,7 +36,7 @@ void ControladorAire::atacar(){
                 int auxCoord[2] = {i,j};
                 Personaje* enemigo = tablero->returnItem(auxCoord)->getCharacter();
                 if(enemigo && (enemigo->obtenerJugador() != personaje->obtenerJugador()))
-                    enemigo->recibirAtaque("aire");
+                    enemigo->recibirAtaque("aire", 0);
             }
         }
     }

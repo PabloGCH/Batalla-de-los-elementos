@@ -24,7 +24,7 @@ public:
 
     // PRE: -
     // POS: resta vida
-    void recibirAtaque(string tipo);
+    void recibirAtaque(string tipo, int casosTierra);
 
     //PRE: -
     //POS: energia - 15

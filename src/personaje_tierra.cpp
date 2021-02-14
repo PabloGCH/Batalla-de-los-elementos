@@ -24,7 +24,7 @@ void PersonajeTierra::alimentar() {
     }
 }
 
-void PersonajeTierra::recibirAtaque(string tipo) {
+void PersonajeTierra::recibirAtaque(string tipo, int casosTierra) {
     int danio = 0;
     if (obtenerEscudo() > 2){
         if (tipo == "agua"){
@@ -37,7 +37,14 @@ void PersonajeTierra::recibirAtaque(string tipo) {
             danio = 30 - (80 * 30 / 100);
         }
         else if (tipo == "tierra"){
-            //todavia no hace nada
+            switch(casosTierra){
+                case 1: danio = 30 - (80 * 300 / 100);
+                    break;
+                case 2: danio = 20 - (80 * 200 / 100);
+                    break;
+                case 3: danio = 10 - (80 * 100 / 100);
+                    break;
+            }
         }
 
     }
@@ -52,7 +59,14 @@ void PersonajeTierra::recibirAtaque(string tipo) {
         danio = 30 - (obtenerEscudo() * 300 / 100);
     }
     else if (tipo == "tierra"){
-        //por ahora no hace nada;
+        switch(casosTierra){
+            case 1: danio = 30 - (obtenerEscudo() * 300 / 100);
+                break;
+            case 2: danio = 20 - (obtenerEscudo() * 200 / 100);
+                break;
+            case 3: danio = 10 - (obtenerEscudo() * 100 / 100);
+                break;
+        }
     }
     vida -= danio;
     cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<< danio <<endl;

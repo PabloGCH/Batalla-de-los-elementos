@@ -9,7 +9,7 @@ void PersonajeAire::alimentar(){
     std::cout << obtenerNombre() << " no se alimenta.\nENERGIA: " << obtenerEnergia() << std::endl;
 }
 
-void PersonajeAire::recibirAtaque(string tipo) {
+void PersonajeAire::recibirAtaque(string tipo, int casosTierra) {
 
     int danio = 0;
     if (tipo == "agua"){

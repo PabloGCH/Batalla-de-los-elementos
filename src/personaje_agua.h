@@ -29,7 +29,7 @@ public:
 
     //PRE: -
     //POS: resta vida
-    void recibirAtaque(string tipo);
+    void recibirAtaque(string tipo, int casosTierra);
 
     //PRE: -
     //POS: energia - 12 & vida + 50 (los otros personajes del jugador tambien recibiran 10 de vida)

@@ -36,7 +36,7 @@ void ControladorFuego::atacar(){
                 int auxCoord[2] = {i,j};
                 Personaje* enemigo = tablero->returnItem(auxCoord)->getCharacter();
                 if(enemigo)
-                    enemigo->recibirAtaque("fuego");
+                    enemigo->recibirAtaque("fuego", 0);
             }
         }
     }

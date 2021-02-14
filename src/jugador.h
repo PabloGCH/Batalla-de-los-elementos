@@ -6,7 +6,7 @@
 class Jugador {
 protected:
 	ControladorPersonaje* controladores[3];
-	int* pos_enemigos[3];
+	int** pos_enemigos[3];
 	Jugador* oponente;
 
 public:

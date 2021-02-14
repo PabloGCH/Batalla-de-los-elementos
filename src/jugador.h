@@ -6,13 +6,13 @@
 class Jugador {
 protected:
 	ControladorPersonaje* controladores[3];
-	ControladorPersonaje* pos_enemigos[3];
 	Jugador* oponente;
 
 public:
 	Jugador();
 	void asignar_controlador(ControladorPersonaje* uno, ControladorPersonaje* dos, ControladorPersonaje* tres);
 	void asignar_rival(Jugador* rival);
+	ControladorPersonaje** devolverControladores();
 	~Jugador();
 };
 

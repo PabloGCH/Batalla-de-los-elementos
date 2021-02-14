@@ -4,7 +4,6 @@ Jugador::Jugador() {
 	oponente = 0;
 	for(int i = 0; i < 3; i++){
 		controladores[i] = 0;
-		pos_enemigos[i] = 0;
 	}
 }
 
@@ -17,6 +16,12 @@ void Jugador::asignar_controlador(ControladorPersonaje* uno, ControladorPersonaj
 	controladores[1] = dos;
 	controladores[2] = tres;
 }
+
+ControladorPersonaje** Jugador::devolverControladores(){
+	return controladores;
+}
+
+
 
 Jugador::~Jugador() {
 	for(int i = 0; i < 3; i++){

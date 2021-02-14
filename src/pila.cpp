@@ -3,10 +3,10 @@
 Pila::Pila(){
      ultimo = NULL;
 }
-void Pila::agregar(Dato d) {
+void Pila::agregar(Info i) {
 
     nodo* nuevo = new nodo;
-    nuevo -> dato = d;
+    nuevo -> info = i;
     nuevo -> siguiente = ultimo;
     ultimo = nuevo;
 }
@@ -25,17 +25,17 @@ void Pila::mostrarPila()
     nodo* temporal = ultimo;
     while(temporal != NULL)
     {
-        cout << temporal -> dato << endl;
+        cout << temporal -> info << endl;
         temporal = temporal -> siguiente;
     }
 }
 
-Dato Pila::consulta()
+Info Pila::consulta()
 {
-    Dato valor;
+    Info valor;
     if(ultimo != 0){
         nodo* temporal = ultimo;
-        valor = temporal -> dato;
+        valor = temporal -> info;
     } else{
         valor = finPila;
     }

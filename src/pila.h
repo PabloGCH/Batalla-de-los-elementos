@@ -3,11 +3,11 @@
 
 #include <iostream>
 using namespace std;
-typedef int Dato;
+typedef int Info;
 const int finPila = 1000;
 
 struct nodo{
-    Dato dato;
+    Info info;
     nodo* siguiente;
 };
 
@@ -23,7 +23,7 @@ public :
 
     //PRE: -
     //POS: agrega un Dato dat
-    void agregar(Dato d);
+    void agregar(Info i);
 
     //PRE: pila no vacía
     //POS: elimina el dato de la cima y cambial puntero siguiente
@@ -35,7 +35,7 @@ public :
 
     //PRE: -
     //POS: devuelve el ultimo dato
-    Dato consulta();
+    Info consulta();
 
     //PRE: -
     //POS: vacia la lista y libera memoria

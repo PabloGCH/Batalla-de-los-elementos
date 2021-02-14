@@ -43,7 +43,7 @@ void ControladorAire::defensa() {
 	bool seDefiende = personaje->defender();
 	if (seDefiende) {
 		int aux[2];
-		ubicacion = 0;
+		for(int i = 0; i < 2; i++){ubicacion[i] = 0;}
 		cout << "ingrese la ubicacion a donde desea moverse" << endl;
 		cin >> aux[0] >> aux[1];
 		ubicarPersonaje(aux);

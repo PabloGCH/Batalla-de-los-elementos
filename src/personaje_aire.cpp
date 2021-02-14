@@ -31,7 +31,7 @@ void PersonajeAire::recibirAtaque(string tipo, int casosTierra) {
 
 bool PersonajeAire::defender() {
     if (obtenerEnergia() >= 15){
-        restarEnergia(DEFENSA_AIRE);
+        energia -= 15;
         cout<<"El personaje "<< obtenerNombre() <<" cambió su posición"<<endl;
         return true;
     }

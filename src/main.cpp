@@ -2,14 +2,19 @@
 #include <cstdlib>
 #include <unistd.h>
 #include "controladorAgua.h"
+#include "controladorFuego.h"
 using namespace std;
 
 int main(){
     int ubicacionInicial[2] = {2, 3};
+    int ubicacionApolo[2] = {4,4};
     Tablero* tablero = new Tablero;
     Personaje* poseidon = new PersonajeAgua("poseidon", 4, 30);
+    Personaje* apolo = new PersonajeFuego("apolo", 4, 30);
     ControladorPersonaje* contPoseidon = new ControladorAgua(poseidon, tablero);
+    ControladorPersonaje* contApolo = new ControladorFuego(apolo, tablero);
     contPoseidon->ubicarPersonaje(ubicacionInicial);
+    contApolo->ubicarPersonaje(ubicacionApolo);
     int opcion = 0;
     int destino[2];
     bool salir = false;
@@ -37,11 +42,11 @@ int main(){
             break;
         default:
             system("clear");
-            cout << "\ningresa algo valido boludo.";
+            cout << "\ningresa algo valido";
             break;
         }
-        
     }
+    delete contPoseidon;
     delete tablero;
     return 0;
 }

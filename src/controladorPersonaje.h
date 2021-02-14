@@ -5,6 +5,7 @@
 #include "pila.h"
 #include "tablero.h"
 #include "personaje_agua.h"
+#include "personaje_fuego.h"
 
 enum opciones1{
     //etapa 1

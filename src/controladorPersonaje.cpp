@@ -127,10 +127,14 @@ void ControladorPersonaje::moverse(int* destino){
         }
         aux = path.consulta();
         while(aux != finPila){
-            auxCasillero->setCharacter(0);
+            if(auxCasillero->getCharacter() == personaje){
+                auxCasillero->setCharacter(0);
+            }
             idToCoord(aux, auxCoord);
             auxCasillero = tablero->returnItem(auxCoord);
-            auxCasillero->setCharacter(personaje);
+            if(auxCasillero->getCharacter() == 0){
+                auxCasillero->setCharacter(personaje);
+            }
             //imprimo tablero
             system("clear");
             tablero->printBoard();

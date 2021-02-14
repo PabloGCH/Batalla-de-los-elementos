@@ -6,6 +6,8 @@
 #include "tablero.h"
 #include "personaje_agua.h"
 #include "personaje_fuego.h"
+#include "personaje_aire.h"
+#include "personaje_tierra.h"
 
 enum opciones1{
     //etapa 1

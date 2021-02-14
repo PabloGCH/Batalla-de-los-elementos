@@ -28,18 +28,19 @@ int ControladorFuego::evaluarDir(Casillero* dir){
     return valor; 
 }
 
-void ControladorFuego::atacar(){
-    if(personaje->obtenerEnergia() >= 5){
-        personaje->restarEnergia(5);
-        for(int i = (ubicacion[0]-1); i < (ubicacion[0]-1)+3; i++){
-            for(int j = 1; j <= NUM_COLUMNAS; j++){
-                int auxCoord[2] = {i,j};
-                Personaje* enemigo = tablero->returnItem(auxCoord)->getCharacter();
-                if(enemigo)
-                    enemigo->recibirAtaque("fuego", 0);
-            }
+void ControladorFuego::atacar(ControladorPersonaje* personajesEnemigo){
+    if(this->personaje->obtenerEnergia() >= ATAQUE_FUEGO){
+        this->personaje->restarEnergia(ATAQUE_FUEGO);
+        for(int i = 0; i < 3; i++) {
+            if ((personajesEnemigo[i].devolverUbicacion())[0] == this->ubicacion[0] ||
+                (personajesEnemigo[i].devolverUbicacion())[0] == this->ubicacion[0] + 1 ||
+                (personajesEnemigo[i].devolverUbicacion())[0] == this->ubicacion[0] - 1) {
+                (personajesEnemigo[i].devolverPersonaje())->recibirAtaque("fuego",0);
+            }else
+                cout << "No hay enemigos cerca para atacar." << endl;
         }
-    }
+    }else
+        cout << "No posee suficiente energia para atacar." << endl;
 }
 
 ControladorFuego::ControladorFuego(Personaje* personaje, Tablero* tablero) {

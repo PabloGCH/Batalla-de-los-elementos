@@ -5,6 +5,7 @@
 
 const int ALIMENTO_FUEGO = 5;
 const int ALIMENTO_FUEGO_ENERGIA = 10;
+const int ATAQUE_FUEGO = 5;
 
 class PersonajeFuego : public Personaje {
 private:

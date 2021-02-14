@@ -28,17 +28,14 @@ int ControladorAire::evaluarDir(Casillero* dir){
     return valor; 
 }
 
-void ControladorAire::atacar(){
-    if(personaje->obtenerEnergia() >= 8){
-        personaje->restarEnergia(8);
-        for(int i = 1; i < NUM_FILAS; i++){
-            for(int j = 1; j <= NUM_COLUMNAS; j++){
-                int auxCoord[2] = {i,j};
-                Personaje* enemigo = tablero->returnItem(auxCoord)->getCharacter();
-                if(enemigo && (enemigo->obtenerJugador() != personaje->obtenerJugador()))
-                    enemigo->recibirAtaque("aire", 0);
-            }
+void ControladorAire::atacar(ControladorPersonaje* personajesEnemigos){
+    if(personaje->obtenerEnergia() >= ATAQUE_AIRE){
+        personaje->restarEnergia(ATAQUE_AIRE);
+        for(int i = 0; i < 3; i++){
+            (personajesEnemigos[i].devolverPersonaje())->recibirAtaque("aire",0);
         }
+    }else{
+        cout << "No posee suficiente energia para atacar." << endl;
     }
 }
 

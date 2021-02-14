@@ -58,7 +58,7 @@ class ControladorPersonaje
         void ubicarPersonaje(int* destino);
         // PRE:
         // POS: Ataca
-        virtual void atacar() = 0;
+        virtual void atacar(ControladorPersonaje** ControladoresEnemigo) = 0;
         virtual ~ControladorPersonaje();
     private:
         // POS: Evalua el coste de los nodos circundantes y guarda su en costo[]

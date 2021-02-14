@@ -41,8 +41,9 @@ bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
     return true;
 }
 
-void ControladorAgua::atacar(){
+void ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
     if (personaje -> obtenerEnergia() >= ATAQUE_AGUA){
+        personaje->restarEnergia(ATAQUE_AGUA);
         int posicionAtacada[2];
         bool verificado = false;
         cout << "Ingrese una posición para atacar " << endl;
@@ -56,7 +57,11 @@ void ControladorAgua::atacar(){
             verificado = comprobarPosicon(posicionAtacada);
         }
         Personaje* enemigo = tablero->returnItem(posicionAtacada)->getCharacter();
-        enemigo -> recibirAtaque("agua", 0);
+        for(int i = 0; i < 3; i++){
+            if(enemigo == ControladoresEnemigo[i]->devolverPersonaje()){
+                enemigo -> recibirAtaque("agua", 0);
+            }
+        }
     }
     else{
         cout << "El personaje no cuenta con la energia necesaria para atacar " << endl;

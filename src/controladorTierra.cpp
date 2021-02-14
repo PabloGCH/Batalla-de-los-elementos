@@ -28,25 +28,26 @@ int ControladorTierra::evaluarDir(Casillero* dir){
     return valor; 
 }
 
-void ControladorTierra::atacar(ControladorPersonaje* personajeVictima){
-    if (personaje -> obtenerEnergia() >= 6 ) {
-        personaje->restarEnergia(6);
-        int distanciaFila = ubicacion[0] - personajeVictima -> devolverUbicacion()[0];
-        int distanciaColumna = ubicacion[1] - personajeVictima -> devolverUbicacion()[1];
-        if (distanciaFila <= 2 && distanciaColumna <= 2){
-            personajeVictima -> devolverPersonaje() -> recibirAtaque( "tierra", 1);
-        }
-        else if (2 <= distanciaFila <= 4 && 2 <= distanciaColumna <= 4){
-            personajeVictima -> devolverPersonaje() -> recibirAtaque( "tierra", 2);
+void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
+    for(int i = 0; i < 3; i++){
+        if (personaje -> obtenerEnergia() >= 6 ) {
+            personaje->restarEnergia(6);
+            int distanciaFila = ubicacion[0] - ControladoresEnemigo[i] -> devolverUbicacion()[0];
+            int distanciaColumna = ubicacion[1] - ControladoresEnemigo[i] -> devolverUbicacion()[1];
+            if (distanciaFila <= 2 && distanciaColumna <= 2){
+                ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 1);
+            }
+            else if (2 <= distanciaFila <= 4 && 2 <= distanciaColumna <= 4){
+                ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 2);
+            }
+            else{
+                ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 3);
+            }
         }
         else{
-            personajeVictima -> devolverPersonaje() -> recibirAtaque( "tierra", 3);
+            cout << "El personaje " << personaje -> obtenerNombre() << " no cuenta con la energía necesaria para atacar" << endl;
         }
     }
-    else{
-        cout << "El personaje " << personaje -> obtenerNombre() << " no cuenta con la energía necesaria para atacar" << endl;
-    }
-    
 }
 
 ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {

@@ -5,7 +5,7 @@
 class ControladorTierra : public ControladorPersonaje{
     private:
     public:
-        void atacar(ControladorPersonaje* personajeVictima);
+        void atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         ControladorTierra(Personaje* personaje, Tablero* tablero);
 };

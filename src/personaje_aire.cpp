@@ -40,3 +40,7 @@ bool PersonajeAire::defender() {
         return false;
     }
 }
+
+int PersonajeAire::devolverTipo(){
+    return TIPO_AIRE;
+}

@@ -40,6 +40,7 @@ class ControladorPersonaje
         // POS: Devuelve el coste que supondria moverse a ese casillero
         virtual int evaluarDir(Casillero* dir) = 0;
     public:
+        ControladorPersonaje();
         // PRE:
         // POS: Busca los caminos minimos
         void encontrarCaminos();

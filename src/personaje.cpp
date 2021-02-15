@@ -7,7 +7,7 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->nombre = nombre;
     this->escudo = escudo;
     this->vida = vida;
-    selecionado = false;
+    seleccionado = false;
     jugador = 0;
     asignarEnergia();
 }
@@ -51,4 +51,12 @@ void Personaje::asignarJugador(int per){
 
 int Personaje::obtenerJugador() {
     return jugador;
+}
+
+bool Personaje::estaSeleccionado(){
+    return seleccionado;
+}
+
+void Personaje::seleccionar(){
+    seleccionado = true;
 }

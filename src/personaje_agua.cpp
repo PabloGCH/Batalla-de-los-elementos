@@ -66,3 +66,7 @@ bool PersonajeAgua::defender(){
         return false;
     }
 }
+
+int PersonajeAgua::devolverTipo(){
+    return TIPO_AGUA;
+}

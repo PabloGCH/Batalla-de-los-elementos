@@ -3,6 +3,14 @@
 #include <iostream>
 #include "jugador.h"
 #include "tablero.h"
+#include "personaje_fuego.h"
+#include "personaje_tierra.h"
+#include "personaje_aire.h"
+#include "personaje_agua.h"
+#include "controladorAire.h"
+#include "controladorFuego.h"
+#include "controladorTierra.h"
+#include "controladorAgua.h"
 #include "ABB.h"
 using namespace std;
 
@@ -23,6 +31,11 @@ class Juego{
 
         // POS: Muestra por pantalla el detalle de un personaje buscado por teclado.
         void mostrarDetalle();
+
+        // PRE: recibe un entero que indica el jugador
+        // POS: permite a un jugador seleccionar un personaje
+        // si la seleccion tiene exito devuelve true, y sino devuelve false
+        bool seleccionarPersonaje(int numJugador);
 
         Juego();
     private:
@@ -57,7 +70,10 @@ class Juego{
         // PRE: el archivo se debe pasar abierto.
         // POS: Almacena 'elemento', 'nombre', 'escudo', y 'vida' en variables y convierte estas ultimas 2 a INT.
         void procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero);
-
+        
+        // PRE: Recibe un numero indicando el jugador, y un personaje para asignarle
+        // POS: le asigna el personaje (con un controlador adecuado) al personaje indicado
+        void asignarPersonaje(int numJugador, Personaje* personaje);
         ABB diccionario;
         Jugador jugadores[2];
         Tablero tablero;

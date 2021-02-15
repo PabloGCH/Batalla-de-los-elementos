@@ -1,5 +1,11 @@
 #include "controladorPersonaje.h"
 
+ControladorPersonaje::ControladorPersonaje(){
+    personaje = 0;
+    ptrCasillero = 0;
+    tablero = 0;
+}
+
 void ControladorPersonaje::encontrarCaminos(){
     Casillero* current = ptrCasillero;
     bool visto[64];

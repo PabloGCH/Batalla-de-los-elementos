@@ -87,3 +87,7 @@ bool PersonajeTierra::defender(){
         return false;
     }
 }
+
+int PersonajeTierra::devolverTipo(){
+    return TIPO_TIERRA;
+}

@@ -84,3 +84,7 @@ bool PersonajeFuego::defender(){
         return false;
     }
 }
+
+int PersonajeFuego::devolverTipo(){
+    return TIPO_FUEGO;
+}

@@ -25,7 +25,7 @@ protected:
     int escudo;
     int vida;
     int energia;
-    bool selecionado;
+    bool seleccionado;
 
 
 public:
@@ -45,6 +45,10 @@ public:
     //POS: Retorna un entero que indica el tipo
     virtual int devolverTipo() = 0;
 
+    // POS: Retorna true si el personaje esta seleccionado
+    bool estaSeleccionado();
+    // POS: Asigna true a asignado
+    void seleccionar();
     
     // PRE: -
     // POS: Retorna el nombre el personaje.

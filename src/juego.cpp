@@ -123,6 +123,7 @@ void Juego::agregarPersonaje() {
 }
 
 void Juego::leerCadena(string &cadena){
+    cin.ignore();
     getline(cin, cadena);
     nombreMayuscula(cadena);
 }

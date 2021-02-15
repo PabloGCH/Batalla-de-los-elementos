@@ -23,6 +23,7 @@ protected:
     int escudo;
     int vida;
     int energia;
+    bool selecionado;
 
 
 public:

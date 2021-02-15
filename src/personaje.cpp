@@ -7,6 +7,7 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->nombre = nombre;
     this->escudo = escudo;
     this->vida = vida;
+    selecionado = false;
     jugador = 0;
     asignarEnergia();
 }

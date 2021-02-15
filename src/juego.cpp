@@ -1,8 +1,14 @@
 #include "juego.h"
 
-Juego::Juego(ifstream archivo){
-    //Lleno diccionario con archivo
-    procesarArchivo(archivo);
+Juego::Juego(){
+    ifstream archivo("../res/personajes.csv");
+    if(archivo.is_open()){
+        //Lleno diccionario con archivo
+        procesarArchivo(archivo);
+        archivo.close();
+    } else {
+        cout << "fallo al abrir archivo de personajes";
+    }
 }
 
 void Juego::iniciar(){
@@ -50,7 +56,7 @@ void Juego::opcionesPersonaje(){
         switch (opcion)
         {
         case 1:
-            // agregar personaje
+            agregarPersonaje();
             break;
         case 2:
             // eliminar personaje
@@ -146,12 +152,19 @@ void Juego::registrarElemento(string &elementoAgregar){
 
 void Juego::procesarArchivo(ifstream &archivo){
     if (archivo.is_open()){
-        while(!archivo.eof()){
+        string elemento, nombre, escudo, vida;
+        int escudoEntero, vidaEntero;
+        bool salir = false;
+        while(!salir){
             string elemento, nombre, escudo, vida;
             int escudoEntero, vidaEntero;
-            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
-            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
-            diccionario.insertarHoja(nuevo);
+            if(archivo.peek() != EOF){
+                procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
+                Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
+                diccionario.insertarHoja(nuevo);
+            } else {
+                salir = true;
+            }
         }
     }
 }

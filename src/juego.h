@@ -11,7 +11,7 @@ class Juego{
         void iniciar();
         // POS: agrega un nuevo personaje al diccionario.
         void agregarPersonaje();
-        Juego(ifstream archivo);
+        Juego();
     private:
         void opcionesPersonaje();
         void comenzarJuego();

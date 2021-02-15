@@ -18,8 +18,10 @@ class Juego{
         // EN ABB 'eliminarRaiz' genera un error - Chequear -
         void eliminarPersonaje();
 
+        // POS: Muestra por pantalla los nombres de los personajes ene le diccionario en orden alfabetico.
         void mostrarPersonajes();
 
+        // POS: Muestra por pantalla el detalle de un personaje buscado por teclado.
         void mostrarDetalle();
 
         Juego();

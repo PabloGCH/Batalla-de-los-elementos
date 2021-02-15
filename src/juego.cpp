@@ -109,7 +109,6 @@ void Juego::agregarPersonaje() {
     Nodo* encontrado;
 
     cout << "\tAGREGAR PERSONAJE." << endl;
-    cin.ignore();
     registrarElemento(elementoAgregar);
 
     cout << "Ingrese el nombre del nuevo personaje: ";

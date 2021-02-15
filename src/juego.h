@@ -20,6 +20,8 @@ class Juego{
 
         void mostrarPersonajes();
 
+        void mostrarDetalle();
+
         Juego();
     private:
         void opcionesPersonaje();

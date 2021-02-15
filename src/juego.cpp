@@ -62,11 +62,10 @@ void Juego::opcionesPersonaje(){
             eliminarPersonaje();
             break;
         case 3:
-            // mostrar nombre personajes
             mostrarPersonajes();
             break;
         case 4:
-            // buscar detalles personaje
+            mostrarDetalle();
         case 5:
             comenzarJuego();
             salir = true;
@@ -78,6 +77,26 @@ void Juego::opcionesPersonaje(){
             break;
         }
     }
+}
+
+void Juego::mostrarDetalle() {
+    string nombreBuscado;
+    Nodo* encontrado;
+    cout << "\tMOSTRAR DETALLE DE PERSONAJE." << endl <<
+         "Ingrese el nombre del personaje a buscar en el diccionario: ";
+    leerCadena(nombreBuscado);
+    system("clear");
+    encontrado = diccionario.buscarPersonaje(nombreBuscado);
+    while(!encontrado){
+        cout << "\tEl personaje que intenta buscar NO existe." << endl
+             << "Estos son los personajes disponibles: " << endl;
+        mostrarPersonajes();
+        cout << "Ingrese el nombre del personaje a buscar en el diccionario: ";
+        leerCadena(nombreBuscado);
+        system("clear");
+        encontrado = diccionario.buscarPersonaje(nombreBuscado);
+    }
+    encontrado->obtenerDato()->mostrarAtributos();
 }
 
 void Juego::mostrarPersonajes(){

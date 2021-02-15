@@ -134,7 +134,6 @@ bool ABB::arbolVacio() {
 
 void ABB::borrarNodo(string eliminar){
     if(eliminar == raiz->obtenerClave())
-        //Chequear error 'eliminarRaiz' en ABB
         eliminarRaiz();
     else
         this->raiz = eliminarNodo(this->raiz, eliminar);
@@ -207,10 +206,13 @@ void ABB::eliminarRaiz() {
         Nodo* eliminarN = raiz;
         Nodo* predecesor = consultarPersonaje(raiz, this->predecesor(raiz)->obtenerNombre());
         raiz = predecesor;
-        if(predecesor->esHoja()){
-            (predecesor->obtenerPadre())->cambiarDerecho(nullptr);
+        if(raiz->esHoja()){
             raiz->cambiarDerecho(eliminarN->obtenerDerecho(), raiz);
             raiz->cambiarIzquierdo(eliminarN->obtenerIzquierdo(), raiz);
+            if(raiz->obtenerIzquierdo() == predecesor)
+                (predecesor->obtenerPadre())->cambiarIzquierdo(nullptr);
+            else
+                (predecesor->obtenerPadre())->cambiarDerecho(nullptr);
         }else{
             raiz->cambiarDerecho(eliminarN->obtenerDerecho(), raiz);
         }

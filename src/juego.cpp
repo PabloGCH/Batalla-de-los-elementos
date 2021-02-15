@@ -236,7 +236,6 @@ void Juego::eliminarPersonaje() {
     cout << "\tELIMINAR PERSONAJE DE LA LISTA." << endl
          << "Ingrese el nombre del personaje a eliminar: ";
     leerCadena(eliminar);
-    //Chequear error 'eliminarRaiz' en ABB
     diccionario.borrarNodo(eliminar);
 }
 

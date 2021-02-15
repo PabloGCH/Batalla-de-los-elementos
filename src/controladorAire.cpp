@@ -32,7 +32,9 @@ void ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
     if(personaje->obtenerEnergia() >= ATAQUE_AIRE){
         personaje->restarEnergia(ATAQUE_AIRE);
         for(int i = 0; i < 3; i++){
-            (ControladoresEnemigo[i]->devolverPersonaje())->recibirAtaque("aire",0);
+            if(ControladoresEnemigo[i]->devolverPersonaje() != 0){
+                (ControladoresEnemigo[i]->devolverPersonaje())->recibirAtaque("aire",0);
+            }
         }
     }else{
         cout << "No posee suficiente energia para atacar." << endl;

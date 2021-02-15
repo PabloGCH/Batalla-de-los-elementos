@@ -32,11 +32,11 @@ void ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
     if(this->personaje->obtenerEnergia() >= ATAQUE_FUEGO){
         this->personaje->restarEnergia(ATAQUE_FUEGO);
         for(int i = 0; i < 3; i++) {
-            if ((ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] || (ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] + 1 || (ControladoresEnemigo[i]->devolverUbicacion()[0] == this->ubicacion[0] - 1))
-            {
-                ControladoresEnemigo[i]->devolverPersonaje()->recibirAtaque("fuego",0);
-            }else
-                cout << "No hay enemigos cerca para atacar." << endl;
+            if(ControladoresEnemigo[i]->devolverPersonaje() != 0){
+                if ((ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] || (ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] + 1 || (ControladoresEnemigo[i]->devolverUbicacion()[0] == this->ubicacion[0] - 1)){
+                    ControladoresEnemigo[i]->devolverPersonaje()->recibirAtaque("fuego",0);
+                }
+            }
         }
     }else
         cout << "No posee suficiente energia para atacar." << endl;

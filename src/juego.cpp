@@ -250,6 +250,7 @@ void Juego::comenzarJuego(){
     while(!salir && jug < 2){
         while(!salir && per < 3){
             imprimirOpcionesComenzar();
+            cout << endl << "Jugador " << jug + 1;
             opcion = recibirOpcion();
             switch (opcion)
             {

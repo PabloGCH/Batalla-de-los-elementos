@@ -121,6 +121,7 @@ void Juego::agregarPersonaje() {
             encontrado = diccionario.buscarPersonaje(nombreAgregar);
     }
     personajeAgregar = crearPersonaje(elementoAgregar, nombreAgregar);
+
     diccionario.insertarHoja(personajeAgregar);
 }
 

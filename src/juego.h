@@ -32,6 +32,11 @@ class Juego{
         // POS: Muestra por pantalla el detalle de un personaje buscado por teclado.
         void mostrarDetalle();
 
+        // PRE: recibe un entero que indica el jugador
+        // POS: permite a un jugador seleccionar un personaje
+        // si la seleccion tiene exito devuelve true, y sino devuelve false
+        bool seleccionarPersonaje(int numJugador);
+
         Juego();
     private:
         void opcionesPersonaje();

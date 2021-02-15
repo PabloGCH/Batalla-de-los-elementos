@@ -219,6 +219,24 @@ void Juego::asignarPersonaje(int numJugador, Personaje* personaje){
     }
 }
 
+bool Juego::seleccionarPersonaje(int numjugador){
+    string nombre;
+    Personaje* personaje;
+    Nodo* nodo;
+    bool personajeSeleccionado = false; 
+    cout << "Ingrese el nombre del personaje: ";
+    cin >> nombre;
+    nodo = diccionario.buscarPersonaje(nombre);
+    if(nodo != 0){
+        personaje = nodo->obtenerDato();
+        asignarPersonaje(numjugador, personaje);
+        personajeSeleccionado = true;
+    } else {
+        cout << "No hay un personaje con ese nombre" << endl;
+    }
+    return personajeSeleccionado;
+}
+
 void Juego::comenzarJuego(){
     bool salir = false;
     int opcion;
@@ -237,7 +255,7 @@ void Juego::comenzarJuego(){
                 mostrarPersonajes();
                 break;
             case 3:
-                per += 0;// seleccionar personaje
+                if(seleccionarPersonaje(jug)){ per++;}
                 break;
             case 4:
                 salir = true;

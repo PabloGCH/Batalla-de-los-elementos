@@ -81,6 +81,7 @@ void Juego::opcionesPersonaje(){
 void Juego::mostrarDetalle() {
     string nombreBuscado;
     Nodo* encontrado;
+    cin.ignore();
     cout << "\tMOSTRAR DETALLE DE PERSONAJE." << endl <<
          "Ingrese el nombre del personaje a buscar en el diccionario: ";
     leerCadena(nombreBuscado);
@@ -110,7 +111,7 @@ void Juego::agregarPersonaje() {
     cout << "\tAGREGAR PERSONAJE." << endl;
     registrarElemento(elementoAgregar);
 
-    cout << "Ingrese el nombre del nuevo personaje: ";
+    cout << "Ingrese el nombre del nuevo personaje: " << endl;
     leerCadena(nombreAgregar);
     encontrado = diccionario.buscarPersonaje(nombreAgregar);
     while(encontrado){
@@ -123,7 +124,6 @@ void Juego::agregarPersonaje() {
 }
 
 void Juego::leerCadena(string &cadena){
-    cin.ignore();
     getline(cin, cadena);
     nombreMayuscula(cadena);
 }
@@ -168,6 +168,7 @@ Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida)
 }
 
 void Juego::registrarElemento(string &elementoAgregar){
+    cin.ignore();
     cout << "Ingrese el elemento del nuevo personaje ( AGUA, AIRE, TIERRA, FUEGO ): ";
     leerCadena(elementoAgregar);
     while(elementoAgregar != "Agua" && elementoAgregar != "Aire" && elementoAgregar != "Tierra" && elementoAgregar != "Fuego") {
@@ -278,7 +279,7 @@ void Juego::comenzarJuego(){
 
 void Juego::eliminarPersonaje() {
     string eliminar;
-
+    cin.ignore();
     cout << "\tELIMINAR PERSONAJE DE LA LISTA." << endl
          << "Ingrese el nombre del personaje a eliminar: ";
     leerCadena(eliminar);

@@ -58,7 +58,6 @@ void Juego::opcionesPersonaje(){
             agregarPersonaje();
             break;
         case 2:
-            //Chequear error 'eliminarRaiz' en ABB
             eliminarPersonaje();
             break;
         case 3:
@@ -193,6 +192,8 @@ void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &
     getline(archivo, nombre, ',');
     getline(archivo, escudo, ',');
     getline(archivo, vida, '\n');
+    nombreMayuscula(elemento);
+    nombreMayuscula(nombre);
     escudoEntero = stoi(escudo);
     vidaEntero = stoi(vida);
 }

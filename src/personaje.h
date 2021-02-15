@@ -8,9 +8,11 @@ using namespace std;
 const int MAX_ENERGIA = 20;
 const int MAX_VIDA = 100;
 
-enum jugador{
-    JUGADOR1 = 1,
-    JUGADOR2 = 2,
+enum tipo{
+    TIPO_AGUA = 1,
+    TIPO_TIERRA = 2,
+    TIPO_AIRE = 3,
+    TIPO_FUEGO = 4,
 };
 
 class Personaje{
@@ -40,6 +42,10 @@ public:
     //Metodo abstracto. Cada clase hija debe implementar su metodo defender
     virtual bool defender() = 0;
 
+    //POS: Retorna un entero que indica el tipo
+    virtual int devolverTipo() = 0;
+
+    
     // PRE: -
     // POS: Retorna el nombre el personaje.
     string obtenerNombre();

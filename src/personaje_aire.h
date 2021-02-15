@@ -30,6 +30,8 @@ public:
     //POS: energia - 15
     bool defender();
 
+    //POS: Retorna entero que indica el tipo
+    int devolverTipo();
 
 
 

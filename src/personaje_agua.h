@@ -35,6 +35,9 @@ public:
     //POS: energia - 12 & vida + 50 (los otros personajes del jugador tambien recibiran 10 de vida)
     bool defender();
 
+    //POS: Retorna entero que indica el tipo
+    int devolverTipo();
+
 };
 
 

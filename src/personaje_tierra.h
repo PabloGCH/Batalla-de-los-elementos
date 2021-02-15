@@ -28,6 +28,9 @@ public:
     //PRE:
     //POS: escudo + 2 & energia - 5
     bool defender();
+
+    //POS: Retorna entero que indica el tipo
+    int devolverTipo();
 };
 
 #endif //ESCRITORIO_PERSONAJE_TIERRA_H

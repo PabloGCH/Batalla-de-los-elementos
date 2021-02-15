@@ -30,8 +30,10 @@ public:
 
     //PRE: -
     //POS: energia - 10 & vida + 10
-     bool defender();
+    bool defender();
 
+    //POS: Retorna entero que indica el tipo
+    int devolverTipo();
 private:
 
     // PRE: -

@@ -207,10 +207,10 @@ void Juego::comenzarJuego(){
             switch (opcion)
             {
             case 1:
-                // buscar detalles personaje
+                mostrarDetalle();
                 break;
             case 2:
-                // mostrar nombre personajes
+                mostrarPersonajes();
                 break;
             case 3:
                 per += 0;// seleccionar personaje

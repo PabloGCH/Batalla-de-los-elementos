@@ -50,6 +50,7 @@ int main(){
     delete contPoseidon;
     delete tablero;*/
     Juego nuevo;
+    nuevo.agregarPersonaje();
     //nuevo.mostrarPersonajes();
     //nuevo.mostrarDetalle();
     //nuevo.eliminarPersonaje();

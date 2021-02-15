@@ -106,6 +106,7 @@ void Juego::mostrarPersonajes(){
 void Juego::agregarPersonaje() {
     string elementoAgregar, nombreAgregar;
     Dato personajeAgregar;
+    Nodo* encontrado;
 
     cout << "\tAGREGAR PERSONAJE." << endl;
     cin.ignore();
@@ -113,9 +114,11 @@ void Juego::agregarPersonaje() {
 
     cout << "Ingrese el nombre del nuevo personaje: ";
     leerCadena(nombreAgregar);
-    while(nombreAgregar == (diccionario.buscarPersonaje(nombreAgregar))->obtenerClave()){
-        cout << "El personaje que quiere agregar ya existe. Ingrese otro nombre para un nuevo personaje." << endl;
-        leerCadena(nombreAgregar);
+    encontrado = diccionario.buscarPersonaje(nombreAgregar);
+    while(encontrado){
+            cout << "El personaje que quiere agregar ya existe. Ingrese otro nombre para un nuevo personaje." << endl;
+            leerCadena(nombreAgregar);
+            encontrado = diccionario.buscarPersonaje(nombreAgregar);
     }
     personajeAgregar = crearPersonaje(elementoAgregar, nombreAgregar);
     diccionario.insertarHoja(personajeAgregar);
@@ -141,11 +144,11 @@ Dato Juego::crearPersonaje(string elemento, string nombre){
     Dato nuevo;
     int escudo = rand() % 3;
     int vida = rand() % 91 + 10;
-    if(elemento == "AGUA")
+    if(elemento == "Agua")
         nuevo = new PersonajeAgua(nombre, escudo, vida);
-    else if(elemento == "AIRE")
+    else if(elemento == "Aire")
         nuevo = new PersonajeAire(nombre, escudo, vida);
-    else if(elemento == "FUEGO")
+    else if(elemento == "Fuego")
         nuevo = new PersonajeFuego(nombre, escudo, vida);
     else
         nuevo = new PersonajeTierra(nombre, escudo, vida);

@@ -195,6 +195,30 @@ void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &
     vidaEntero = stoi(vida);
 }
 
+void Juego::asignarPersonaje(int numJugador, Personaje* personaje){
+    int tipo = personaje->devolverTipo();
+    ControladorPersonaje* controlador;
+    switch (tipo)
+    {
+    case TIPO_AGUA:
+        controlador = new ControladorAgua(personaje, &tablero);
+        jugadores[numJugador].asignar_controlador(controlador);
+        break;
+    case TIPO_TIERRA:
+        controlador = new ControladorTierra(personaje, &tablero);
+        jugadores[numJugador].asignar_controlador(controlador);
+        break;
+    case TIPO_FUEGO:
+        controlador = new ControladorFuego(personaje, &tablero);
+        jugadores[numJugador].asignar_controlador(controlador);
+        break;
+    case TIPO_AIRE:
+        controlador = new ControladorAire(personaje, &tablero);
+        jugadores[numJugador].asignar_controlador(controlador);
+        break;
+    }
+}
+
 void Juego::comenzarJuego(){
     bool salir = false;
     int opcion;

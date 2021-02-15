@@ -17,11 +17,13 @@ ControladorPersonaje** Jugador::devolverControladores(){
 
 void Jugador::asignar_controlador(ControladorPersonaje* controlador){
 	int i = 0;
-	while(i < 3 && controladores[i] != 0){
+	bool salir = false;
+	while(i < 3 && !salir){
 		if(controladores[i] != 0){
 			i++;
 		} else{
 			controladores[i] = controlador;
+			salir = true;
 		}
 	}
 	if(i = 3){

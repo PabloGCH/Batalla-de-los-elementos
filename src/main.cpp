@@ -3,10 +3,11 @@
 #include <unistd.h>
 #include "controladorAgua.h"
 #include "controladorFuego.h"
+#include "juego.h"
 using namespace std;
 
 int main(){
-    int ubicacionInicial[2] = {2, 3};
+    /*int ubicacionInicial[2] = {2, 3};
     int ubicacionApolo[2] = {4,4};
     Tablero* tablero = new Tablero;
     Personaje* poseidon = new PersonajeAgua("poseidon", 4, 30);
@@ -47,6 +48,9 @@ int main(){
         }
     }
     delete contPoseidon;
-    delete tablero;
+    delete tablero;*/
+    Juego nuevo;
+    nuevo.mostrarPersonajes();
+    //nuevo.eliminarPersonaje();
     return 0;
 }

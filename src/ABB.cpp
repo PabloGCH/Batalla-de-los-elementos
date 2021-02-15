@@ -134,6 +134,7 @@ bool ABB::arbolVacio() {
 
 void ABB::borrarNodo(string eliminar){
     if(eliminar == raiz->obtenerClave())
+        //Chequear error 'eliminarRaiz' en ABB
         eliminarRaiz();
     else
         this->raiz = eliminarNodo(this->raiz, eliminar);
@@ -161,6 +162,7 @@ Nodo* ABB::eliminarNodo(Nodo* actual, string eliminar){
 
 void ABB::eliminarHoja(Nodo* &actual){
     Nodo* eliminarN = actual;
+    cout << eliminarN->obtenerClave() << " fue eliminado exitosamente." << endl;
     delete eliminarN;
     actual = nullptr;
 }
@@ -169,6 +171,7 @@ void ABB::eliminarNodoConHijo(Nodo* &actual, Nodo* hijo){
     hijo->cambiarPadre(actual->obtenerPadre());
     Nodo* aux = actual;
     actual = hijo;
+    cout << aux->obtenerClave() << " fue eliminado exitosamente." << endl;
     delete aux;
 }
 
@@ -179,22 +182,26 @@ void ABB::eliminarNodoConHijos(Nodo* &actual) {
     sucesor->cambiarPadre(actual->obtenerPadre());
     aux = actual;
     actual = sucesor;
+    cout << aux->obtenerClave() << " fue eliminado exitosamente." << endl;
     delete aux;
     actual->cambiarDerecho(eliminarNodo(actual->obtenerDerecho(),sucesor->obtenerClave()));
 }
 
 void ABB::eliminarRaiz() {
-    if(raiz->esHoja())
+    if(raiz->esHoja()) {
+        cout << raiz->obtenerClave() << " fue eliminado exitosamente." << endl;
         delete raiz;
-    else if(raiz->soloHijoDerecho()){
+    }else if(raiz->soloHijoDerecho()){
         Nodo* eliminarN = raiz;
         raiz = raiz->obtenerDerecho();
         raiz->cambiarPadre(nullptr);
+        cout << eliminarN->obtenerClave() << " fue eliminado exitosamente." << endl;
         delete eliminarN;
     }else if(raiz->soloHijoIzquierdo()){
         Nodo* eliminarN = raiz;
         raiz = raiz->obtenerIzquierdo();
         raiz->cambiarPadre(nullptr);
+        cout << eliminarN->obtenerClave() << " fue eliminado exitosamente." << endl;
         delete eliminarN;
     }else{
         Nodo* eliminarN = raiz;
@@ -208,6 +215,7 @@ void ABB::eliminarRaiz() {
             raiz->cambiarDerecho(eliminarN->obtenerDerecho(), raiz);
         }
         raiz->cambiarPadre(nullptr);
+        cout << eliminarN->obtenerClave() << " fue eliminado exitosamente." << endl;
         delete eliminarN;
     }
 }

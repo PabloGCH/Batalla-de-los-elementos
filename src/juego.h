@@ -9,8 +9,17 @@ using namespace std;
 class Juego{
     public:
         void iniciar();
+
         // POS: agrega un nuevo personaje al diccionario.
         void agregarPersonaje();
+
+        // PRE: el diccionario no debe estar vacio.
+        // POS: elimina el nodo del ABB que coincida la clave del nodo con el nombre ingresado por teclado.
+        // EN ABB 'eliminarRaiz' genera un error - Chequear -
+        void eliminarPersonaje();
+
+        void mostrarPersonajes();
+
         Juego();
     private:
         void opcionesPersonaje();
@@ -44,6 +53,7 @@ class Juego{
         // PRE: el archivo se debe pasar abierto.
         // POS: Almacena 'elemento', 'nombre', 'escudo', y 'vida' en variables y convierte estas ultimas 2 a INT.
         void procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero);
+
         ABB diccionario;
         Jugador jugadores[2];
         Tablero tablero;

@@ -3,7 +3,6 @@
 Juego::Juego(){
     ifstream archivo("../res/personajes.csv");
     if(archivo.is_open()){
-        //Lleno diccionario con archivo
         procesarArchivo(archivo);
         archivo.close();
     } else {
@@ -59,10 +58,12 @@ void Juego::opcionesPersonaje(){
             agregarPersonaje();
             break;
         case 2:
-            // eliminar personaje
+            //Chequear error 'eliminarRaiz' en ABB
+            eliminarPersonaje();
             break;
         case 3:
             // mostrar nombre personajes
+            mostrarPersonajes();
             break;
         case 4:
             // buscar detalles personaje
@@ -77,6 +78,10 @@ void Juego::opcionesPersonaje(){
             break;
         }
     }
+}
+
+void Juego::mostrarPersonajes(){
+    diccionario.enOrden();
 }
 
 void Juego::agregarPersonaje() {
@@ -130,11 +135,11 @@ Dato Juego::crearPersonaje(string elemento, string nombre){
 
 Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida){
     Dato nuevo;
-    if(elemento == "AGUA")
+    if(elemento == "Agua")
         nuevo = new PersonajeAgua(nombre, escudo, vida);
-    else if(elemento == "AIRE")
+    else if(elemento == "Aire")
         nuevo = new PersonajeAire(nombre, escudo, vida);
-    else if(elemento == "FUEGO")
+    else if(elemento == "Fuego")
         nuevo = new PersonajeFuego(nombre, escudo, vida);
     else
         nuevo = new PersonajeTierra(nombre, escudo, vida);
@@ -154,17 +159,10 @@ void Juego::procesarArchivo(ifstream &archivo){
     if (archivo.is_open()){
         string elemento, nombre, escudo, vida;
         int escudoEntero, vidaEntero;
-        bool salir = false;
-        while(!salir){
-            string elemento, nombre, escudo, vida;
-            int escudoEntero, vidaEntero;
-            if(archivo.peek() != EOF){
-                procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
-                Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
-                diccionario.insertarHoja(nuevo);
-            } else {
-                salir = true;
-            }
+        while(!archivo.eof() && archivo.peek() != EOF){
+            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
+            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
+            diccionario.insertarHoja(nuevo);
         }
     }
 }
@@ -213,6 +211,15 @@ void Juego::comenzarJuego(){
     }
 }
 
+void Juego::eliminarPersonaje() {
+    string eliminar;
+
+    cout << "\tELIMINAR PERSONAJE DE LA LISTA." << endl
+         << "Ingrese el nombre del personaje a eliminar: ";
+    leerCadena(eliminar);
+    //Chequear error 'eliminarRaiz' en ABB
+    diccionario.borrarNodo(eliminar);
+}
 
 void Juego::partida(){
     

@@ -78,6 +78,10 @@ public:
     
     //Pos: disminuye el escudo en 2 unidades
     void bajar_escudo();
+    
+    
+    //Pos: el personaje pierde 5 de vida
+    void perder_vida();
 
     virtual ~Personaje();
 

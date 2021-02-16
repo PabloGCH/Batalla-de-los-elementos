@@ -62,6 +62,10 @@ class ControladorPersonaje
         // PRE:
         // POS: Ataca
         virtual void atacar(ControladorPersonaje** ControladoresEnemigo) = 0;
+        //POS: el personaje se defiende
+        virtual void defensa();
+        //POS: cura al personaje
+        void se_curo();
         virtual ~ControladorPersonaje();
     private:
         // POS: Evalua el coste de los nodos circundantes y guarda su en costo[]

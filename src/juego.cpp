@@ -294,7 +294,7 @@ int Juego::finPartida(){
         personajesPerdidos = 0;
         ControladorPersonaje** controladores = jugadores[i].devolverControladores();
         for(int j = 0; j < 3; j++){
-            if(controladores[j] == 0){
+            if(controladores[j]->devolverPersonaje() == 0){
                 personajesPerdidos++;
             }
         }

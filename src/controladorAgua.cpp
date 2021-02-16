@@ -41,6 +41,17 @@ bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
     return true;
 }
 
+void ControladorAgua::defensa(ControladorPersonaje** controladores) {
+	bool seDefiende = personaje->defenderse();
+	if(seDefiende) {
+		for (int i = 0; i < 3, i++) {
+			if (controladores[i]->nombre != nombre) {
+				controladores[i]->se_curo();
+			}
+		}
+	}
+}
+
 void ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
     if (personaje -> obtenerEnergia() >= ATAQUE_AGUA){
         personaje->restarEnergia(ATAQUE_AGUA);

@@ -39,6 +39,10 @@ void Personaje::curar() {
 	vida += 10;
 }
 
+void Personaje::bajar_escudo() {
+	escudo -= 2;
+}
+
 void Personaje::mostrarAtributos() {
     cout << "--------------------------" << endl
          << "Nombre: " << obtenerNombre() << endl

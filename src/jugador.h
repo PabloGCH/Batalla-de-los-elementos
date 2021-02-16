@@ -19,6 +19,7 @@ public:
 	void asignar_rival(Jugador* rival);
 	ControladorPersonaje** devolverControladores();
 	~Jugador();
+	sinEnergia();
 };
 
 

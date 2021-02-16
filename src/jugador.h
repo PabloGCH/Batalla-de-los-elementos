@@ -16,6 +16,11 @@ public:
 	// POS: cura a los personajes si un personaje de agua se defiende
 	void curarPersonajes(ControladorPersonaje* cont);
 	void asignar_controlador(ControladorPersonaje* controlador);
+    void mostrarOpcionesPrimerEtapa(int jugadorActual, int personajeActual);
+    void mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual);
+    int solicitarOpcion();
+    void procesarOpcion(int opcionElegida, int etapa, int personajeActual);
+    void turno(int actual);
 	void asignar_rival(Jugador* rival);
 	void sinEnergia();
 	ControladorPersonaje** devolverControladores();

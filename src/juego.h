@@ -39,10 +39,15 @@ class Juego{
         // si la seleccion tiene exito devuelve true, y sino devuelve false
         bool seleccionarPersonaje(int numJugador);
 
+
+
         Juego();
     private:
         void opcionesPersonaje();
         void comenzarJuego();
+
+        //PRE: -
+        //POS: muestra las opciones de juego a cada jugador
         void partida();
         void imprimirOpcionesPersonajes();
         void imprimirOpcionesComenzar();

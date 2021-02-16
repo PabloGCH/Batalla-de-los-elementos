@@ -309,9 +309,43 @@ int Juego::finPartida(){
     return ganador;
 }
 
-void Juego::partida(){
-    
+void Juego::partida() {
+    int actual = rand() % 2;
+    int terminar = 0;
+    int opcion = 0;
+    bool guardado;
+    cout << "Comenzará el jugador " << actual + 1 << endl;
+    while (terminar != 0) {
+        //preguntar guardado jugador 1
+        if (guardado){
+            //guardar
+            terminar = 3;
+        }
+        else{
+            jugadores[actual].turno(actual);
+            //jugador2 preguntar guardado
+            if (actual == 0){
+                //preguntar guardado
+                if (guardado){
+                    //guardar
+                    terminar = 3;
+                }
+                else{
+                    jugadores[actual].turno(actual + 1);
+                }
+            }
+            else{
+                //preguntar guardado
+                if (guardado){
+                    //guardar
+                    terminar = 3;
+                }
+                else{
+                    jugadores[actual - 1 ].turno(actual - 1 );
+                }
+            }
+
+        }
+        terminar = finPartida();
+    }
 }
-
-
-

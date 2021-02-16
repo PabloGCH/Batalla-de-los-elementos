@@ -1,10 +1,15 @@
 #include "jugador.h"
 
 Jugador::Jugador() {
+    tablero = 0;
 	oponente = 0;
 	for(int i = 0; i < 3; i++){
 		controladores[i] = 0;
 	}
+}
+
+void Jugador::asignarTablero(Tablero* tablero){
+    this->tablero = tablero;
 }
 
 void Jugador::asignar_rival(Jugador* rival) {

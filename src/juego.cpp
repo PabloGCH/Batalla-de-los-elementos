@@ -2,6 +2,9 @@
 
 Juego::Juego(){
     ifstream archivo("../res/personajes.csv");
+    for(int i = 0; i < 2; i++){
+        jugadores[i].asignarTablero(&tablero);
+    }
     if(archivo.is_open()){
         procesarArchivo(archivo);
         archivo.close();

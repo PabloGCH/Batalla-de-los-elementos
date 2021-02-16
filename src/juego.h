@@ -94,8 +94,8 @@ class Juego{
     private:
         //Atributos
         ABB diccionario;
-        Jugador jugadores[2];
         Tablero tablero;
+        Jugador jugadores[2];
 };
 
 #endif

@@ -5,6 +5,7 @@
 class Jugador {
 protected:
 	ControladorPersonaje* controladores[3];
+	Tablero* tablero;
 	Jugador* oponente;
 
 public:
@@ -15,6 +16,9 @@ public:
 	// PRE: recibe el controlador del personaje de agua
 	// POS: cura a los personajes si un personaje de agua se defiende
 	void curarPersonajes(ControladorPersonaje* cont);
+	// PRE: recibe un puntero tablero
+	// POS: asigna el tablero al atributo tablero de jugador
+	void asignarTablero(Tablero* tablero);
 	void asignar_controlador(ControladorPersonaje* controlador);
     void procesarOpcion(int opcionElegida, int etapa, int personajeActual);
     void turno(int actual);

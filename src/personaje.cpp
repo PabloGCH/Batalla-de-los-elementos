@@ -55,3 +55,5 @@ bool Personaje::estaSeleccionado(){
 void Personaje::seleccionar(){
     seleccionado = true;
 }
+
+Personaje::~Personaje(){}

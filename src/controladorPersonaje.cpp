@@ -163,4 +163,5 @@ void ControladorPersonaje::morir(){
     personaje = 0;
 }
 
+
 ControladorPersonaje::~ControladorPersonaje(){}

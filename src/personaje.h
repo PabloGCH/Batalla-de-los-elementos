@@ -76,7 +76,7 @@ public:
     //POS: El personaje recupera 10 de vida
     void curar();
 
-    virtual ~Personaje(){};
+    virtual ~Personaje();
 
 private:
 

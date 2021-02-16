@@ -89,6 +89,7 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     break;
                 case 3:
                     cout << "Decidiste pasar a la siquiente etapa " << endl;
+                    break;
 
             }
             break;
@@ -104,6 +105,7 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     cout << "Usted decidió terminar el turno " << endl;
                     break;
             }
+            break;
 
     }
 

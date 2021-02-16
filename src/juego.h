@@ -18,17 +18,19 @@ class Juego{
     public:
         void iniciar();
 
+        // PRE: -
         // POS: agrega un nuevo personaje al diccionario.
         void agregarPersonaje();
 
         // PRE: el diccionario no debe estar vacio.
         // POS: elimina el nodo del ABB que coincida la clave del nodo con el nombre ingresado por teclado.
-        // EN ABB 'eliminarRaiz' genera un error - Chequear -
         void eliminarPersonaje();
 
+        // PRE: -
         // POS: Muestra por pantalla los nombres de los personajes ene le diccionario en orden alfabetico.
         void mostrarPersonajes();
 
+        // PRE: -
         // POS: Muestra por pantalla el detalle de un personaje buscado por teclado.
         void mostrarDetalle();
 
@@ -47,22 +49,25 @@ class Juego{
         int recibirOpcion();
         void pedirOpcionJugador(int i);
         
-
-
-        //POS: Registra un elemento valido para la creacion de un personaje ( AIRE, AGUA, FUEGO, TIERRA )
+        // PRE: -
+        // POS: Registra un elemento valido para la creacion de un personaje ( AIRE, AGUA, FUEGO, TIERRA )
         void registrarElemento(string &elementoAgregar);
 
+        // PRE: -
         // POS: Devuelve un puntero al nuevo personaje.
-        Dato  crearPersonaje(string elemento, string nombre);
+        Dato crearPersonaje(string elemento, string nombre);
 
         // Metodo sobrecargado para crear personajes desde archivo con valores de escudo y vida ya dterminados.
+        // PRE: -
         // POS: Devuelve un puntero al nuevo personaje.
         Dato crearPersonaje(string elemento, string nombre, int escudo, int vida);
 
-        //POS: lee una cadena ingresada por teclado y la deja con la primer letra de cada palabra en mayusculas.
+        // PRE: -
+        // POS: lee una cadena ingresada por teclado y la deja con la primer letra de cada palabra en mayusculas.
         void leerCadena(string &cadena);
 
-        //POS: Deja la 1° letra de cada palabra en mayuscula.
+        // PRE: -
+        // POS: Deja la 1° letra de cada palabra de la cadena pasada (nombre) en mayuscula.
         void nombreMayuscula(string &nombre);
 
         // PRE: El archivo debe pasarse abierto.

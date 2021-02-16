@@ -71,11 +71,15 @@ public:
     // POS: Devuelve TRUE si 'izquierdo' y 'derecho' = NULL, FALSE en caso contrario.
     bool esHoja();
 
+    // PRE: -
+    // POS: Devuelve true si derecho!= nullptr && izquierdo == nullptr, en otro caso devuelve false.
     bool soloHijoDerecho();
 
+    // PRE: -
+    // POS: Devuelve true si izquierdo!= nullptr && derecho == nullptr, en otro caso devuelve false.
     bool soloHijoIzquierdo();
 
-    // PRE:
+    // PRE: -
     // POS: Libera memoria del personaje 'dato'
     void borrarPersonaje();
 

@@ -43,6 +43,10 @@ void Personaje::bajar_escudo() {
 	escudo -= 2;
 }
 
+void perder_vida() {
+	vida -= 5;
+}
+
 void Personaje::mostrarAtributos() {
     cout << "--------------------------" << endl
          << "Nombre: " << obtenerNombre() << endl

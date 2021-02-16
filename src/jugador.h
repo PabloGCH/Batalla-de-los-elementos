@@ -17,9 +17,9 @@ public:
 	void curarPersonajes(ControladorPersonaje* cont);
 	void asignar_controlador(ControladorPersonaje* controlador);
 	void asignar_rival(Jugador* rival);
+	void sinEnergia();
 	ControladorPersonaje** devolverControladores();
 	~Jugador();
-	sinEnergia();
 };
 
 

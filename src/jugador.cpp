@@ -60,7 +60,7 @@ void Jugador::curarPersonajes(ControladorPersonaje* cont){
 
 void Jugador::sinEnergia () {
 	for (int i = 0; i < 3; i++) {
-		if (controladores[i]->devolverPersonaje()->devolverTipo() == 4 && controladores[i]->devolverPersonaje()->obtenerEnergia == 0) {
+		if (controladores[i]->devolverPersonaje()->devolverTipo() == 4 && controladores[i]->devolverPersonaje()->obtenerEnergia() == 0) {
 			controladores[i]->devolverPersonaje()->perder_vida();
 		}
 	}

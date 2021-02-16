@@ -43,7 +43,7 @@ void Personaje::bajar_escudo() {
 	escudo -= 2;
 }
 
-void perder_vida() {
+void Personaje::perder_vida() {
 	vida -= 5;
 }
 

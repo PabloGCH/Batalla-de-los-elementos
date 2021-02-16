@@ -52,11 +52,12 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
     }
 }
 
-void ControladorTierra::defensa() {
+bool ControladorTierra::defensa() {
 	bool seDefiende = personaje->defender();
 	if(seDefiende) {
 		esta_defendiendo = true;
 	}
+    return 0;
 }
 
 ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {
@@ -64,8 +65,4 @@ ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {
     this->tablero = tablero;
     for(int i = 0; i<2; i++){ubicacion[i] = 0;};
     ptrCasillero = 0;
-}
-
-bool ControladorTierra::defensa(){
-    return 0;
 }

@@ -41,15 +41,9 @@ bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
     return true;
 }
 
-void ControladorAgua::defensa(ControladorPersonaje** controladores) {
-	bool seDefiende = personaje->defenderse();
-	if(seDefiende) {
-		for (int i = 0; i < 3; i++) {
-			if (controladores[i]->nombre != nombre) {
-				controladores[i]->se_curo();
-			}
-		}
-	}
+bool ControladorAgua::defensa() {
+	bool seDefiende = personaje->defender();
+	return seDefiende;
 }
 
 void ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
@@ -86,3 +80,4 @@ ControladorAgua::ControladorAgua(Personaje* personaje, Tablero* tablero) {
     for(int i = 0; i<2; i++){ubicacion[i] = 0;};
     ptrCasillero = 0;
 }
+

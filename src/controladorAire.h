@@ -8,7 +8,7 @@ class ControladorAire : public ControladorPersonaje{
         void atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         ControladorAire(Personaje* personaje, Tablero* tablero);
-        void defensa();
+        bool defensa();
 };
 
 #endif

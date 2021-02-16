@@ -41,7 +41,7 @@ void ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
     }
 }
 
-void ControladorAire::defensa() {
+bool ControladorAire::defensa() {
 	bool seDefiende = personaje->defender();
 	if (seDefiende) {
 		int aux[2];
@@ -50,6 +50,7 @@ void ControladorAire::defensa() {
 		cin >> aux[0] >> aux[1];
 		ubicarPersonaje(aux);
 	}
+    return seDefiende;
 }
 
 ControladorAire::ControladorAire(Personaje* personaje, Tablero* tablero) {

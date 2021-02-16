@@ -59,4 +59,6 @@ ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {
     ptrCasillero = 0;
 }
 
-void ControladorTierra::defensa(){}
+bool ControladorTierra::defensa(){
+    return 0;
+}

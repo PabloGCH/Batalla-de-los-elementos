@@ -49,4 +49,4 @@ ControladorFuego::ControladorFuego(Personaje* personaje, Tablero* tablero) {
     ptrCasillero = 0;
 }
 
-void ControladorFuego::defensa(){}
+bool ControladorFuego::defensa(){}

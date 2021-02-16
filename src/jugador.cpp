@@ -49,3 +49,11 @@ void Jugador::matarPersonajes(){
 		}
 	}
 }
+
+void Jugador::curarPersonajes(ControladorPersonaje* cont){
+	for (int i = 0; i < 3; i++) {
+		if (controladores[i] != cont) {
+			controladores[i]->se_curo();
+		}
+	}
+}

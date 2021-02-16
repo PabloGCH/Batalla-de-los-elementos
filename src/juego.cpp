@@ -318,7 +318,7 @@ void Juego::partida() {
     int opcion = 0;
     bool guardado;
     cout << "Comenzará el jugador " << actual + 1 << endl;
-    while (terminar != 0) {
+    while (terminar == 0) {
         //preguntar guardado jugador 1
         if (guardado){
             //guardar

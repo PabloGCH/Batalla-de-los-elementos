@@ -9,6 +9,7 @@ class ControladorTierra : public ControladorPersonaje{
         bool defensa();
         int evaluarDir(Casillero* dir);
         ControladorTierra(Personaje* personaje, Tablero* tablero);
+        void defensa();
 };
 
 #endif

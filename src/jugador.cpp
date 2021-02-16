@@ -53,14 +53,14 @@ void Jugador::mostrarOpcionesPrimerEtapa(int jugadorActual, int personajeActual)
     cout << "Jugador " << jugadorActual << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
     cout << "1. Alimentarse " << endl;
     cout << "2. Moverse " << endl;
-    cout << "3 Pasar siguiente etapa " << endl;
+    cout << "3. Pasar siguiente etapa " << endl;
 };
 
 void Jugador::mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual){
     cout << "Jugador " << jugadorActual << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
     cout << "1. Atacar " << endl;
     cout << "2. Defenderse " << endl;
-    cout << "3 Pasar opción" << endl;
+    cout << "3. Pasar opción" << endl;
 };
 
 int Jugador::solicitarOpcion(){
@@ -68,7 +68,7 @@ int Jugador::solicitarOpcion(){
     cout << "Ingrese una opción válida: ";
     cin >> opcion;
     cout << "" << endl;
-    while ( 1 <= opcion <= 3){
+    while ( opcion < 1 or opcion > 3){
         cout << "Opción ingresada no válida" << endl;
         cout << "Ingrese una opción válida: ";
         cin >> opcion;
@@ -76,6 +76,10 @@ int Jugador::solicitarOpcion(){
     }
     return opcion;
 };
+
+bool Jugador::verificarPosicion(int ingreso) {
+    return(1 <= ingreso <= 8);
+}
 
 void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
     switch (etapa) {
@@ -85,7 +89,24 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     controladores[personajeActual]->devolverPersonaje()->alimentar();
                     break;
                 case 2:
-                    //controladores[personajeActual]->moverse()
+                    int ubicacion[2];
+                    cout << "Ingrese una fila: ";
+                    cin >> ubicacion[0];
+                    cout << "" << endl;
+                    while(bool verificado = verificarPosicion(ubicacion[0])){
+                        cout << "Ingrese una fila: ";
+                        cin >> ubicacion[0];
+                        cout << "" << endl;
+                    }
+                    cout << "Ingrese una fila: ";
+                    cin >> ubicacion[1];
+                    cout << "" << endl;
+                    while(bool verificado = verificarPosicion(ubicacion[1])){
+                        cout << "Ingrese una fila: ";
+                        cin >> ubicacion[1];
+                        cout << "" << endl;
+                    }
+                    controladores[personajeActual]->moverse(ubicacion);
                     break;
                 case 3:
                     cout << "Decidiste pasar a la siquiente etapa " << endl;

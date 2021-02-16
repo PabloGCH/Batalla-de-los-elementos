@@ -12,7 +12,7 @@ class ControladorAgua : public ControladorPersonaje{
         void atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         ControladorAgua(Personaje* personaje, Tablero* tablero);
-        void defensa(ControladorPersonaje** controladores);
+        void defensa();
 };
 
 #endif

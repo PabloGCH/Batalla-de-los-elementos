@@ -314,13 +314,51 @@ int Juego::finPartida(){
     }
     return ganador;
 }
+void Juego::ubicarPersonajes(int jugador){
+    int ubicacion[2];
+    ControladorPersonaje** controladores = jugadores[jugador].devolverControladores();
+    cout << "Ubicando los personajes del jugador: " << endl;
+    for (int i = 0; i < 3 ; i++){
+        tablero.printBoard();
+        cout << "Ingrese la ubicacion donde inciciara: " << controladores[i]->devolverPersonaje()->obtenerNombre() << endl;
+        cout << "Fila: " ;
+        cin >> ubicacion[0];
+        cout << "" << endl;
+        while (ubicacion[0] > 8 or ubicacion[0] < 1  ){
+            cout << "Ingrese la ubicacion donde inciciara: " << endl;
+            cout << "Fila: " ;
+            cin >> ubicacion[0];
+            cout << "" << endl;
+        }
+        cout << "Columna: ";
+        cin >> ubicacion[1];
+        cout << "" << endl;
+        while (ubicacion[1] > 8 or ubicacion[1] < 1  ){
+            cout << "Ingrese la ubicacion donde inciciara: " << endl;
+            cout << "Fila: " ;
+            cin >> ubicacion[1];
+            cout << "" << endl;
+        }
+        controladores[i]->ubicarPersonaje(ubicacion);
+
+    }
+}
 
 void Juego::partida() {
     int actual = rand() % 2;
+    int segundo;
     int terminar = 0;
     int opcion = 0;
-    bool guardado;
+    bool guardado = false;
+    if(actual == 0){
+        segundo = 1;
+    }
+    else{
+        segundo = 0;
+    }
     cout << "Comenzará el jugador " << actual + 1 << endl;
+    ubicarPersonajes(actual);
+    ubicarPersonajes(segundo);
     while (terminar == 0) {
         //preguntar guardado jugador 1
         if (guardado){
@@ -330,27 +368,12 @@ void Juego::partida() {
         else{
             jugadores[actual].turno(actual);
             //jugador2 preguntar guardado
-            if (actual == 0){
-                //preguntar guardado
-                if (guardado){
-                    //guardar
-                    terminar = 3;
-                }
-                else{
-                    jugadores[actual + 1].turno(actual + 1);
-                }
+            if (guardado){
+                terminar = 3;
             }
             else{
-                //preguntar guardado
-                if (guardado){
-                    //guardar
-                    terminar = 3;
-                }
-                else{
-                    jugadores[actual - 1 ].turno(actual - 1 );
-                }
+                jugadores[segundo].turno(segundo);
             }
-
         }
         terminar = finPartida();
     }

@@ -49,6 +49,10 @@ class Juego{
         //PRE: -
         //POS: muestra las opciones de juego a cada jugador
         void partida();
+
+        //PRE: -
+        //POS: Ubica a los personajes del jugador en el tablero
+        void ubicarPersonajes(int jugador);
         void imprimirOpcionesPersonajes();
         void imprimirOpcionesComenzar();
         int recibirOpcion();

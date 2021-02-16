@@ -46,6 +46,8 @@ class Juego{
         void imprimirOpcionesComenzar();
         int recibirOpcion();
         void pedirOpcionJugador(int i);
+        
+
 
         //POS: Registra un elemento valido para la creacion de un personaje ( AIRE, AGUA, FUEGO, TIERRA )
         void registrarElemento(string &elementoAgregar);
@@ -74,6 +76,10 @@ class Juego{
         // PRE: Recibe un numero indicando el jugador, y un personaje para asignarle
         // POS: le asigna el personaje (con un controlador adecuado) al personaje indicado
         void asignarPersonaje(int numJugador, Personaje* personaje);
+
+        // POS: si la partida no termino devuelve 0, si gano el jugador 1 devuelve 1
+        // y si gano el jugador 2 devuelve 2
+        int finPartida();
         ABB diccionario;
         Jugador jugadores[2];
         Tablero tablero;

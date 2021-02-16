@@ -287,6 +287,31 @@ void Juego::eliminarPersonaje() {
     diccionario.borrarNodo(eliminar);
 }
 
+int Juego::finPartida(){
+    int ganador = 0;
+    int personajesPerdidos;
+    for(int i = 0; i < 2; i++){
+        personajesPerdidos = 0;
+        ControladorPersonaje** controladores = jugadores[i].devolverControladores();
+        for(int j = 0; j < 3; j++){
+            if(controladores[j] == 0){
+                personajesPerdidos++;
+            }
+        }
+        if(personajesPerdidos == 3){
+            if(i == 0){
+                ganador = 2;
+            } else if(i == 1){
+                ganador = 1;
+            }
+        }
+    }
+    return ganador;
+}
+
 void Juego::partida(){
     
 }
+
+
+

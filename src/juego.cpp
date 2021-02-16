@@ -65,9 +65,11 @@ void Juego::opcionesPersonaje(){
             break;
         case 4:
             mostrarDetalle();
+            break;
         case 5:
             comenzarJuego();
             salir = true;
+            break;
         case 6:
             salir = true;
             break;
@@ -271,6 +273,7 @@ void Juego::comenzarJuego(){
                 break;
             }
         }
+        per = 0;
         jug++;
     }
     if(!salir){

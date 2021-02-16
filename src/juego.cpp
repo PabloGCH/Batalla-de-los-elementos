@@ -334,7 +334,7 @@ void Juego::partida() {
                     terminar = 3;
                 }
                 else{
-                    jugadores[actual].turno(actual + 1);
+                    jugadores[actual + 1].turno(actual + 1);
                 }
             }
             else{

@@ -65,7 +65,3 @@ ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {
     for(int i = 0; i<2; i++){ubicacion[i] = 0;};
     ptrCasillero = 0;
 }
-
-bool ControladorTierra::defensa(){
-    return 0;
-}

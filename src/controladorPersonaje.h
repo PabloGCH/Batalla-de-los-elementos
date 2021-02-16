@@ -57,6 +57,8 @@ class ControladorPersonaje
         // POS: ubica el personaje en la posicion indicada 
         // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
         void ubicarPersonaje(int* destino);
+        // POS: fija personaje y el casillero en el que esta en 0
+        void morir();
         // PRE:
         // POS: Ataca
         virtual void atacar(ControladorPersonaje** ControladoresEnemigo) = 0;

@@ -37,3 +37,15 @@ Jugador::~Jugador() {
 	}
 }
 
+void Jugador::matarPersonajes(){
+	ControladorPersonaje** controladoresOponente;
+	Personaje* personaje;
+	for(int i = 0; i < 3; i++){
+		personaje = controladoresOponente[i]->devolverPersonaje();
+		if(personaje != 0){
+			if(personaje->obtenerVida() <= 0){
+				controladoresOponente[i]->morir();
+			}
+		}
+	}
+}

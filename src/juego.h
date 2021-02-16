@@ -80,6 +80,9 @@ class Juego{
         // POS: si la partida no termino devuelve 0, si gano el jugador 1 devuelve 1
         // y si gano el jugador 2 devuelve 2
         int finPartida();
+
+    private:
+        //Atributos
         ABB diccionario;
         Jugador jugadores[2];
         Tablero tablero;

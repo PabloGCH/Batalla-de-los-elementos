@@ -154,4 +154,9 @@ void ControladorPersonaje::moverse(int* destino){
     }
 }
 
+void ControladorPersonaje::morir(){
+    tablero->returnItem(ubicacion)->setCharacter(0);
+    personaje = 0;
+}
+
 ControladorPersonaje::~ControladorPersonaje(){}

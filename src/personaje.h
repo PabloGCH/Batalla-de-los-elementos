@@ -21,7 +21,6 @@ protected:
 
     //Atributos.
     string nombre;
-    int jugador;
     int escudo;
     int vida;
     int energia;
@@ -73,14 +72,9 @@ public:
     // PRE: -
     // POS: Muestra por pantalla los atributos del personaje en fila.
     void mostrarAtributos();
-
-    //PRE: recibe un entero que representa al jugador, debe ser 1 o 2
-    //POS: guarda el valor en la variable jugador
-    void asignarJugador(int per);
-
-    // PRE: -
-    // POS: Devuelve 1 o 2 dependiendo de a que jugador esta asignado el personaje.
-    int obtenerJugador();
+    
+    //POS: El personaje recupera 10 de vida
+    void curar();
 
     virtual ~Personaje(){};
 

@@ -44,7 +44,7 @@ bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
 void ControladorAgua::defensa(ControladorPersonaje** controladores) {
 	bool seDefiende = personaje->defenderse();
 	if(seDefiende) {
-		for (int i = 0; i < 3, i++) {
+		for (int i = 0; i < 3; i++) {
 			if (controladores[i]->nombre != nombre) {
 				controladores[i]->se_curo();
 			}

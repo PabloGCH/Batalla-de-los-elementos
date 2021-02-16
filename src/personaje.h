@@ -75,6 +75,9 @@ public:
     
     //POS: El personaje recupera 10 de vida
     void curar();
+    
+    //Pos: disminuye el escudo en 2 unidades
+    void bajar_escudo();
 
     virtual ~Personaje();
 

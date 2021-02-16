@@ -7,11 +7,13 @@ class ControladorAgua : public ControladorPersonaje{
         //PRE: -
         //POS: devuelve un bool dependiendo de si existe un personaje oara atacar o no
         bool comprobarPosicon(int posicionAtacada[2]);
+        Personaje* personaje;
     public:
         void defensa();
         void atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         ControladorAgua(Personaje* personaje, Tablero* tablero);
+        void defensa(ControladorPersonaje** controladores);
 };
 
 #endif

@@ -36,10 +36,10 @@ class ControladorPersonaje
         int ubicacion[2];
         int costo[64];
         int anterior[64];
+        bool esta defendiendo;
         // PRE: Recibe un puntero casillero
         // POS: Devuelve el coste que supondria moverse a ese casillero
         virtual int evaluarDir(Casillero* dir) = 0;
-        void reiniciar_escudo();
     public:
         ControladorPersonaje();
         // PRE:
@@ -67,6 +67,8 @@ class ControladorPersonaje
         virtual bool defensa() = 0;
         //POS: cura al personaje
         void se_curo();
+        //Pos: reinicia el escudo del personaje a su valor original
+        void reiniciar_escudo();
         virtual ~ControladorPersonaje();
     private:
         // POS: Evalua el coste de los nodos circundantes y guarda su en costo[]

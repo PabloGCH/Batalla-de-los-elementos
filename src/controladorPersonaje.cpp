@@ -117,6 +117,10 @@ void ControladorPersonaje::ubicarPersonaje(int* destino){
     for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}
 }
 
+void ControladorPersonaje::se_curo() {
+	personaje->curar();
+}
+
 void ControladorPersonaje::moverse(int* destino){
     Pila path;
     Casillero* auxCasillero = ptrCasillero;

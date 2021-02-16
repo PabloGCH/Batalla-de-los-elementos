@@ -52,6 +52,13 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
     }
 }
 
+void ControladorTierra::defensa() {
+	bool seDefiende = personaje->defender();
+	if(seDefiende) {
+		esta_defendiendo = true;
+	}
+}
+
 ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {
 	this->personaje = personaje;
     this->tablero = tablero;

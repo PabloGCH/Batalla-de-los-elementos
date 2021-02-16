@@ -8,7 +8,6 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->escudo = escudo;
     this->vida = vida;
     seleccionado = false;
-    jugador = 0;
     asignarEnergia();
 }
 
@@ -36,6 +35,10 @@ void Personaje::restarEnergia(int puntos) {
     energia -= puntos;
 }
 
+void Personaje::curar() {
+	vida += 10;
+}
+
 void Personaje::mostrarAtributos() {
     cout << "--------------------------" << endl
          << "Nombre: " << obtenerNombre() << endl
@@ -43,14 +46,6 @@ void Personaje::mostrarAtributos() {
          << "Vida: " << obtenerVida() << endl
          << "Energia: " << obtenerEnergia() << endl
          << "--------------------------" << endl;
-}
-
-void Personaje::asignarJugador(int per){
-    jugador = per;
-}
-
-int Personaje::obtenerJugador() {
-    return jugador;
 }
 
 bool Personaje::estaSeleccionado(){

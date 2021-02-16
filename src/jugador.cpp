@@ -74,7 +74,7 @@ int Jugador::solicitarOpcion(){
         cin >> opcion;
         cout << "" << endl;
     }
-
+    return opcion;
 };
 
 void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){

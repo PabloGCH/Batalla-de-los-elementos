@@ -39,6 +39,7 @@ class ControladorPersonaje
         // PRE: Recibe un puntero casillero
         // POS: Devuelve el coste que supondria moverse a ese casillero
         virtual int evaluarDir(Casillero* dir) = 0;
+        void reiniciar_escudo();
     public:
         ControladorPersonaje();
         // PRE:

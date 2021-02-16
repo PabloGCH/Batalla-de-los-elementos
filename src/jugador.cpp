@@ -26,7 +26,7 @@ void Jugador::asignar_controlador(ControladorPersonaje* controlador){
 			salir = true;
 		}
 	}
-	if(i = 3){
+	if(i == 3){
 		cout << "Ya se asignaron todos los controladores(de personajes)" << endl;
 	}
 }

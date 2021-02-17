@@ -20,10 +20,19 @@ void Juego::iniciar(){
     opcionesPersonaje();
 }
 
-int Juego::recibirOpcion(){
-    int opcion;
-    cout << "\nIngrese una opcion: ";
+char Juego::recibirOpcion(char maxOpciones){
+    char opcion;
+    bool salir = false;
+    cout << "Ingrese una opcion: ";
     cin >> opcion;
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while(opcion < '1' || opcion > maxOpciones){
+        cout << "Ingrese una opcion valida: ";
+        cin >> opcion;
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     return opcion;
 }
 
@@ -51,35 +60,33 @@ void Juego::imprimirOpcionesComenzar(){
 
 void Juego::opcionesPersonaje(){
     bool salir = false;
-    int opcion;
+    char opcion;
     while(!salir){
         imprimirOpcionesPersonajes();
-        opcion = recibirOpcion();
+        opcion = recibirOpcion('6');
         switch (opcion)
         {
-        case 1:
+        case '1':
             agregarPersonaje();
             break;
-        case 2:
+        case '2':
             eliminarPersonaje();
             break;
-        case 3:
+        case '3':
             mostrarPersonajes();
             break;
-        case 4:
+        case '4':
             mostrarDetalle();
             break;
-        case 5:
+        case '5':
             comenzarJuego();
             salir = true;
             break;
-        case 6:
+        case '6':
             salir = true;
             break;
-        default:
-            cout << "\nIngrese una opcion valida\n";
-            break;
         }
+        cin.ignore();
     }
 }
 
@@ -249,30 +256,27 @@ bool Juego::seleccionarPersonaje(int numjugador){
 
 void Juego::comenzarJuego(){
     bool salir = false;
-    int opcion;
+    char opcion;
     int per = 0;
     int jug = 0;
     while(!salir && jug < 2){
         while(!salir && per < 3){
             imprimirOpcionesComenzar();
-            cout << endl << "Jugador " << jug + 1;
-            opcion = recibirOpcion();
+            cout << endl << "Jugador " << jug + 1 << endl;
+            opcion = recibirOpcion('4');
             switch (opcion)
             {
-            case 1:
+            case '1':
                 mostrarDetalle();
                 break;
-            case 2:
+            case '2':
                 mostrarPersonajes();
                 break;
-            case 3:
+            case '3':
                 if(seleccionarPersonaje(jug)){ per++;}
                 break;
-            case 4:
+            case '4':
                 salir = true;
-                break;
-            default:
-                cout << "\nIngrese una opcion valida\n";
                 break;
             }
         }

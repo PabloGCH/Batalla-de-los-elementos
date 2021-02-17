@@ -1,6 +1,7 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 #include <iostream>
+#include <limits>
 #include "jugador.h"
 #include "tablero.h"
 #include "personaje_fuego.h"
@@ -55,7 +56,10 @@ class Juego{
         void ubicarPersonajes(int jugador);
         void imprimirOpcionesPersonajes();
         void imprimirOpcionesComenzar();
-        int recibirOpcion();
+        // PRE: recibe un caracter el cual debe ser un numero que indique
+        // la cantidad maxima de opciones
+        // POS: recibe input y lo retorna 
+        char recibirOpcion(char maxOpciones);
         void pedirOpcionJugador(int i);
         
         // PRE: -

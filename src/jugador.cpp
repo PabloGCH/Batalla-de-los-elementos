@@ -98,16 +98,18 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     cout << "Ingrese una fila: ";
                     cin >> ubicacion[0];
                     cout << "" << endl;
-                    while(bool verificado = verificarPosicion(ubicacion[0])){
+                    while( !verificarPosicion(ubicacion[0]) ){
+                        cout << "Fila ingresada fuera de rango " << endl;
                         cout << "Ingrese una fila: ";
                         cin >> ubicacion[0];
                         cout << "" << endl;
                     }
-                    cout << "Ingrese una fila: ";
+                    cout << "Ingrese una columna: ";
                     cin >> ubicacion[1];
                     cout << "" << endl;
-                    while(bool verificado = verificarPosicion(ubicacion[1])){
-                        cout << "Ingrese una fila: ";
+                    while(!verificarPosicion(ubicacion[1])){
+                        cout << "Columna ingresada fuera de rango " << endl;
+                        cout << "Ingrese una columna: ";
                         cin >> ubicacion[1];
                         cout << "" << endl;
                     }

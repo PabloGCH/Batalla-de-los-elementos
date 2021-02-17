@@ -328,7 +328,7 @@ void Juego::ubicarPersonajes(int jugador){
         cout << "Fila: " ;
         cin >> ubicacion[0];
         cout << "" << endl;
-        while (ubicacion[0] > 8 or ubicacion[0] < 1  ){
+        while (ubicacion[0] > 8 || ubicacion[0] < 1  ){
             cout << "Ingrese la ubicacion donde inciciara: " << endl;
             cout << "Fila: " ;
             cin >> ubicacion[0];
@@ -337,7 +337,7 @@ void Juego::ubicarPersonajes(int jugador){
         cout << "Columna: ";
         cin >> ubicacion[1];
         cout << "" << endl;
-        while (ubicacion[1] > 8 or ubicacion[1] < 1  ){
+        while (ubicacion[1] > 8 || ubicacion[1] < 1  ){
             cout << "Ingrese la ubicacion donde inciciara: " << endl;
             cout << "Fila: " ;
             cin >> ubicacion[1];

@@ -54,15 +54,24 @@ void PersonajeAgua::recibirAtaque(string tipo, int casosTierra) {
 }
 
 bool PersonajeAgua::defender(){
-    if (obtenerEnergia() >= DEFENSA_AGUA){
+    if (obtenerEnergia() >= DEFENSA_AGUA && obtenerVida() <= MAX_VIDA){
         restarEnergia(DEFENSA_AGUA);
-        vida += 50;
-        cout<<"El personaje "<< obtenerNombre() <<" utilizó aumentó su vida"<<endl;
-        cout<< "VIDA: "<< obtenerVida()  <<endl;
+        if (obtenerVida() + 50 > MAX_VIDA){
+            vida = MAX_VIDA;
+        }
+        else{
+            vida += 50;
+        }
+        cout << "El personaje " << obtenerNombre() << " utilizó aumentó su vida" << endl;
+        cout << "VIDA: "<< obtenerVida()  << endl;
         return true;
     }
+    else if (obtenerEnergia() < DEFENSA_AGUA){
+        cout << "El personaje " << obtenerNombre() << " no cuenta con la energia necesaria para defenderse" << endl;
+        return false;
+    }
     else{
-        cout<<"El personaje "<< obtenerNombre() << "no cuenta con la energia necesaria para defenderse"<<endl;
+        cout << "El personaje " << obtenerNombre ()<< " ya tiene su vida al máximo" << endl;
         return false;
     }
 }

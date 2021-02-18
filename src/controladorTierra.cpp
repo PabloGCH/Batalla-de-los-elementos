@@ -35,10 +35,10 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
             if(ControladoresEnemigo[i] != 0){
                 int distanciaFila = ubicacion[0] - ControladoresEnemigo[i] -> devolverUbicacion()[0];
                 int distanciaColumna = ubicacion[1] - ControladoresEnemigo[i] -> devolverUbicacion()[1];
-                if (distanciaFila <= 2 && distanciaColumna <= 2){
+                if ((distanciaFila <= 2) && (distanciaColumna <= 2)){
                     ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 1);
                 }
-                else if (2 <= distanciaFila <= 4 && 2 <= distanciaColumna <= 4){
+                else if ((2 < distanciaFila <= 4) && (2 < distanciaColumna <= 4)){
                     ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 2);
                 }
                 else{

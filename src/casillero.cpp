@@ -34,7 +34,12 @@ void Casillero::printCasillero(){
 				break;
 		}
 	} else {
-		cout << "#";
+		if (type == 1){
+		    cout << "1" ;
+		}
+		else{
+		    cout << "2";
+		}
 	}
 }
 

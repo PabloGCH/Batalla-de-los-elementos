@@ -135,7 +135,7 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     controladores[personajeActual]->atacar(oponente->devolverControladores());
                     break;
                 case 2:
-                    controladores[personajeActual]->devolverPersonaje()->defender();
+                    controladores[personajeActual]->defensa();
                     if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
                         curarPersonajes(controladores[personajeActual]);
                     }

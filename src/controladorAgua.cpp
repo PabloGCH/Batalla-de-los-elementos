@@ -29,7 +29,7 @@ int ControladorAgua::evaluarDir(Casillero* dir){
 }
 
 bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
-    if ( 1 <= posicionAtacada[0] <= NUM_FILAS or 1 <= posicionAtacada[1] <= NUM_COLUMNAS) {
+    if (  !(1 <= posicionAtacada[0] <= NUM_FILAS) or !(1 <= posicionAtacada[1] <= NUM_COLUMNAS) ) {
         cout << "Posición fuera de rango, ingrese una posición válida: " << endl;
         return false;
     }

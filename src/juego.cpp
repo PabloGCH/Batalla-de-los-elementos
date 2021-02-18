@@ -243,11 +243,18 @@ bool Juego::seleccionarPersonaje(int numjugador){
     bool personajeSeleccionado = false; 
     cout << "Ingrese el nombre del personaje: ";
     cin >> nombre;
+    nombreMayuscula(nombre);
     nodo = diccionario.buscarPersonaje(nombre);
     if(nodo != 0){
         personaje = nodo->obtenerDato();
-        asignarPersonaje(numjugador, personaje);
-        personajeSeleccionado = true;
+        if(personaje->estaSeleccionado() == false){
+            asignarPersonaje(numjugador, personaje);
+            personaje->asignarJugador(numjugador + 1);
+            personajeSeleccionado = true;
+        }
+        else{
+            cout << "Ese personaje ya fue seleccionado" << endl;
+        }
     } else {
         cout << "No hay un personaje con ese nombre" << endl;
     }

@@ -24,6 +24,7 @@ protected:
     int escudo;
     int vida;
     int energia;
+    int jugador;
     bool seleccionado;
 
 
@@ -31,6 +32,13 @@ public:
     //Metodos.
 
     Personaje(string nombre, int escudo, int vida);
+
+    // PRE: recibe un numero entero
+    // POS: asigna el entero recibido a atributo jugador
+    void asignarJugador(int jug);
+
+    //POS: retorna el jugador
+    int devolverJugador();
 
     // Metodo abstracto. Cada clase hija debe implementar su metodo alimentar.
     virtual void alimentar() = 0;

@@ -7,8 +7,17 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->nombre = nombre;
     this->escudo = escudo;
     this->vida = vida;
+    jugador = 0;
     seleccionado = false;
     asignarEnergia();
+}
+
+void Personaje::asignarJugador(int jug){
+    jugador = jug;
+}
+
+int Personaje::devolverJugador(){
+    return jugador;
 }
 
 void Personaje::asignarEnergia(){

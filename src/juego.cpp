@@ -324,26 +324,30 @@ void Juego::ubicarPersonajes(int jugador){
     cout << "Ubicando los personajes del jugador: " << endl;
     for (int i = 0; i < 3 ; i++){
         tablero.printBoard();
-        cout << "Ingrese la ubicacion donde inciciara: " << controladores[i]->devolverPersonaje()->obtenerNombre() << endl;
-        cout << "Fila: " ;
-        cin >> ubicacion[0];
-        cout << "" << endl;
-        while (ubicacion[0] > 8 || ubicacion[0] < 1  ){
-            cout << "Ingrese la ubicacion donde inciciara: " << endl;
+        bool ubicar = false;
+        while ( !ubicar ) {
+            cout << "Ingrese la ubicacion donde inciciara: " << controladores[i]->devolverPersonaje()->obtenerNombre() << endl;
             cout << "Fila: " ;
             cin >> ubicacion[0];
             cout << "" << endl;
-        }
-        cout << "Columna: ";
-        cin >> ubicacion[1];
-        cout << "" << endl;
-        while (ubicacion[1] > 8 || ubicacion[1] < 1  ){
-            cout << "Ingrese la ubicacion donde inciciara: " << endl;
-            cout << "Fila: " ;
+            while (ubicacion[0] > 8 || ubicacion[0] < 1  ){
+                cout << "Ingrese la ubicacion donde inciciara: " << endl;
+                cout << "Fila: " ;
+                cin >> ubicacion[0];
+                cout << "" << endl;
+            }
+            cout << "Columna: ";
             cin >> ubicacion[1];
             cout << "" << endl;
+            while (ubicacion[1] > 8 || ubicacion[1] < 1  ){
+                cout << "Ingrese la ubicacion donde inciciara: " << endl;
+                cout << "Fila: " ;
+                cin >> ubicacion[1];
+                cout << "" << endl;
+            }
+            ubicar = controladores[i]->ubicarPersonaje(ubicacion);
         }
-        controladores[i]->ubicarPersonaje(ubicacion);
+
 
     }
 }

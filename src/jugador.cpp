@@ -43,7 +43,7 @@ Jugador::~Jugador() {
 }
 
 void Jugador::matarPersonajes(){
-	ControladorPersonaje** controladoresOponente;
+	ControladorPersonaje** controladoresOponente = oponente->devolverControladores();
 	Personaje* personajeEnemigo;
     Personaje* personaje;
 	for(int i = 0; i < 3; i++){

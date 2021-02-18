@@ -11,6 +11,8 @@ Juego::Juego(){
     } else {
         cout << "fallo al abrir archivo de personajes";
     }
+    jugadores[0].asignar_rival(&jugadores[1]);
+    jugadores[1].asignar_rival(&jugadores[0]);
 }
 
 void Juego::iniciar(){
@@ -234,6 +236,7 @@ void Juego::asignarPersonaje(int numJugador, Personaje* personaje){
         jugadores[numJugador].asignar_controlador(controlador);
         break;
     }
+    personaje->seleccionar();
 }
 
 bool Juego::seleccionarPersonaje(int numjugador){

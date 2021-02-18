@@ -132,7 +132,7 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
         case 2:
             switch (opcionElegida) {
                 case 1:
-                    //controladores[personajeActual]->atacar(oponente);
+                    controladores[personajeActual]->atacar(oponente->devolverControladores());
                     break;
                 case 2:
                     controladores[personajeActual]->devolverPersonaje()->defender();

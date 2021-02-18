@@ -65,6 +65,7 @@ bool ControladorAire::defensa() {
                 cin >> ubicacion[1];
                 cout << "" << endl;
             }
+            ptrCasillero->setCharacter(0);
             ubicar = ubicarPersonaje(ubicacion);
         }
 	}

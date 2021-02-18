@@ -119,14 +119,19 @@ void ControladorPersonaje::evaluarNodos(int currentID, bool* visto, Casillero* c
     }
 }
 
-void ControladorPersonaje::ubicarPersonaje(int* destino){
+bool ControladorPersonaje::ubicarPersonaje(int* destino){
+    bool exito;
     ptrCasillero = tablero->returnItem(destino);
     if(ptrCasillero->getCharacter() == 0){
         ptrCasillero->setCharacter(personaje);
-        for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}
+        for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];
+        exito = true;    
+    }
     } else{
         cout << "Ya hay un personaje en esa ubicacion" << endl;
+        exito = false;
     }
+    return exito;
 }
 
 void ControladorPersonaje::se_curo() {

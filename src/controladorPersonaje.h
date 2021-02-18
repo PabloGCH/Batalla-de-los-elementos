@@ -55,9 +55,10 @@ class ControladorPersonaje
         // POS: lo mueve a esa posicion si tiene la energia suficiente
         void moverse(int *destino);
         // PRE: recibe una posicion del tablero (fila/columna)
-        // POS: ubica el personaje en la posicion indicada 
+        // POS: ubica el personaje en la posicion indicada
+        // Retorna false si no lo puede ubicar
         // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
-        void ubicarPersonaje(int* destino);
+        bool ubicarPersonaje(int* destino);
         // POS: fija personaje y el casillero en el que esta en 0
         void morir();
         // PRE:

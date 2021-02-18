@@ -160,7 +160,7 @@ void ControladorPersonaje::moverse(int* destino){
             //imprimo tablero
             system("clear");
             tablero->printBoard();
-            sleep(1.5);
+            sleep(2);
             path.eliminar();
             aux = path.consulta();
         }

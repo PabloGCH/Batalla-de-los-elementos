@@ -55,14 +55,14 @@ void Jugador::matarPersonajes(){
 	}
 }
 void Jugador::mostrarOpcionesPrimerEtapa(int jugadorActual, int personajeActual){
-    cout << "Jugador " << jugadorActual << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
+    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
     cout << "1. Alimentarse " << endl;
     cout << "2. Moverse " << endl;
     cout << "3. Pasar siguiente etapa " << endl;
 };
 
 void Jugador::mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual){
-    cout << "Jugador " << jugadorActual << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
+    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
     cout << "1. Atacar " << endl;
     cout << "2. Defenderse " << endl;
     cout << "3. Pasar opción" << endl;
@@ -94,6 +94,7 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     controladores[personajeActual]->devolverPersonaje()->alimentar();
                     break;
                 case 2:
+                    controladores[personajeActual]->encontrarCaminos();
                     int ubicacion[2];
                     cout << "Ingrese una fila: ";
                     cin >> ubicacion[0];
@@ -143,12 +144,20 @@ void Jugador::turno(int actual){
     int opcion;
     for (int i = 0; i < 3; i++){
         if (controladores[i]->devolverPersonaje() != 0){
+            tablero->printBoard();
+            // Imprimir estado de los personajes
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();
             procesarOpcion(opcion, 1, i);
+            // Verifico si hay personajes muertos y si es asi los
+            // retiro del tablero
+            matarPersonajes();
+            tablero->printBoard();
+            // Imprimir estado de los personajes
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
             procesarOpcion(opcion, 2, i);
+            matarPersonajes();
         }
     }
     cout << "Turno finalizado "<< endl;

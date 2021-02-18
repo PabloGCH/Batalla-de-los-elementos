@@ -136,6 +136,9 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     break;
                 case 2:
                     controladores[personajeActual]->devolverPersonaje()->defender();
+                    if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
+                        curarPersonajes(controladores[personajeActual]);
+                    }
                     break;
                 case 3:
                     cout << "Usted decidió terminar el turno " << endl;

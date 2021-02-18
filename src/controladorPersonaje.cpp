@@ -138,7 +138,8 @@ void ControladorPersonaje::se_curo() {
 	personaje->curar();
 }
 
-void ControladorPersonaje::moverse(int* destino){
+bool ControladorPersonaje::moverse(int* destino){
+    bool exito;
     Pila path;
     Casillero* auxCasillero = ptrCasillero;
     int actualID = coordToId(ubicacion);
@@ -154,6 +155,7 @@ void ControladorPersonaje::moverse(int* destino){
         }
         aux = path.consulta();
         while(aux != finPila){
+            exito = true;
             if(auxCasillero->getCharacter() == personaje){
                 auxCasillero->setCharacter(0);
             }
@@ -172,7 +174,9 @@ void ControladorPersonaje::moverse(int* destino){
         ptrCasillero = auxCasillero;
     } else{
         cout << "\nNo hay energia suficiente para moverse a esa posicion.\n";
+        exito = false;
     }
+    return exito;
 }
 
 void ControladorPersonaje::morir(){

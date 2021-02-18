@@ -53,7 +53,7 @@ class ControladorPersonaje
         Personaje* devolverPersonaje();
         // PRE: recibe las coordenadas del destino
         // POS: lo mueve a esa posicion si tiene la energia suficiente
-        void moverse(int *destino);
+        bool moverse(int *destino);
         // PRE: recibe una posicion del tablero (fila/columna)
         // POS: ubica el personaje en la posicion indicada
         // Retorna false si no lo puede ubicar

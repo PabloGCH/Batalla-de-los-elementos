@@ -44,11 +44,18 @@ Jugador::~Jugador() {
 
 void Jugador::matarPersonajes(){
 	ControladorPersonaje** controladoresOponente;
-	Personaje* personaje;
+	Personaje* personajeEnemigo;
+    Personaje* personaje;
 	for(int i = 0; i < 3; i++){
-		personaje = controladoresOponente[i]->devolverPersonaje();
+		personajeEnemigo = controladoresOponente[i]->devolverPersonaje();
+        personaje = controladores[i]->devolverPersonaje();
 		if(personaje != 0){
 			if(personaje->obtenerVida() <= 0){
+				controladores[i]->morir();
+			}
+		}
+        if(personajeEnemigo != 0){
+			if(personajeEnemigo->obtenerVida() <= 0){
 				controladoresOponente[i]->morir();
 			}
 		}

@@ -77,10 +77,14 @@ void Jugador::mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual)
 
 int Jugador::solicitarOpcion(){
     int opcion;
-    cout << "Ingrese una opción válida: ";
+    cout << "Ingrese una opción: ";
     cin >> opcion;
     cout << "" << endl;
     while ( opcion < 1 or opcion > 3){
+        if(!cin){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         cout << "Opción ingresada no válida" << endl;
         cout << "Ingrese una opción válida: ";
         cin >> opcion;

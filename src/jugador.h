@@ -11,9 +11,9 @@ protected:
 
 public:
 	Jugador();
-	//PRE:
+	//PRE: recibe el numero del jugador
     //POS: imprime la vida, el escudo y la energia de todos los personajes
-    void imprimirEstados();
+    void imprimirEstados(int jug);
 	// PRE: recibe un vector de punteros ControladoresPersonaje
 	// POS: imprime los atributos de los persnajes de los controladores
 	void imprimirPersonajes(ControladorPersonaje** cont);

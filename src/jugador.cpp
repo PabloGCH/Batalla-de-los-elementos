@@ -174,12 +174,16 @@ void Jugador::imprimirPersonajes(ControladorPersonaje** cont){
     }
 }
 
-void Jugador::imprimirEstados(){
+void Jugador::imprimirEstados(int jug){
     cout << "=================================================" << endl;
-    cout << "Jugador 1" << endl;
+    cout << "Jugador " << jug +1 << endl;
     imprimirPersonajes(controladores);
     cout << "=================================================" << endl;
-    cout << "Jugador 2" << endl;
+    if(jug == 0){
+        cout << "Jugador 2" << endl;
+    } else{
+        cout << "Jugador 1" << endl;
+    }
     imprimirPersonajes(oponente->devolverControladores());
     cout << "=================================================" << endl;
 }
@@ -190,7 +194,7 @@ void Jugador::turno(int actual){
     int opcion;
     for (int i = 0; i < 3; i++){
         if (controladores[i]->devolverPersonaje() != 0){
-            imprimirEstados();
+            imprimirEstados(actual);
             tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
             detenerDefensa(controladores[i]);

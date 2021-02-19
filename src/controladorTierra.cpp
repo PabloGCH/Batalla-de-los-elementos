@@ -36,7 +36,13 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
             Personaje* enemigo = contEnemigo->devolverPersonaje();
             if(enemigo != 0){
                 int distanciaFila = ubicacion[0] - contEnemigo -> devolverUbicacion()[0];
+                if(distanciaFila < 0){
+                    distanciaFila *= -1;
+                }
                 int distanciaColumna = ubicacion[1] - contEnemigo -> devolverUbicacion()[1];
+                if(distanciaColumna < 0){
+                    distanciaColumna *= -1;
+                }
                 if ((distanciaFila <= 2) && (distanciaColumna <= 2)){
                     enemigo -> recibirAtaque( "tierra", 1);
                 }

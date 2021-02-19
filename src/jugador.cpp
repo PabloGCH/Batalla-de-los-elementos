@@ -90,7 +90,17 @@ int Jugador::solicitarOpcion(){
 };
 
 bool Jugador::verificarPosicion(int ingreso) {
-    return(1 <= ingreso <= 8);
+    bool correcto;
+    if(!cin){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        correcto = false;
+    } else if(1 <= ingreso <= 8){
+        correcto = true;
+    } else {
+        correcto = false;
+    }
+    return correcto;
 }
 
 void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){

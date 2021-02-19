@@ -1,7 +1,6 @@
 #ifndef JUEGO_H
 #define JUEGO_H
 #include <iostream>
-#include <limits>
 #include "jugador.h"
 #include "tablero.h"
 #include "personaje_fuego.h"

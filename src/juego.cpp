@@ -341,6 +341,10 @@ void Juego::ubicarPersonajes(int jugador){
             cin >> ubicacion[0];
             cout << "" << endl;
             while (ubicacion[0] > 8 || ubicacion[0] < 1  ){
+                if(!cin){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 cout << "Ingrese la ubicacion donde iniciara: " << endl;
                 cout << "Fila: " ;
                 cin >> ubicacion[0];
@@ -350,6 +354,10 @@ void Juego::ubicarPersonajes(int jugador){
             cin >> ubicacion[1];
             cout << "" << endl;
             while (ubicacion[1] > 8 || ubicacion[1] < 1  ){
+                if(!cin){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
                 cout << "Ingrese la ubicacion donde iniciara: " << endl;
                 cout << "Fila: " ;
                 cin >> ubicacion[1];

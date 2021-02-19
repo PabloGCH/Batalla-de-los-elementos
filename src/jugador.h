@@ -1,6 +1,7 @@
 #ifndef JUGADOR_H_
 #define JUGADOR_H_
 #include "controladorPersonaje.h"
+#include <limits>
 
 class Jugador {
 protected:

@@ -87,7 +87,9 @@ public:
     //Pos: disminuye el escudo en 2 unidades
     void bajar_escudo();
     
-    
+    // POS: recupera 5 de energia
+    void recuperarEnergia();
+
     //Pos: el personaje pierde 5 de vida
     void perder_vida();
 

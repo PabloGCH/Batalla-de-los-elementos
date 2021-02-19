@@ -73,4 +73,14 @@ void Personaje::seleccionar(){
     seleccionado = true;
 }
 
+void Personaje::recuperarEnergia(){
+    int cambio = energia;
+    energia += 5;
+    if(energia > 20){
+        energia = 20;
+    }
+    cambio = energia - cambio;
+    cout << nombre << " recupero " << cambio << " de energia." << endl;
+}
+
 Personaje::~Personaje(){}

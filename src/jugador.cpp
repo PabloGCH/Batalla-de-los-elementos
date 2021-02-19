@@ -156,10 +156,8 @@ void Jugador::turno(int actual){
         if (controladores[i]->devolverPersonaje() != 0){
             tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
-            if(controladores[i]->devolverPersonaje()->devolverTipo() == TIPO_TIERRA){
-                controladores[i]->reiniciar_escudo();
-            }
-            // Imprimir estado de los personajes
+            detenerDefensa(controladores[i]);
+            // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();
             procesarOpcion(opcion, 1, i);
@@ -167,7 +165,7 @@ void Jugador::turno(int actual){
             // retiro del tablero
             matarPersonajes();
             tablero->printBoard();
-            // Imprimir estado de los personajes
+            // Imprimir estado de los personajes (agregar)
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
             procesarOpcion(opcion, 2, i);
@@ -193,4 +191,16 @@ void Jugador::sinEnergia (Personaje* personaje) {
 	if (personaje->devolverTipo() == TIPO_FUEGO && personaje->obtenerEnergia() <= 0) {
 		personaje->perder_vida();
 	}
+}
+
+void Jugador::detenerDefensa(ControladorPersonaje* cont){
+    if(cont->devolverPersonaje()->devolverTipo() == TIPO_TIERRA){
+        cont->reiniciar_escudo();
+    }
+}
+
+void Jugador::recuperarEnergia(Personaje* personaje){
+    if(personaje->devolverTipo() == TIPO_AIRE){
+        personaje->recuperarEnergia();
+    }
 }

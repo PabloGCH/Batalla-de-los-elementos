@@ -13,6 +13,13 @@ public:
 	// PRE: se debe invocar cada vez que un personaje ataque
     // POS: revisa si hay personajes con 0 o menos de vida y fija el controlador
     void matarPersonajes();
+	// PRE: recibe un personaje
+	// POS: Devuelve la defensa a su atributo original si el
+	// personaje era de tierra y se estaba defendiendo
+	void detenerDefensa(ControladorPersonaje* cont);
+	// PRE: recibe un personaje
+	// POS: si es un personaje de aire, recupera energia
+	void recuperarEnergia(Personaje* personaje);
 	// PRE: recibe el controlador del personaje de agua
 	// POS: cura a los personajes si un personaje de agua se defiende
 	void curarPersonajes(ControladorPersonaje* cont);
@@ -23,6 +30,8 @@ public:
     void procesarOpcion(int opcionElegida, int etapa, int personajeActual);
     void turno(int actual);
 	void asignar_rival(Jugador* rival);
+	// PRE: Recibe un personaje
+	// POS: Si el personaje es de fuego y no tiene energia recibe 5 de daño
 	void sinEnergia(Personaje* personaje);
 	ControladorPersonaje** devolverControladores();
 	~Jugador();

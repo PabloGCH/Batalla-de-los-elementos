@@ -145,7 +145,7 @@ bool ControladorPersonaje::moverse(int* destino){
     int actualID = coordToId(ubicacion);
     int aux = coordToId(destino);
     int auxCoord[2] = {0,0};
-    if(tablero->returnItem(destino)->getCharacter() != 0){
+    if(tablero->returnItem(destino)->getCharacter() == 0){
         if(costo[coordToId(destino)] < personaje->obtenerEnergia()){
             //inicializo
             for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}

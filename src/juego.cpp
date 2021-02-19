@@ -393,4 +393,10 @@ void Juego::partida() {
         }
         terminar = finPartida();
     }
+    if(terminar = 1){
+        cout << endl << endl << "EL GANADOR ES EL JUGADOR 1";
+    }
+    if(terminar = 2){
+        cout << endl << endl << "EL GANADOR ES EL JUGADOR 2";
+    }
 }

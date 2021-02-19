@@ -34,7 +34,7 @@ void Casillero::printCasillero(){
 				break;
 		}
 	} else {
-		if (type == 1){
+		if (character->devolverJugador() == 1){
 		    cout << "1" ;
 		}
 		else{

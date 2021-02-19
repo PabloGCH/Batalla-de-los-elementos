@@ -145,35 +145,39 @@ bool ControladorPersonaje::moverse(int* destino){
     int actualID = coordToId(ubicacion);
     int aux = coordToId(destino);
     int auxCoord[2] = {0,0};
-    
-    if(costo[coordToId(destino)] < personaje->obtenerEnergia()){
-        //inicializo
-        for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}
-        while(aux != actualID){
-            path.agregar(aux);
-            aux = anterior[aux];
-        }
-        aux = path.consulta();
-        while(aux != finPila){
-            exito = true;
-            if(auxCasillero->getCharacter() == personaje){
-                auxCasillero->setCharacter(0);
+    if(tablero->returnItem(destino)->getCharacter() != 0){
+        if(costo[coordToId(destino)] < personaje->obtenerEnergia()){
+            //inicializo
+            for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}
+            while(aux != actualID){
+                path.agregar(aux);
+                aux = anterior[aux];
             }
-            idToCoord(aux, auxCoord);
-            auxCasillero = tablero->returnItem(auxCoord);
-            if(auxCasillero->getCharacter() == 0){
-                auxCasillero->setCharacter(personaje);
-            }
-            //imprimo tablero
-            system("clear");
-            tablero->printBoard();
-            sleep(2);
-            path.eliminar();
             aux = path.consulta();
+            while(aux != finPila){
+                exito = true;
+                if(auxCasillero->getCharacter() == personaje){
+                    auxCasillero->setCharacter(0);
+                }
+                idToCoord(aux, auxCoord);
+                auxCasillero = tablero->returnItem(auxCoord);
+                if(auxCasillero->getCharacter() == 0){
+                    auxCasillero->setCharacter(personaje);
+                }
+                //imprimo tablero
+                system("clear");
+                tablero->printBoard();
+                sleep(2);
+                path.eliminar();
+                aux = path.consulta();
+            }
+            ptrCasillero = auxCasillero;
+        } else{
+            cout << "\nNo hay energia suficiente para moverse a esa posicion.\n";
+            exito = false;
         }
-        ptrCasillero = auxCasillero;
-    } else{
-        cout << "\nNo hay energia suficiente para moverse a esa posicion.\n";
+    } else {
+        cout << "Ya hay un personaje en ese casillero.";
         exito = false;
     }
     return exito;

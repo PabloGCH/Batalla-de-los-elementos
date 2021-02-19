@@ -177,7 +177,7 @@ bool ControladorPersonaje::moverse(int* destino){
             exito = false;
         }
     } else {
-        cout << "Ya hay un personaje en ese casillero.";
+        cout << "Ya hay un personaje en ese casillero." << endl;
         exito = false;
     }
     return exito;

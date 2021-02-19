@@ -13,6 +13,7 @@ Juego::Juego(){
     }
     jugadores[0].asignar_rival(&jugadores[1]);
     jugadores[1].asignar_rival(&jugadores[0]);
+    srand(time(0));
 }
 
 void Juego::iniciar(){

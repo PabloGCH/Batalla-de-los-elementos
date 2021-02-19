@@ -32,17 +32,19 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
     if (personaje -> obtenerEnergia() >= 6 ) {
         personaje->restarEnergia(6);
         for(int i = 0; i < 3; i++){
-            if(ControladoresEnemigo[i] != 0){
-                int distanciaFila = ubicacion[0] - ControladoresEnemigo[i] -> devolverUbicacion()[0];
-                int distanciaColumna = ubicacion[1] - ControladoresEnemigo[i] -> devolverUbicacion()[1];
+            ControladorPersonaje* contEnemigo = ControladoresEnemigo[i];
+            Personaje* enemigo = contEnemigo->devolverPersonaje();
+            if(enemigo != 0){
+                int distanciaFila = ubicacion[0] - contEnemigo -> devolverUbicacion()[0];
+                int distanciaColumna = ubicacion[1] - contEnemigo -> devolverUbicacion()[1];
                 if ((distanciaFila <= 2) && (distanciaColumna <= 2)){
-                    ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 1);
+                    enemigo -> recibirAtaque( "tierra", 1);
                 }
                 else if ((2 < distanciaFila <= 4) && (2 < distanciaColumna <= 4)){
-                    ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 2);
+                    enemigo -> recibirAtaque( "tierra", 2);
                 }
                 else{
-                    ControladoresEnemigo[i] -> devolverPersonaje() -> recibirAtaque( "tierra", 3);
+                    enemigo -> recibirAtaque( "tierra", 3);
                 }
             }
         }

@@ -157,6 +157,8 @@ void Jugador::turno(int actual){
             tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
             detenerDefensa(controladores[i]);
+            // chequeo si es un personaje de aire y si es asi recupera energia
+            recuperarEnergia(controladores[i]->devolverPersonaje());
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();

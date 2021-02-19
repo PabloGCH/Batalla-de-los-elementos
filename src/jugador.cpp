@@ -150,10 +150,33 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
 
 };
 
+void Jugador::imprimirPersonajes(ControladorPersonaje** cont){
+    Personaje* aux;
+    for(int i = 0; i < 3; i++){
+        aux = cont[i]->devolverPersonaje();
+        if(aux != 0){
+            cout << aux->obtenerNombre() << ", VIDA: " << aux->obtenerVida() << ", ENERGIA: " << aux->obtenerEnergia() << ", ESCUDO: " << aux->obtenerEscudo() << endl;
+        }
+    }
+}
+
+void Jugador::imprimirEstados(){
+    cout << "=================================================" << endl;
+    cout << "Jugador 1" << endl;
+    imprimirPersonajes(controladores);
+    cout << "=================================================" << endl;
+    cout << "Jugador 2" << endl;
+    imprimirPersonajes(oponente->devolverControladores());
+    cout << "=================================================" << endl;
+}
+
+
+
 void Jugador::turno(int actual){
     int opcion;
     for (int i = 0; i < 3; i++){
         if (controladores[i]->devolverPersonaje() != 0){
+            imprimirEstados();
             tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
             detenerDefensa(controladores[i]);

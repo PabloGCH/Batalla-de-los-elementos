@@ -10,6 +10,12 @@ protected:
 
 public:
 	Jugador();
+	//PRE:
+    //POS: imprime la vida, el escudo y la energia de todos los personajes
+    void imprimirEstados();
+	// PRE: recibe un vector de punteros ControladoresPersonaje
+	// POS: imprime los atributos de los persnajes de los controladores
+	void imprimirPersonajes(ControladorPersonaje** cont);
 	// PRE: se debe invocar cada vez que un personaje ataque
     // POS: revisa si hay personajes con 0 o menos de vida y fija el controlador
     void matarPersonajes();

@@ -26,6 +26,9 @@ public:
     // POS: aumenta el valor del atributo 'energia' en 10 puntos si 'energia' <= 10 ó deja 'energia' = 20 si 'energia' > 10.
     bool alimentar();
 
+    // PRE: recibe un entero
+    // POS: asigna el entero a vecesAlimentado
+    void asignarVecesAlimentado(int veces);
 
     //PRE: -
     //POS: resta vida

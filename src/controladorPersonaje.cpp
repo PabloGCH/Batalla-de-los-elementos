@@ -4,7 +4,6 @@ ControladorPersonaje::ControladorPersonaje(){
     personaje = 0;
     ptrCasillero = 0;
     tablero = 0;
-    esta_defendiendo = false;
 }
 
 void ControladorPersonaje::encontrarCaminos(){
@@ -49,9 +48,8 @@ int ControladorPersonaje::coordToId(int *coord){
 }
 
 void ControladorPersonaje::reiniciar_escudo() {
-	if(esta_defendiendo) {
+	if(personaje->seEstaDefendiendo()) {
 		personaje->bajar_escudo();
-		esta_defendiendo = false;
 	}
 }
 

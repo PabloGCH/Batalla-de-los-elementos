@@ -82,6 +82,7 @@ bool PersonajeTierra::defender(){
         escudo += 2;
         cout <<"El personaje "<< obtenerNombre()  <<" aumentó su escudo " << endl;
         cout <<"ESCUDO: "<< obtenerEscudo() << endl;
+        estaDefendiendo = true;
         return true;
     }
     else{
@@ -97,3 +98,5 @@ int PersonajeTierra::devolverTipo(){
 int PersonajeTierra::obtenerAlimentos() {
     return 0;
 }
+
+void PersonajeTierra::asignarAlimentos(int cant){}

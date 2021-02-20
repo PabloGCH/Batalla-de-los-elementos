@@ -26,12 +26,17 @@ protected:
     int energia;
     int jugador;
     bool seleccionado;
-
+    bool estaDefendiendo;
 
 public:
     //Metodos.
 
     Personaje(string nombre, int escudo, int vida);
+
+    // POS: retorna el valor de estaDefendiendo
+    bool getEstaDefendiendo();
+    // POS: asigna true a estaDefendiendo
+    void setEstaDefendiendo();
 
     // PRE: recibe un numero entero
     // POS: asigna el entero recibido a atributo jugador
@@ -52,6 +57,9 @@ public:
     //POS: Retorna un entero que indica el tipo
     virtual int devolverTipo() = 0;
 
+    //PRE: recibe un entero
+    //POS: asigna ese entero a la variable vecesAlimentado(solo sera utilizado en el caso de agua)
+    virtual void asignarAlimentos(int cant) = 0;
     //POS: Retorna un entero con la cantidad de veces que fue alimentado(solo sera utilizado en el caso de agua)
     virtual int obtenerAlimentos() = 0;
     // POS: Retorna true si el personaje esta seleccionado

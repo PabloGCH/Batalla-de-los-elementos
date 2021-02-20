@@ -1,13 +1,12 @@
 #include "juego.h"
 
 Juego::Juego(){
-    partidaCargada = false;
     jugadores[0].asignar_rival(&jugadores[1]);
     jugadores[1].asignar_rival(&jugadores[0]);
     for(int i = 0; i < 2; i++){
         jugadores[i].asignarTablero(&tablero);
     }
-    ifstream partidaGuardada("../res/partidaGuardada.csv");
+    ifstream partidaGuardada("../res/partida.csv");
     if(partidaGuardada.fail()){
         partidaGuardada.close();
         cout << "No se encontro una partida guardada." << endl;
@@ -20,7 +19,6 @@ Juego::Juego(){
         }
     } else{
         cout << "Se encontro una partida guardada." << endl;
-        partidaCargada = true;
         cargarPartida(partidaGuardada);
         partidaGuardada.close();
     }
@@ -28,7 +26,43 @@ Juego::Juego(){
 }
 
 void Juego::cargarPartida(ifstream &partidaGuardada){
-
+    int primerJugadorEntero = 0, escudoEntero, vidaEntero, energiaEntero;
+    int tipoEntero, filaEntero, columnaEntero, extraEntero;
+    int ubicacion[0];
+    string primerJugador, nombre, escudo, vida, energia, tipo, fila, columna, extra;
+    Personaje* aux;
+    getline(partidaGuardada, primerJugador, '\n');
+    primerJugadorEntero = stoi(primerJugador);
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 3; j++){
+            getline(partidaGuardada, tipo, ',');
+            getline(partidaGuardada, nombre, ',');
+            getline(partidaGuardada, escudo, ',');
+            getline(partidaGuardada, vida, ',');
+            getline(partidaGuardada, energia, ',');
+            getline(partidaGuardada, fila, ',');
+            getline(partidaGuardada, columna, ',');
+            getline(partidaGuardada, extra, '\n');
+            escudoEntero = stoi(escudo);
+            vidaEntero = stoi(vida);
+            extraEntero = stoi(extra);
+            ubicacion[0] = stoi(fila);
+            ubicacion[1] = stoi(columna);
+            aux = crearPersonaje(tipo, nombre, escudoEntero, vidaEntero);
+            diccionario.insertarHoja(aux);
+            if(tipo == "Tierra"){
+                if(extraEntero == 1){
+                    aux->setEstaDefendiendo();
+                }
+            } else if(tipo == "Agua"){
+                aux->asignarAlimentos(extraEntero);
+            }
+            asignarPersonaje(i, aux);
+            aux->asignarJugador(i);
+            jugadores[i].devolverControladores()[j]->ubicarPersonaje(ubicacion);
+        }
+    }
+    partida(primerJugadorEntero - 1);
 }
 
 
@@ -311,7 +345,7 @@ void Juego::comenzarJuego(){
         jug++;
     }
     if(!salir){
-        partida();
+        partida(0);
     }
 }
 
@@ -420,21 +454,32 @@ bool Juego::preguntarGuardado(int jugador) {
     return guardar;
 }
 
-void Juego::partida() {
-    int actual = rand() % 2; 
+void Juego::partida(int jug) {
+    int actual; 
     int segundo;
     int terminar = 0;
     int opcion = 0;
     bool guardado = false;
-    if(actual == 0){
-        segundo = 1;
+    if(jug == 0){
+        actual = rand() % 2;
+        if(actual == 0){
+            segundo = 1;
+        }
+        else{
+            segundo = 0;
+        }
+        cout << "Comenzará el jugador " << actual + 1 << endl;
+        ubicarPersonajes(actual);
+        ubicarPersonajes(segundo);
+    } else {
+        actual = jug;
+        if(actual == 0){
+            segundo = 1;
+        }
+        else{
+            segundo = 0;
+        }
     }
-    else{
-        segundo = 0;
-    }
-    cout << "Comenzará el jugador " << actual + 1 << endl;
-    ubicarPersonajes(actual);
-    ubicarPersonajes(segundo);
     while (terminar == 0) {
         guardado = preguntarGuardado(actual + 1);
         if (guardado){
@@ -468,6 +513,25 @@ void Juego::partida() {
     }
 }
 
+string Juego::tipoString(int tipo){
+    string ret;
+    switch(tipo){
+        case TIPO_AGUA:
+            ret = "Agua";
+            break;
+        case TIPO_AIRE:
+            ret = "Aire";
+            break;
+        case TIPO_TIERRA:
+            ret = "Tierra";
+            break;
+        case TIPO_FUEGO:
+            ret = "Fuego";
+            break;
+    }
+    return ret;
+}
+
 void Juego::guardarPartida(int jugador) {
     ofstream archivoPartida("../res/partida.csv", ios::out);
     archivoPartida << jugador << "\n";
@@ -483,7 +547,7 @@ void Juego::guardarPartida(int jugador) {
                 string fila = to_string(controladores[j]->devolverUbicacion()[0]);
                 string columna = to_string (controladores[j]->devolverUbicacion()[1]);
                 Personaje *actual = controladores[j]->devolverPersonaje();
-                tipo = to_string(actual->devolverTipo());
+                tipo = tipoString(actual->devolverTipo());
                 if (actual->devolverTipo() == TIPO_AGUA){
                      adicional = to_string(actual->obtenerAlimentos());
                 }
@@ -495,7 +559,7 @@ void Juego::guardarPartida(int jugador) {
                 string escudo = to_string(actual->obtenerEscudo());
                 string vida = to_string(actual->obtenerVida());
                 string energia = to_string(actual->obtenerEnergia());
-                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia+ "," +adicional;
+                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia + "," + fila + "," + columna + "," + adicional;
                 archivoPartida << linea + "\n" ;
 
             }

@@ -94,3 +94,5 @@ int PersonajeFuego::devolverTipo(){
 int PersonajeFuego::obtenerAlimentos() {
     return 0;
 }
+
+void PersonajeFuego::asignarAlimentos(int cant){}

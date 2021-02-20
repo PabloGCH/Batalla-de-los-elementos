@@ -44,9 +44,15 @@ class Juego{
 
         Juego();
     private:
+
         // PRE: recibe un archivo de partida guardada
         // POS: carga la partida
         void cargarPartida(ifstream &partidaGuardada);
+
+        // PRE: recibe un entero que indica el tipo de personaje
+        // POS: devuelve un string que indica el tipo de personaje
+        string tipoString(int tipo);
+
 
         void opcionesPersonaje();
         void comenzarJuego();
@@ -59,9 +65,10 @@ class Juego{
         //POS: crea un archivo partida csv con los stats al final de la partida
         void guardarPartida(int jugador);
 
-        //PRE: -
-        //POS: muestra las opciones de juego a cada jugador
-        void partida();
+        //PRE: recibe que jugador juega primero, si es una partida nueva debe recibir 0
+        // y si es una partida guardad deber recibir 1 o 2
+        //POS: muestra y da a elegir las opciones del juego a cada jugador
+        void partida(int jug);
 
         //PRE: -
         //POS: Ubica a los personajes del jugador en el tablero
@@ -116,7 +123,6 @@ class Juego{
         ABB diccionario;
         Tablero tablero;
         Jugador jugadores[2];
-        bool partidaCargada;
 };
 
 #endif

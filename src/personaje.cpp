@@ -9,7 +9,16 @@ Personaje::Personaje(string nombre, int escudo, int vida) {
     this->vida = vida;
     jugador = 0;
     seleccionado = false;
+    estaDefendiendo = false;
     asignarEnergia();
+}
+
+bool Personaje::getEstaDefendiendo(){
+    return estaDefendiendo;
+}
+
+void Personaje::setEstaDefendiendo(){
+    estaDefendiendo = true;
 }
 
 void Personaje::asignarJugador(int jug){
@@ -21,7 +30,7 @@ int Personaje::devolverJugador(){
 }
 
 void Personaje::asignarEnergia(){
-    energia  = 100;
+    energia  = 8;
 }
 
 string Personaje::obtenerNombre(){
@@ -50,6 +59,7 @@ void Personaje::curar() {
 
 void Personaje::bajar_escudo() {
 	escudo -= 2;
+    estaDefendiendo = false;
 }
 
 void Personaje::perder_vida() {

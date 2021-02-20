@@ -36,6 +36,8 @@ public:
     int devolverTipo();
 
     int obtenerAlimentos();
+
+    void asignarAlimentos(int cant);
 private:
 
     // PRE: -

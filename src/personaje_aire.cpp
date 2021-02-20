@@ -51,3 +51,5 @@ int PersonajeAire::devolverTipo(){
 int PersonajeAire::obtenerAlimentos() {
     return 0;
 }
+
+void PersonajeAire::asignarAlimentos(int cant){}

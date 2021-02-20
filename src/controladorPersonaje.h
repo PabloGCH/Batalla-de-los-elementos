@@ -36,7 +36,6 @@ class ControladorPersonaje
         int ubicacion[2];
         int costo[64];
         int anterior[64];
-        bool esta_defendiendo;
         // PRE: Recibe un puntero casillero
         // POS: Devuelve el coste que supondria moverse a ese casillero
         virtual int evaluarDir(Casillero* dir) = 0;

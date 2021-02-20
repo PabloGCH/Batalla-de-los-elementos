@@ -41,6 +41,10 @@ public:
     //PRE:
     //POS: Retorna la cantidad de veces que fue alimentado el perosnaje
     int obtenerAlimentos();
+
+    //PRE: recibe un entero
+    //POS: asigna ese entero a la variable vecesAlimentado(solo sera utilizado en el caso de agua)
+    void asignarAlimentos(int cant);
 };
 
 

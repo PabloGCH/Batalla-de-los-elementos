@@ -33,6 +33,7 @@ public:
     //POS: Retorna entero que indica el tipo
     int devolverTipo();
 
+    void asignarAlimentos(int cant);
     int obtenerAlimentos();
 
 };

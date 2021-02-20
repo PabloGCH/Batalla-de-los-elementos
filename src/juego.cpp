@@ -28,7 +28,13 @@ Juego::Juego(){
 }
 
 void Juego::cargarPartida(ifstream &partidaGuardada){
-
+    string elemento, nombre, escudo, vida;
+    int escudoEntero, vidaEntero;
+    while(!partidaGuardada.eof() && partidaGuardada.peek() != EOF){
+        //procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
+        //Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
+        //diccionario.insertarHoja(nuevo);
+    }
 }
 
 
@@ -185,16 +191,27 @@ Dato Juego::crearPersonaje(string elemento, string nombre){
     return nuevo;
 }
 
-Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida){
+Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida, int extra){
     Dato nuevo;
-    if(elemento == "Agua")
-        nuevo = new PersonajeAgua(nombre, escudo, vida);
+    PersonajeAgua* auxAgua;
+    PersonajeTierra* auxTierra;
+    if(elemento == "Agua"){
+        auxAgua = new PersonajeAgua(nombre, escudo, vida);
+        auxAgua->asignarVecesAlimentado(extra);
+        nuevo = auxAgua;
+    }
     else if(elemento == "Aire")
         nuevo = new PersonajeAire(nombre, escudo, vida);
     else if(elemento == "Fuego")
         nuevo = new PersonajeFuego(nombre, escudo, vida);
-    else
+    else if(elemento == "Tierra"){
         nuevo = new PersonajeTierra(nombre, escudo, vida);
+        if(extra == 0){
+            nuevo->asignarEstaDefendiendo(false);
+        } else{
+            nuevo->asignarEstaDefendiendo(true);
+        };
+    }
     return nuevo;
 }
 
@@ -210,25 +227,27 @@ void Juego::registrarElemento(string &elementoAgregar){
 
 void Juego::procesarArchivo(ifstream &archivo){
     if (archivo.is_open()){
-        string elemento, nombre, escudo, vida;
-        int escudoEntero, vidaEntero;
+        string elemento, nombre, escudo, vida, extra;
+        int escudoEntero, vidaEntero, extraEntero;
         while(!archivo.eof() && archivo.peek() != EOF){
-            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
-            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
+            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, extra, escudoEntero, vidaEntero, extraEntero);
+            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero, extraEntero);
             diccionario.insertarHoja(nuevo);
         }
     }
 }
 
-void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero){
+void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, string &extra, int &escudoEntero, int &vidaEntero, int &extraEntero){
     getline(archivo, elemento, ',');
     getline(archivo, nombre, ',');
     getline(archivo, escudo, ',');
-    getline(archivo, vida, '\n');
+    getline(archivo, vida, ',');
+    getline(archivo, extra, '\n');
     nombreMayuscula(elemento);
     nombreMayuscula(nombre);
     escudoEntero = stoi(escudo);
     vidaEntero = stoi(vida);
+    extraEntero = stoi(extra);
 }
 
 void Juego::asignarPersonaje(int numJugador, Personaje* personaje){

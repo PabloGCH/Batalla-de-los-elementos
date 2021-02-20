@@ -65,7 +65,7 @@ bool ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
 bool ControladorTierra::defensa() {
 	bool seDefiende = personaje->defender();
 	if(seDefiende) {
-		esta_defendiendo = true;
+		personaje->asignarEstaDefendiendo(true);
 	}
     return 0;
 }

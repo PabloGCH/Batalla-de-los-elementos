@@ -26,12 +26,20 @@ protected:
     int energia;
     int jugador;
     bool seleccionado;
-
+    bool esta_defendiendo;
 
 public:
     //Metodos.
 
     Personaje(string nombre, int escudo, int vida);
+
+    //PRE:
+    //POS: retorna true si se esta defendiendo
+    bool seEstaDefendiendo();
+
+    //PRE: recibe un booleano
+    //POS: asigna ese booleano a esta_defendiendo
+    void asignarEstaDefendiendo(bool def);
 
     // PRE: recibe un numero entero
     // POS: asigna el entero recibido a atributo jugador
@@ -84,7 +92,7 @@ public:
     //POS: El personaje recupera 10 de vida
     void curar();
     
-    //Pos: disminuye el escudo en 2 unidades
+    //Pos: disminuye el escudo en 2 unidades y asigna false a esta_defendiendo
     void bajar_escudo();
     
     // POS: recupera 5 de energia

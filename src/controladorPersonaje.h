@@ -63,7 +63,7 @@ class ControladorPersonaje
         void morir();
         // PRE:
         // POS: Ataca
-        virtual void atacar(ControladorPersonaje** ControladoresEnemigo) = 0;
+        virtual bool atacar(ControladorPersonaje** ControladoresEnemigo) = 0;
         //POS: el personaje se defiende
         virtual bool defensa() = 0;
         //POS: cura al personaje

@@ -5,11 +5,12 @@ PersonajeTierra::PersonajeTierra(string nombre, int escudo, int vida) : Personaj
 
 }
 
-void PersonajeTierra::alimentar() {
+bool PersonajeTierra::alimentar() {
     int energiaInicial = obtenerEnergia();
     int energiaFinal;
     if(obtenerEnergia() == MAX_ENERGIA){
         std::cout << obtenerNombre() << " no puede recuperar mas energia.\nENERGIA: " << energia << endl;
+        return false;
     }else{
 
         if(obtenerEnergia() + ALIMENTO_TIERRA > MAX_ENERGIA){
@@ -21,6 +22,7 @@ void PersonajeTierra::alimentar() {
             energiaFinal = obtenerEnergia();
         }
         std::cout << obtenerNombre() << " se alimenta de hierbas. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        return false;
     }
 }
 

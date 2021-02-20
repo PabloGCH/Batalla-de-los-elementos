@@ -19,7 +19,7 @@ public:
 
     // PRE: -
     // POS: Si 'energia' <= 12 -> 'energia' + 8. sino 'energia' = 20.
-    void alimentar();
+    bool alimentar();
 
     //PRE:
     //POS: resta vida

@@ -28,7 +28,7 @@ int ControladorTierra::evaluarDir(Casillero* dir){
     return valor; 
 }
 
-void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
+bool ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
     if (personaje -> obtenerEnergia() >= 6 ) {
         personaje->restarEnergia(6);
         for(int i = 0; i < 3; i++){
@@ -54,9 +54,11 @@ void ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
                 }
             }
         }
+        return true;
     }
     else{
         cout << "El personaje " << personaje -> obtenerNombre() << " no cuenta con la energía necesaria para atacar" << endl;
+        return false;
     }
 }
 

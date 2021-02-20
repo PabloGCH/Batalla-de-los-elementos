@@ -8,7 +8,7 @@ class ControladorAire : public ControladorPersonaje{
 
     // PRE: ControladoresEnemigos debe tener 3 controladorPersonajes*
     // POS: Ataca a los personajes* de cada controlador que este en tablero
-        void atacar(ControladorPersonaje** ControladoresEnemigo);
+        bool atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         // Constructor
         ControladorAire(Personaje* personaje, Tablero* tablero);

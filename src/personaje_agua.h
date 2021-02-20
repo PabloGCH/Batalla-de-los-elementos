@@ -24,7 +24,7 @@ public:
 
     // PRE: -
     // POS: aumenta el valor del atributo 'energia' en 10 puntos si 'energia' <= 10 ó deja 'energia' = 20 si 'energia' > 10.
-    void alimentar();
+    bool alimentar();
 
 
     //PRE: -

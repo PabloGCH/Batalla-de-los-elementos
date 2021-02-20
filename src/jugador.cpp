@@ -107,13 +107,12 @@ bool Jugador::verificarPosicion(int ingreso) {
     return correcto;
 }
 
-void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
+bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
     switch (etapa) {
         case 1:
             switch (opcionElegida) {
                 case 1:
-                    controladores[personajeActual]->devolverPersonaje()->alimentar();
-                    break;
+                    return controladores[personajeActual]->devolverPersonaje()->alimentar();
                 case 2:
                     controladores[personajeActual]->encontrarCaminos();
                     int ubicacion[2];
@@ -135,28 +134,26 @@ void Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                         cin >> ubicacion[1];
                         cout << "" << endl;
                     }
-                    controladores[personajeActual]->moverse(ubicacion);
-                    break;
+                    return controladores[personajeActual]->moverse(ubicacion);
                 case 3:
                     cout << "Decidiste pasar a la siquiente etapa " << endl;
-                    break;
-
+                    return true;
             }
             break;
         case 2:
+            bool defensa;
             switch (opcionElegida) {
                 case 1:
-                    controladores[personajeActual]->atacar(oponente->devolverControladores());
-                    break;
+                    return controladores[personajeActual]->atacar(oponente->devolverControladores());
                 case 2:
-                    controladores[personajeActual]->defensa();
+                    defensa = controladores[personajeActual]->defensa();
                     if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
                         curarPersonajes(controladores[personajeActual]);
                     }
-                    break;
+                    return defensa;
                 case 3:
                     cout << "Usted decidió terminar el turno " << endl;
-                    break;
+                    return true;
             }
             break;
 
@@ -192,6 +189,8 @@ void Jugador::imprimirEstados(int jug){
 
 void Jugador::turno(int actual){
     int opcion;
+    bool exito1 = false;
+    bool exito2 = false;
     for (int i = 0; i < 3; i++){
         if (controladores[i]->devolverPersonaje() != 0){
             imprimirEstados(actual);
@@ -203,7 +202,13 @@ void Jugador::turno(int actual){
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();
-            procesarOpcion(opcion, 1, i);
+            exito1 = procesarOpcion(opcion, 1, i);
+            while ( !exito1 ){
+                cout << "El proceso seleccionado no tuvo exito, por favor seleccione otra opcion o pase a la siquiente etapa" << endl;
+                mostrarOpcionesPrimerEtapa(actual, i);
+                opcion = solicitarOpcion();
+                exito1 = procesarOpcion(opcion, 1, i);
+            }
             // Verifico si hay personajes muertos y si es asi los
             // retiro del tablero
             matarPersonajes();
@@ -211,7 +216,13 @@ void Jugador::turno(int actual){
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
-            procesarOpcion(opcion, 2, i);
+            exito2 = procesarOpcion(opcion, 2, i);
+            while ( !exito2 ){
+                cout << "El proceso elegido no realizó ningún cambio, seleccione otra opcion o termine el turno" << endl;
+                mostrarOpcionesSegudaEtapa(actual, i);
+                opcion = solicitarOpcion();
+                exito2 = procesarOpcion(opcion, 2, i);
+            }
             //reviso si es un personaje de fuego sin energia
             // y si es asi pierde vida
             sinEnergia(controladores[i]->devolverPersonaje());

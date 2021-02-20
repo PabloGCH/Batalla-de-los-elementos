@@ -22,7 +22,7 @@ public:
 
     // PRE: -
     // POS: Si tiene madera le recarga la vida el valor que determina el metodo 'recargarVida' y la energia que determina el metodo 'recargarEnergia', si no tiene madera no hace nada.
-    void alimentar();
+    bool alimentar();
 
     // PRE: -
     // POS: resta vida

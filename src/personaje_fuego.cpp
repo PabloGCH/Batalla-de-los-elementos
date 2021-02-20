@@ -23,7 +23,7 @@ void PersonajeFuego::recargarEnergia() {
 }
 
 
-void PersonajeFuego::alimentar() {
+bool PersonajeFuego::alimentar() {
     int vidaInicial = obtenerVida();
     int vidaFinal;
     int energiaInicial = obtenerEnergia();
@@ -35,8 +35,10 @@ void PersonajeFuego::alimentar() {
         energiaFinal = obtenerEnergia();
         std::cout << obtenerNombre() << " se alimenta de madera. Recuperó: " << vidaFinal - vidaInicial << " puntos de vida.\nVIDA: " << obtenerVida() << std::endl;
         std::cout << obtenerNombre() << " Recuperó: " << energiaFinal - energiaInicial  << " puntos de energía.\nENERGIA: " << obtenerEnergia() << std::endl;
+        return true;
     }else{
         std::cout << obtenerNombre() << " no tiene suficiente madera para alimentarse. Su vida es: " << obtenerVida() << " y su energía es: "<< obtenerEnergia() <<std::endl;
+        return false;
     }
 }
 

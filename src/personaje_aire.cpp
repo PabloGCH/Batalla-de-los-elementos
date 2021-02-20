@@ -5,8 +5,9 @@ PersonajeAire::PersonajeAire(string nombre, int escudo, int vida) : Personaje(no
 
 }
 
-void PersonajeAire::alimentar(){
+bool PersonajeAire::alimentar(){
     std::cout << obtenerNombre() << " no se alimenta.\nENERGIA: " << obtenerEnergia() << std::endl;
+    return false;
 }
 
 void PersonajeAire::recibirAtaque(string tipo, int casosTierra) {

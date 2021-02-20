@@ -9,7 +9,7 @@ class ControladorAgua : public ControladorPersonaje{
         bool comprobarPosicon(int posicionAtacada[2]);
     public:
         bool defensa();
-        void atacar(ControladorPersonaje** ControladoresEnemigo);
+        bool atacar(ControladorPersonaje** ControladoresEnemigo);
         int evaluarDir(Casillero* dir);
         ControladorAgua(Personaje* personaje, Tablero* tablero);
 };

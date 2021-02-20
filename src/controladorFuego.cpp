@@ -28,7 +28,7 @@ int ControladorFuego::evaluarDir(Casillero* dir){
     return valor; 
 }
 
-void ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
+bool ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
     if(this->personaje->obtenerEnergia() >= ATAQUE_FUEGO){
         this->personaje->restarEnergia(ATAQUE_FUEGO);
         for(int i = 0; i < 3; i++) {
@@ -38,8 +38,11 @@ void ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
                 }
             }
         }
-    }else
+        return true;
+    }else{
         cout << "No posee suficiente energia para atacar." << endl;
+        return false;
+    }
 }
 
 ControladorFuego::ControladorFuego(Personaje* personaje, Tablero* tablero) {

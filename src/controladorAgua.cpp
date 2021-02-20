@@ -46,7 +46,7 @@ bool ControladorAgua::defensa() {
 	return seDefiende;
 }
 
-void ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
+bool ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
     if (personaje -> obtenerEnergia() >= ATAQUE_AGUA){
         personaje->restarEnergia(ATAQUE_AGUA);
         int posicionAtacada[2];
@@ -67,9 +67,11 @@ void ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
                 enemigo -> recibirAtaque("agua", 0);
             }
         }
+        return true;
     }
     else{
         cout << "El personaje no cuenta con la energia necesaria para atacar " << endl;
+        return false;
     }
     
 }

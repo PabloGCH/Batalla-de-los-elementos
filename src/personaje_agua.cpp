@@ -5,11 +5,13 @@ PersonajeAgua::PersonajeAgua(string nombre, int escudo, int vida) : Personaje(no
     vecesAlimentado = 0;
 }
 
-void PersonajeAgua::alimentar() {
+bool PersonajeAgua::alimentar() {
     int energiaInicial;
     int energiaFinal;
-    if(vecesAlimentado == LIMITE_ALIMENTACION)
+    if(vecesAlimentado == LIMITE_ALIMENTACION){
         std::cout << "ATENCION!!!. " << obtenerNombre() << " no puede alimentarse mas.\nENERGIA: " << obtenerEnergia() << std::endl;
+        return false;
+    }
     if(vecesAlimentado < LIMITE_ALIMENTACION && energia < MAX_ENERGIA) {
         energiaInicial = obtenerEnergia();
         if(energia + ALIMENTO_AGUA > MAX_ENERGIA){
@@ -21,8 +23,10 @@ void PersonajeAgua::alimentar() {
         }
         vecesAlimentado++;
         std::cout << obtenerNombre() << " se alimenta de Plancton. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        return true;
     }else{
         std::cout << obtenerNombre() << " llego al maximo posible de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        return false;
     }
 
 }

@@ -41,7 +41,7 @@ public:
     int devolverJugador();
 
     // Metodo abstracto. Cada clase hija debe implementar su metodo alimentar.
-    virtual void alimentar() = 0;
+    virtual bool alimentar() = 0;
 
     //Metodo abstracto. Cada clase hija debe implementar su metodo recibirAtaque
     virtual void recibirAtaque(string tipo, int casosTierra) = 0;

@@ -34,7 +34,7 @@ public:
 	// POS: asigna el tablero al atributo tablero de jugador
 	void asignarTablero(Tablero* tablero);
 	void asignar_controlador(ControladorPersonaje* controlador);
-    void procesarOpcion(int opcionElegida, int etapa, int personajeActual);
+    bool procesarOpcion(int opcionElegida, int etapa, int personajeActual);
     void turno(int actual);
 	void asignar_rival(Jugador* rival);
 	// PRE: Recibe un personaje

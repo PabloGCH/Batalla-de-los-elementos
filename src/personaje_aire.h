@@ -20,7 +20,7 @@ public:
 
     // PRE: -
     // POS: No realiza ninguna accion ya que 'Aire' no se alimenta, pero hereda de 'Personaje' el metodo virtual 'alimentar'.
-    void alimentar();
+    bool alimentar();
 
     // PRE: -
     // POS: resta vida

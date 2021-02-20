@@ -42,12 +42,11 @@ class Juego{
         bool seleccionarPersonaje(int numJugador);
 
 
-
         Juego();
     private:
         // PRE: recibe un archivo de partida guardada
         // POS: carga la partida
-        void cargarPartida();
+        void cargarPartida(ifstream &partidaGuardada);
 
         void opcionesPersonaje();
         void comenzarJuego();

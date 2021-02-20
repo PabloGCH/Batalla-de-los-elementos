@@ -21,11 +21,13 @@ Juego::Juego(){
     } else{
         cout << "Se encontro una partida guardada." << endl;
         partidaCargada = true;
+        cargarPartida(partidaGuardada);
+        partidaGuardada.close();
     }
     srand(time(0));
 }
 
-void Juego::cargarPartida(){
+void Juego::cargarPartida(ifstream &partidaGuardada){
 
 }
 

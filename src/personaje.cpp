@@ -21,7 +21,7 @@ int Personaje::devolverJugador(){
 }
 
 void Personaje::asignarEnergia(){
-    energia  = 10;
+    energia  = 100;
 }
 
 string Personaje::obtenerNombre(){
@@ -49,7 +49,6 @@ void Personaje::curar() {
 }
 
 void Personaje::bajar_escudo() {
-    esta_defendiendo = false;
 	escudo -= 2;
 }
 
@@ -82,14 +81,6 @@ void Personaje::recuperarEnergia(){
     }
     cambio = energia - cambio;
     cout << nombre << " recupero " << cambio << " de energia." << endl;
-}
-
-bool Personaje::seEstaDefendiendo(){
-    return esta_defendiendo;
-}
-
-void Personaje::asignarEstaDefendiendo(bool def){
-    esta_defendiendo = def;
 }
 
 Personaje::~Personaje(){}

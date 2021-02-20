@@ -28,13 +28,7 @@ Juego::Juego(){
 }
 
 void Juego::cargarPartida(ifstream &partidaGuardada){
-    string elemento, nombre, escudo, vida;
-    int escudoEntero, vidaEntero;
-    while(!partidaGuardada.eof() && partidaGuardada.peek() != EOF){
-        //procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
-        //Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
-        //diccionario.insertarHoja(nuevo);
-    }
+
 }
 
 
@@ -191,27 +185,16 @@ Dato Juego::crearPersonaje(string elemento, string nombre){
     return nuevo;
 }
 
-Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida, int extra){
+Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida){
     Dato nuevo;
-    PersonajeAgua* auxAgua;
-    PersonajeTierra* auxTierra;
-    if(elemento == "Agua"){
-        auxAgua = new PersonajeAgua(nombre, escudo, vida);
-        auxAgua->asignarVecesAlimentado(extra);
-        nuevo = auxAgua;
-    }
+    if(elemento == "Agua")
+        nuevo = new PersonajeAgua(nombre, escudo, vida);
     else if(elemento == "Aire")
         nuevo = new PersonajeAire(nombre, escudo, vida);
     else if(elemento == "Fuego")
         nuevo = new PersonajeFuego(nombre, escudo, vida);
-    else if(elemento == "Tierra"){
+    else
         nuevo = new PersonajeTierra(nombre, escudo, vida);
-        if(extra == 0){
-            nuevo->asignarEstaDefendiendo(false);
-        } else{
-            nuevo->asignarEstaDefendiendo(true);
-        };
-    }
     return nuevo;
 }
 
@@ -227,27 +210,25 @@ void Juego::registrarElemento(string &elementoAgregar){
 
 void Juego::procesarArchivo(ifstream &archivo){
     if (archivo.is_open()){
-        string elemento, nombre, escudo, vida, extra;
-        int escudoEntero, vidaEntero, extraEntero;
+        string elemento, nombre, escudo, vida;
+        int escudoEntero, vidaEntero;
         while(!archivo.eof() && archivo.peek() != EOF){
-            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, extra, escudoEntero, vidaEntero, extraEntero);
-            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero, extraEntero);
+            procesarDatosPersonaje(archivo, elemento, nombre, escudo, vida, escudoEntero, vidaEntero);
+            Dato nuevo = crearPersonaje(elemento, nombre, escudoEntero, vidaEntero);
             diccionario.insertarHoja(nuevo);
         }
     }
 }
 
-void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, string &extra, int &escudoEntero, int &vidaEntero, int &extraEntero){
+void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero){
     getline(archivo, elemento, ',');
     getline(archivo, nombre, ',');
     getline(archivo, escudo, ',');
-    getline(archivo, vida, ',');
-    getline(archivo, extra, '\n');
+    getline(archivo, vida, '\n');
     nombreMayuscula(elemento);
     nombreMayuscula(nombre);
     escudoEntero = stoi(escudo);
     vidaEntero = stoi(vida);
-    extraEntero = stoi(extra);
 }
 
 void Juego::asignarPersonaje(int numJugador, Personaje* personaje){
@@ -496,17 +477,25 @@ void Juego::guardarPartida(int jugador) {
             if (controladores[j]->devolverPersonaje() != 0) {
                 string tipo;
                 string nombre;
+                string adicional;
                 string linea;
 
                 string fila = to_string(controladores[j]->devolverUbicacion()[0]);
                 string columna = to_string (controladores[j]->devolverUbicacion()[1]);
                 Personaje *actual = controladores[j]->devolverPersonaje();
                 tipo = to_string(actual->devolverTipo());
+                if (actual->devolverTipo() == TIPO_AGUA){
+                     adicional = to_string(actual->obtenerAlimentos());
+                }
+                else {
+                    adicional = to_string(controladores[j]->conocerDefensa());
+                }
+
                 nombre = actual->obtenerNombre();
                 string escudo = to_string(actual->obtenerEscudo());
                 string vida = to_string(actual->obtenerVida());
                 string energia = to_string(actual->obtenerEnergia());
-                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia;
+                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia+ "," +adicional;
                 archivoPartida << linea + "\n" ;
 
             }

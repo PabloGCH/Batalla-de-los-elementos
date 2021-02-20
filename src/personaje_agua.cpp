@@ -84,32 +84,6 @@ int PersonajeAgua::devolverTipo(){
     return TIPO_AGUA;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-void PersonajeAgua::asignarVecesAlimentado(int veces){
-    vecesAlimentado = veces;
-}
-
->>>>>>> 5f2968f1013928c84bb219bef5d28d8a85c0733d
 int PersonajeAgua::obtenerAlimentos() {
     return vecesAlimentado;
-=======
-void PersonajeAgua::asignarVecesAlimentado(int veces){
-    vecesAlimentado = veces;
->>>>>>> 957b037... Varios cambios para reutilizar codigo de ABB, lo probe varias veces y no se rompio nada, pero habria que probar mas
-=======
-void PersonajeAgua::asignarVecesAlimentado(int veces){
-    vecesAlimentado = veces;
-}
-
-int PersonajeAgua::obtenerAlimentos() {
-    return vecesAlimentado;
->>>>>>> 03c2050... Solucionados algunos errores despues del merge
-=======
-void PersonajeAgua::asignarVecesAlimentado(int veces){
-    vecesAlimentado = veces;
->>>>>>> parent of c7fd1b0... Merge branch 'main' of https://github.com/PabloGCH/tp3Algo into main
 }

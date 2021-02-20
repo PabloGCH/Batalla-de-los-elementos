@@ -85,7 +85,7 @@ class Juego{
         // Metodo sobrecargado para crear personajes desde archivo con valores de escudo y vida ya dterminados.
         // PRE: -
         // POS: Devuelve un puntero al nuevo personaje.
-        Dato crearPersonaje(string elemento, string nombre, int escudo, int vida, int extra);
+        Dato crearPersonaje(string elemento, string nombre, int escudo, int vida);
 
         // PRE: -
         // POS: lee una cadena ingresada por teclado y la deja con la primer letra de cada palabra en mayusculas.
@@ -100,8 +100,8 @@ class Juego{
         void procesarArchivo(ifstream &archivo);
 
         // PRE: el archivo se debe pasar abierto.
-        // POS: Almacena 'elemento', 'nombre', 'escudo','vida' y 'extra' en variables y convierte estas ultimas 3 a INT.
-        void procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, string &extra, int &escudoEntero, int &vidaEntero, int &extraEntero);
+        // POS: Almacena 'elemento', 'nombre', 'escudo', y 'vida' en variables y convierte estas ultimas 2 a INT.
+        void procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero);
         
         // PRE: Recibe un numero indicando el jugador, y un personaje para asignarle
         // POS: le asigna el personaje (con un controlador adecuado) al personaje indicado

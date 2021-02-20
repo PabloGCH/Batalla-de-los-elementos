@@ -108,13 +108,11 @@ bool Jugador::verificarPosicion(int ingreso) {
 }
 
 bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
-    bool ret;
     switch (etapa) {
         case 1:
             switch (opcionElegida) {
                 case 1:
-                    ret = controladores[personajeActual]->devolverPersonaje()->alimentar();
-                    break;
+                    return controladores[personajeActual]->devolverPersonaje()->alimentar();
                 case 2:
                     controladores[personajeActual]->encontrarCaminos();
                     int ubicacion[2];
@@ -136,36 +134,30 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                         cin >> ubicacion[1];
                         cout << "" << endl;
                     }
-                    ret = controladores[personajeActual]->moverse(ubicacion);
-                    break;
+                    return controladores[personajeActual]->moverse(ubicacion);
                 case 3:
                     cout << "Decidiste pasar a la siquiente etapa " << endl;
-                    ret = true;
-                    break;
+                    return true;
             }
             break;
         case 2:
             bool defensa;
             switch (opcionElegida) {
                 case 1:
-                    ret = controladores[personajeActual]->atacar(oponente->devolverControladores());
-                    break;
+                    return controladores[personajeActual]->atacar(oponente->devolverControladores());
                 case 2:
                     defensa = controladores[personajeActual]->defensa();
                     if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
                         curarPersonajes(controladores[personajeActual]);
                     }
-                    ret = defensa;
-                    break;
+                    return defensa;
                 case 3:
                     cout << "Usted decidió terminar el turno " << endl;
-                    ret = true;
-                    break;
+                    return true;
             }
             break;
 
     }
-    return ret;
 }
 
 void Jugador::imprimirPersonajes(ControladorPersonaje** cont){

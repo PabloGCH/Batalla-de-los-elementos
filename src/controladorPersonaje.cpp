@@ -4,6 +4,7 @@ ControladorPersonaje::ControladorPersonaje(){
     personaje = 0;
     ptrCasillero = 0;
     tablero = 0;
+    esta_defendiendo = false;
 }
 
 void ControladorPersonaje::encontrarCaminos(){
@@ -48,8 +49,9 @@ int ControladorPersonaje::coordToId(int *coord){
 }
 
 void ControladorPersonaje::reiniciar_escudo() {
-	if(personaje->seEstaDefendiendo()) {
+	if(esta_defendiendo) {
 		personaje->bajar_escudo();
+		esta_defendiendo = false;
 	}
 }
 
@@ -186,15 +188,12 @@ void ControladorPersonaje::morir(){
     personaje = 0;
 }
 
-<<<<<<< HEAD
 int ControladorPersonaje::conocerDefensa(){
-    if (personaje->seEstaDefendiendo()){
+    if (esta_defendiendo){
         return 1;
     }
     else
         return 0;
 }
-=======
->>>>>>> parent of c7fd1b0... Merge branch 'main' of https://github.com/PabloGCH/tp3Algo into main
 
 ControladorPersonaje::~ControladorPersonaje(){}

@@ -158,8 +158,7 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
             break;
 
     }
-
-};
+}
 
 void Jugador::imprimirPersonajes(ControladorPersonaje** cont){
     Personaje* aux;

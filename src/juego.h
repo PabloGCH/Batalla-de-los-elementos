@@ -52,6 +52,14 @@ class Juego{
         void comenzarJuego();
 
         //PRE: -
+        //POS: devuelve un booleano dependiendo de si el jugador decidio guardar la partida o no
+        bool preguntarGuardado(int jugador);
+
+        //PRE: -
+        //POS: crea un archivo partida csv con los stats al final de la partida
+        void guardarPartida(int jugador);
+
+        //PRE: -
         //POS: muestra las opciones de juego a cada jugador
         void partida();
 

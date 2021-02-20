@@ -345,6 +345,7 @@ int Juego::finPartida(){
     }
     return ganador;
 }
+
 void Juego::ubicarPersonajes(int jugador){
     int ubicacion[2];
     ControladorPersonaje** controladores = jugadores[jugador].devolverControladores();
@@ -385,8 +386,37 @@ void Juego::ubicarPersonajes(int jugador){
     }
 }
 
+bool Juego::preguntarGuardado(int jugador) {
+    bool salir = false;
+    char decision;
+    cout << "Jugador " << jugador << " deseas gaurdar la partida? " << endl;
+    cout << "1. SI" << endl;
+    cout << "2. NO " << endl;
+    cout << "Seleccione una opcion: ";
+    cin >> decision;
+    cout << " "<< endl;
+    while ( !salir ){
+        switch (decision) {
+            case '1' :
+                cout << "Se guardará la partida" << endl;
+                salir = true;
+                return true;
+            case '2' :
+                salir = true;
+                return false;
+            default:
+                cout << "Opción no valida, por favor seleccione una opción válida" << endl;
+                cout << "1. SI" << endl;
+                cout << "2. NO " << endl;
+                cout << "Seleccione una opcion: ";
+                cin >> decision;
+                cout << "" << endl;
+        }
+    }
+}
+
 void Juego::partida() {
-    int actual = rand() % 2;
+    int actual = rand() % 2; 
     int segundo;
     int terminar = 0;
     int opcion = 0;
@@ -401,27 +431,68 @@ void Juego::partida() {
     ubicarPersonajes(actual);
     ubicarPersonajes(segundo);
     while (terminar == 0) {
-        //preguntar guardado jugador 1
+        guardado = preguntarGuardado(actual + 1);
         if (guardado){
-            //guardar
+            guardarPartida(actual);
             terminar = 3;
         }
         else{
             jugadores[actual].turno(actual);
-            //jugador2 preguntar guardado
+            guardado  = preguntarGuardado(segundo + 1);
             if (guardado){
+                guardarPartida(segundo + 1);
                 terminar = 3;
             }
             else{
                 jugadores[segundo].turno(segundo);
             }
         }
-        terminar = finPartida();
+        if (terminar == 0){
+            terminar = finPartida();
+        }
+
     }
     if(terminar == 1){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 1";
     }
-    if(terminar == 2){
+    else if(terminar == 2){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 2";
     }
+    else if (terminar == 3){
+        cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA";
+    }
+}
+
+void Juego::guardarPartida(int jugador) {
+    ofstream archivoPartida;
+    archivoPartida.open("partida.csv", ios::in);
+    archivoPartida << jugador;
+    for (int i = 0; i < 2; i++) {
+        ControladorPersonaje **controladores = jugadores[i].devolverControladores();
+        for (int j = 0; j < 3; j++) {
+            if (controladores[j]->devolverPersonaje() != 0) {
+                string tipo;
+                string nombre;
+                string linea;
+
+                string fila = to_string(controladores[j]->devolverUbicacion()[0]);
+                string columna = to_string (controladores[j]->devolverUbicacion()[1]);
+                Personaje *actual = controladores[j]->devolverPersonaje();
+                tipo = actual->devolverTipo();
+                nombre = actual->obtenerNombre();
+                string escudo = to_string(actual->obtenerEscudo());
+                string vida = to_string(actual->obtenerVida());
+                string energia = to_string(actual->obtenerEnergia());
+                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia;
+                archivoPartida << linea + "\n" ;
+
+            }
+            else
+                archivoPartida << 0;
+        }
+
+    }
+    cout << "Partida guardad con éxito" << endl;
+    archivoPartida.close();
+
 }

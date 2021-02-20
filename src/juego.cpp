@@ -388,6 +388,7 @@ void Juego::ubicarPersonajes(int jugador){
 
 bool Juego::preguntarGuardado(int jugador) {
     bool salir = false;
+    bool guardar;
     char decision;
     cout << "Jugador " << jugador << " deseas gaurdar la partida? " << endl;
     cout << "1. SI" << endl;
@@ -400,10 +401,12 @@ bool Juego::preguntarGuardado(int jugador) {
             case '1' :
                 cout << "Se guardará la partida" << endl;
                 salir = true;
-                return true;
+                guardar = true;
+                break;
             case '2' :
                 salir = true;
-                return false;
+                guardar = false;
+                break;
             default:
                 cout << "Opción no valida, por favor seleccione una opción válida" << endl;
                 cout << "1. SI" << endl;
@@ -411,8 +414,10 @@ bool Juego::preguntarGuardado(int jugador) {
                 cout << "Seleccione una opcion: ";
                 cin >> decision;
                 cout << "" << endl;
+                break;
         }
     }
+    return guardar;
 }
 
 void Juego::partida() {
@@ -433,7 +438,7 @@ void Juego::partida() {
     while (terminar == 0) {
         guardado = preguntarGuardado(actual + 1);
         if (guardado){
-            guardarPartida(actual);
+            guardarPartida(actual + 1);
             terminar = 3;
         }
         else{
@@ -464,9 +469,8 @@ void Juego::partida() {
 }
 
 void Juego::guardarPartida(int jugador) {
-    ofstream archivoPartida;
-    archivoPartida.open("partida.csv", ios::in);
-    archivoPartida << jugador;
+    ofstream archivoPartida("../res/partida.csv", ios::out);
+    archivoPartida << jugador << "\n";
     for (int i = 0; i < 2; i++) {
         ControladorPersonaje **controladores = jugadores[i].devolverControladores();
         for (int j = 0; j < 3; j++) {
@@ -478,7 +482,7 @@ void Juego::guardarPartida(int jugador) {
                 string fila = to_string(controladores[j]->devolverUbicacion()[0]);
                 string columna = to_string (controladores[j]->devolverUbicacion()[1]);
                 Personaje *actual = controladores[j]->devolverPersonaje();
-                tipo = actual->devolverTipo();
+                tipo = to_string(actual->devolverTipo());
                 nombre = actual->obtenerNombre();
                 string escudo = to_string(actual->obtenerEscudo());
                 string vida = to_string(actual->obtenerVida());

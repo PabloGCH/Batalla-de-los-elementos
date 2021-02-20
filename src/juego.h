@@ -45,6 +45,10 @@ class Juego{
 
         Juego();
     private:
+        // PRE: recibe un archivo de partida guardada
+        // POS: carga la partida
+        void cargarPartida();
+
         void opcionesPersonaje();
         void comenzarJuego();
 
@@ -105,6 +109,7 @@ class Juego{
         ABB diccionario;
         Tablero tablero;
         Jugador jugadores[2];
+        bool partidaCargada;
 };
 
 #endif

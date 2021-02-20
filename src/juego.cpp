@@ -1,6 +1,7 @@
 #include "juego.h"
 
 Juego::Juego(){
+    partidaCargada = false;
     jugadores[0].asignar_rival(&jugadores[1]);
     jugadores[1].asignar_rival(&jugadores[0]);
     for(int i = 0; i < 2; i++){
@@ -19,11 +20,15 @@ Juego::Juego(){
         }
     } else{
         cout << "Se encontro una partida guardada." << endl;
-
+        partidaCargada = true;
     }
-    
     srand(time(0));
 }
+
+void Juego::cargarPartida(){
+
+}
+
 
 void Juego::iniciar(){
     // si hay partida guardada

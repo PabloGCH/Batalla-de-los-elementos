@@ -8,6 +8,7 @@ Juego::Juego(){
     }
     ifstream partidaGuardada("../res/partidaGuardada.csv");
     if(partidaGuardada.fail()){
+        partidaGuardada.close();
         cout << "No se encontro una partida guardada." << endl;
         ifstream archivo("../res/personajes.csv");
         if(archivo.is_open()){
@@ -18,7 +19,7 @@ Juego::Juego(){
         }
     } else{
         cout << "Se encontro una partida guardada." << endl;
-        
+
     }
     
     srand(time(0));

@@ -1,18 +1,26 @@
 #include "juego.h"
 
 Juego::Juego(){
-    ifstream archivo("../res/personajes.csv");
+    jugadores[0].asignar_rival(&jugadores[1]);
+    jugadores[1].asignar_rival(&jugadores[0]);
     for(int i = 0; i < 2; i++){
         jugadores[i].asignarTablero(&tablero);
     }
-    if(archivo.is_open()){
-        procesarArchivo(archivo);
-        archivo.close();
-    } else {
-        cout << "fallo al abrir archivo de personajes";
+    ifstream partidaGuardada("../res/partidaGuardada.csv");
+    if(partidaGuardada.fail()){
+        cout << "No se encontro una partida guardada." << endl;
+        ifstream archivo("../res/personajes.csv");
+        if(archivo.is_open()){
+            procesarArchivo(archivo);
+            archivo.close();
+        } else {
+            cout << "fallo al abrir archivo de personajes";
+        }
+    } else{
+        cout << "Se encontro una partida guardada." << endl;
+        
     }
-    jugadores[0].asignar_rival(&jugadores[1]);
-    jugadores[1].asignar_rival(&jugadores[0]);
+    
     srand(time(0));
 }
 

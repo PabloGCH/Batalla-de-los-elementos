@@ -85,10 +85,19 @@ int PersonajeAgua::devolverTipo(){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int PersonajeAgua::obtenerAlimentos() {
     return vecesAlimentado;
 =======
 void PersonajeAgua::asignarVecesAlimentado(int veces){
     vecesAlimentado = veces;
 >>>>>>> 957b037... Varios cambios para reutilizar codigo de ABB, lo probe varias veces y no se rompio nada, pero habria que probar mas
+=======
+void PersonajeAgua::asignarVecesAlimentado(int veces){
+    vecesAlimentado = veces;
+}
+
+int PersonajeAgua::obtenerAlimentos() {
+    return vecesAlimentado;
+>>>>>>> 03c2050... Solucionados algunos errores despues del merge
 }

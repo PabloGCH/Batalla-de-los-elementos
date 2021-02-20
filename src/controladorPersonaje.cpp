@@ -187,7 +187,7 @@ void ControladorPersonaje::morir(){
 }
 
 int ControladorPersonaje::conocerDefensa(){
-    if (esta_defendiendo){
+    if (personaje->seEstaDefendiendo()){
         return 1;
     }
     else

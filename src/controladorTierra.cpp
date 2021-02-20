@@ -33,8 +33,8 @@ bool ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
         personaje->restarEnergia(6);
         for(int i = 0; i < 3; i++){
             ControladorPersonaje* contEnemigo = ControladoresEnemigo[i];
-            Personaje* enemigo = contEnemigo->devolverPersonaje();
-            if(enemigo != 0){
+            if(ControladoresEnemigo[i] != 0){
+                Personaje* enemigo = contEnemigo->devolverPersonaje();
                 int distanciaFila = ubicacion[0] - contEnemigo -> devolverUbicacion()[0];
                 if(distanciaFila < 0){
                     distanciaFila *= -1;

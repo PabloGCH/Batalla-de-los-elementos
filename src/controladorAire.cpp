@@ -32,7 +32,7 @@ bool ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
     if(personaje->obtenerEnergia() >= ATAQUE_AIRE){
         personaje->restarEnergia(ATAQUE_AIRE);
         for(int i = 0; i < 3; i++){
-            if(ControladoresEnemigo[i]->devolverPersonaje() != 0){
+            if(ControladoresEnemigo[i] != 0){
                 (ControladoresEnemigo[i]->devolverPersonaje())->recibirAtaque("aire",0);
             }
         }

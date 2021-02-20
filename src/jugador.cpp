@@ -51,6 +51,7 @@ Jugador::~Jugador() {
 
 void Jugador::matarPersonajes(){
 	ControladorPersonaje** controladoresOponente = oponente->devolverControladores();
+    ControladorPersonaje* auxCont;
 	Personaje* personajeEnemigo;
     Personaje* personaje;
 	for(int i = 0; i < 3; i++){
@@ -58,6 +59,7 @@ void Jugador::matarPersonajes(){
             personaje = controladores[i]->devolverPersonaje();
 			if(personaje->obtenerVida() <= 0){
                 controladores[i]->devolverCasillero()->setCharacter(0);
+                delete controladores[i];
 				controladores[i] = 0;
 			}
 		}
@@ -65,6 +67,7 @@ void Jugador::matarPersonajes(){
             personajeEnemigo = controladoresOponente[i]->devolverPersonaje();
 			if(personajeEnemigo->obtenerVida() <= 0){
                 controladoresOponente[i]->devolverCasillero()->setCharacter(0);
+                delete controladoresOponente[i];
 				controladoresOponente[i] = 0;
 			}
 		}
@@ -201,12 +204,12 @@ void Jugador::turno(int actual){
     bool exito2 = false;
     for (int i = 0; i < 3; i++){
         if (controladores[i] != 0){
-            imprimirEstados(actual);
-            tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
             detenerDefensa(controladores[i]);
             // chequeo si es un personaje de aire y si es asi recupera energia
             recuperarEnergia(controladores[i]->devolverPersonaje());
+            imprimirEstados(actual);
+            tablero->printBoard();
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();

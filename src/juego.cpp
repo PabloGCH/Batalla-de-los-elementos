@@ -550,7 +550,7 @@ void Juego::guardarPartida(int jugador) {
     for (int i = 0; i < 2; i++) {
         ControladorPersonaje **controladores = jugadores[i].devolverControladores();
         for (int j = 0; j < 3; j++) {
-            if (controladores[j]->devolverPersonaje() != 0) {
+            if (controladores[j] != 0) {
                 string tipo;
                 string nombre;
                 string adicional;
@@ -575,7 +575,7 @@ void Juego::guardarPartida(int jugador) {
 
             }
             else
-                archivoPartida << 0 + "\n";
+                archivoPartida << "0,\n";
         }
     }
     cout << "Partida guardada con éxito" << endl;

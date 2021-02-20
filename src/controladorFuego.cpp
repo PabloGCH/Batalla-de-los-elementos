@@ -32,7 +32,7 @@ bool ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
     if(this->personaje->obtenerEnergia() >= ATAQUE_FUEGO){
         this->personaje->restarEnergia(ATAQUE_FUEGO);
         for(int i = 0; i < 3; i++) {
-            if(ControladoresEnemigo[i]->devolverPersonaje() != 0){
+            if(ControladoresEnemigo[i] != 0){
                 if ((ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] || (ControladoresEnemigo[i]->devolverUbicacion())[0] == this->ubicacion[0] + 1 || (ControladoresEnemigo[i]->devolverUbicacion()[0] == this->ubicacion[0] - 1)){
                     ControladoresEnemigo[i]->devolverPersonaje()->recibirAtaque("fuego",0);
                 }
@@ -53,6 +53,5 @@ ControladorFuego::ControladorFuego(Personaje* personaje, Tablero* tablero) {
 }
 
 bool ControladorFuego::defensa(){
-    personaje->defender();
-    return 0;
+    return personaje->defender();
 }

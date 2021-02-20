@@ -60,11 +60,13 @@ public:
     //POS: Retorna un entero que indica el tipo
     virtual int devolverTipo() = 0;
 
+    //POS: Retorna un entero con la cantidad de veces que fue alimentado(solo sera utilizado en el caso de agua)
+    virtual int obtenerAlimentos() = 0;
     // POS: Retorna true si el personaje esta seleccionado
     bool estaSeleccionado();
     // POS: Asigna true a asignado
     void seleccionar();
-    
+
     // PRE: -
     // POS: Retorna el nombre el personaje.
     string obtenerNombre();

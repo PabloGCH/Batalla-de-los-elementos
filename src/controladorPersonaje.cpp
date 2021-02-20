@@ -186,5 +186,12 @@ void ControladorPersonaje::morir(){
     personaje = 0;
 }
 
+int ControladorPersonaje::conocerDefensa(){
+    if (esta_defendiendo){
+        return 1;
+    }
+    else
+        return 0;
+}
 
 ControladorPersonaje::~ControladorPersonaje(){}

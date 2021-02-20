@@ -496,17 +496,25 @@ void Juego::guardarPartida(int jugador) {
             if (controladores[j]->devolverPersonaje() != 0) {
                 string tipo;
                 string nombre;
+                string adicional;
                 string linea;
 
                 string fila = to_string(controladores[j]->devolverUbicacion()[0]);
                 string columna = to_string (controladores[j]->devolverUbicacion()[1]);
                 Personaje *actual = controladores[j]->devolverPersonaje();
                 tipo = to_string(actual->devolverTipo());
+                if (actual->devolverTipo() == TIPO_AGUA){
+                     adicional = to_string(actual->obtenerAlimentos());
+                }
+                else {
+                    adicional = to_string(controladores[j]->conocerDefensa());
+                }
+
                 nombre = actual->obtenerNombre();
                 string escudo = to_string(actual->obtenerEscudo());
                 string vida = to_string(actual->obtenerVida());
                 string energia = to_string(actual->obtenerEnergia());
-                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia;
+                linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia+ "," +adicional;
                 archivoPartida << linea + "\n" ;
 
             }

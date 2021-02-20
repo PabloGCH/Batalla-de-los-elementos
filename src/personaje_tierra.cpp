@@ -22,7 +22,7 @@ bool PersonajeTierra::alimentar() {
             energiaFinal = obtenerEnergia();
         }
         std::cout << obtenerNombre() << " se alimenta de hierbas. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
-        return false;
+        return true;
     }
 }
 

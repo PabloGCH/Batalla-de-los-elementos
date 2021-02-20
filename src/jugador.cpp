@@ -20,25 +20,32 @@ ControladorPersonaje** Jugador::devolverControladores(){
 	return controladores;
 }
 
+void Jugador::asignar_controlador(ControladorPersonaje* controlador, int numPer){
+    controladores[numPer] = controlador;
+}
+
 void Jugador::asignar_controlador(ControladorPersonaje* controlador){
-	int i = 0;
-	bool salir = false;
-	while(i < 3 && !salir){
-		if(controladores[i] != 0){
-			i++;
-		} else{
-			controladores[i] = controlador;
-			salir = true;
-		}
-	}
-	if(i == 3){
-		cout << "Ya se asignaron todos los controladores(de personajes)" << endl;
-	}
+    int i = 0;
+    bool salir = false;
+    while(!salir){
+        if(controladores[i] == 0){
+            controladores[i] = controlador;
+            salir = true;
+        }
+        if(i == 3){
+            cout << "ERROR TODOS LOS CONTROLADORES FUERON ASIGNADOS" << endl;
+            salir = true;
+        }
+        i++;
+    }
+
 }
 
 Jugador::~Jugador() {
 	for(int i = 0; i < 3; i++){
-		delete controladores[i];
+        if(controladores[i] != 0){
+            delete controladores[i];
+        }
 	}
 }
 
@@ -47,16 +54,18 @@ void Jugador::matarPersonajes(){
 	Personaje* personajeEnemigo;
     Personaje* personaje;
 	for(int i = 0; i < 3; i++){
-		personajeEnemigo = controladoresOponente[i]->devolverPersonaje();
-        personaje = controladores[i]->devolverPersonaje();
-		if(personaje != 0){
+		if(controladores[i] != 0){
+            personaje = controladores[i]->devolverPersonaje();
 			if(personaje->obtenerVida() <= 0){
-				controladores[i]->morir();
+                controladores[i]->devolverCasillero()->setCharacter(0);
+				controladores[i] = 0;
 			}
 		}
-        if(personajeEnemigo != 0){
+        if(controladoresOponente[i] != 0){
+            personajeEnemigo = controladoresOponente[i]->devolverPersonaje();
 			if(personajeEnemigo->obtenerVida() <= 0){
-				controladoresOponente[i]->morir();
+                controladoresOponente[i]->devolverCasillero()->setCharacter(0);
+				controladoresOponente[i] = 0;
 			}
 		}
 	}
@@ -163,8 +172,8 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
 void Jugador::imprimirPersonajes(ControladorPersonaje** cont){
     Personaje* aux;
     for(int i = 0; i < 3; i++){
-        aux = cont[i]->devolverPersonaje();
-        if(aux != 0){
+        if(cont[i] != 0){
+            aux = cont[i]->devolverPersonaje();
             cout << aux->obtenerNombre() << ", VIDA: " << aux->obtenerVida() << ", ENERGIA: " << aux->obtenerEnergia() << ", ESCUDO: " << aux->obtenerEscudo() << endl;
         }
     }
@@ -191,7 +200,7 @@ void Jugador::turno(int actual){
     bool exito1 = false;
     bool exito2 = false;
     for (int i = 0; i < 3; i++){
-        if (controladores[i]->devolverPersonaje() != 0){
+        if (controladores[i] != 0){
             imprimirEstados(actual);
             tablero->printBoard();
             // chequeo si es un personaje de tierra defendiendose
@@ -234,7 +243,7 @@ void Jugador::turno(int actual){
 
 void Jugador::curarPersonajes(ControladorPersonaje* cont){
 	for (int i = 0; i < 3; i++) {
-		if (controladores[i] != cont) {
+		if (controladores[i] != cont && controladores[i] != 0) {
 			controladores[i]->se_curo();
 		}
 	}

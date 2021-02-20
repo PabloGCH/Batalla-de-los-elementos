@@ -63,8 +63,10 @@ bool ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
         }
         Personaje* enemigo = tablero->returnItem(posicionAtacada)->getCharacter();
         for(int i = 0; i < 3; i++){
-            if(enemigo == ControladoresEnemigo[i]->devolverPersonaje()){
-                enemigo -> recibirAtaque("agua", 0);
+            if(ControladoresEnemigo[i] != 0){
+                if(enemigo == ControladoresEnemigo[i]->devolverPersonaje()){
+                    enemigo -> recibirAtaque("agua", 0);
+                }
             }
         }
         return true;

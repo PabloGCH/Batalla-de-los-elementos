@@ -108,9 +108,14 @@ class Juego{
         // POS: Almacena 'elemento', 'nombre', 'escudo', y 'vida' en variables y convierte estas ultimas 2 a INT.
         void procesarDatosPersonaje(ifstream &archivo, string &elemento, string &nombre, string &escudo, string &vida, int &escudoEntero, int &vidaEntero);
         
-        // PRE: Recibe un numero indicando el jugador, y un personaje para asignarle
-        // POS: le asigna el personaje (con un controlador adecuado) al personaje indicado
-        void asignarPersonaje(int numJugador, Personaje* personaje);
+        // PRE: Recibe un entero indicando el jugador, otro indicando el numero de personaje
+        // y un personaje para asignarle
+        // POS: le asigna el personaje a un controlador, y guarda ese controlador
+        // en el vector de controladores del jugador indicado por numJugador
+        // en el espacio indicado por numPer (0, 1, 2), si num per es 3 asigna el personaje
+        // y su controlador en el primer puntero vacio que encuentre en el vector controladores
+        // del jugador
+        void asignarPersonaje(int numJugador, int numPer, Personaje* personaje);
 
         // POS: si la partida no termino devuelve 0, si gano el jugador 1 devuelve 1
         // y si gano el jugador 2 devuelve 2

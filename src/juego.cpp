@@ -39,30 +39,35 @@ void Juego::cargarPartida(ifstream &partidaGuardada){
     for(int i = 0; i < 2; i++){
         for(int j = 0; j < 3; j++){
             getline(partidaGuardada, tipo, ',');
-            getline(partidaGuardada, nombre, ',');
-            getline(partidaGuardada, escudo, ',');
-            getline(partidaGuardada, vida, ',');
-            getline(partidaGuardada, energia, ',');
-            getline(partidaGuardada, fila, ',');
-            getline(partidaGuardada, columna, ',');
-            getline(partidaGuardada, extra, '\n');
-            escudoEntero = stoi(escudo);
-            vidaEntero = stoi(vida);
-            extraEntero = stoi(extra);
-            ubicacion[0] = stoi(fila);
-            ubicacion[1] = stoi(columna);
-            aux = crearPersonaje(tipo, nombre, escudoEntero, vidaEntero);
-            diccionario.insertarHoja(aux);
-            if(tipo == "Tierra"){
-                if(extraEntero == 1){
-                    aux->setEstaDefendiendo();
+            if(tipo != "0"){
+                getline(partidaGuardada, nombre, ',');
+                getline(partidaGuardada, escudo, ',');
+                getline(partidaGuardada, vida, ',');
+                getline(partidaGuardada, energia, ',');
+                getline(partidaGuardada, fila, ',');
+                getline(partidaGuardada, columna, ',');
+                getline(partidaGuardada, extra, '\n');
+                escudoEntero = stoi(escudo);
+                vidaEntero = stoi(vida);
+                extraEntero = stoi(extra);
+                ubicacion[0] = stoi(fila);
+                ubicacion[1] = stoi(columna);
+                aux = crearPersonaje(tipo, nombre, escudoEntero, vidaEntero);
+                diccionario.insertarHoja(aux);
+                if(tipo == "Tierra"){
+                    if(extraEntero == 1){
+                        aux->setEstaDefendiendo();
+                    }
+                } else if(tipo == "Agua"){
+                    aux->asignarAlimentos(extraEntero);
                 }
-            } else if(tipo == "Agua"){
-                aux->asignarAlimentos(extraEntero);
+                asignarPersonaje(i, j, aux);
+                aux->asignarJugador(i + 1);
+                jugadores[i].devolverControladores()[j]->ubicarPersonaje(ubicacion);
+            } else {
+                jugadores[i].devolverControladores()[j] = 0;
+                getline(partidaGuardada, tipo, '\n');
             }
-            asignarPersonaje(i, aux);
-            aux->asignarJugador(i);
-            jugadores[i].devolverControladores()[j]->ubicarPersonaje(ubicacion);
         }
     }
     turnoActual = primerJugadorEntero - 1;
@@ -271,27 +276,28 @@ void Juego::procesarDatosPersonaje(ifstream &archivo, string &elemento, string &
     vidaEntero = stoi(vida);
 }
 
-void Juego::asignarPersonaje(int numJugador, Personaje* personaje){
+void Juego::asignarPersonaje(int numJugador, int numPer, Personaje* personaje){
     int tipo = personaje->devolverTipo();
     ControladorPersonaje* controlador;
     switch (tipo)
     {
     case TIPO_AGUA:
         controlador = new ControladorAgua(personaje, &tablero);
-        jugadores[numJugador].asignar_controlador(controlador);
         break;
     case TIPO_TIERRA:
         controlador = new ControladorTierra(personaje, &tablero);
-        jugadores[numJugador].asignar_controlador(controlador);
         break;
     case TIPO_FUEGO:
         controlador = new ControladorFuego(personaje, &tablero);
-        jugadores[numJugador].asignar_controlador(controlador);
         break;
     case TIPO_AIRE:
         controlador = new ControladorAire(personaje, &tablero);
-        jugadores[numJugador].asignar_controlador(controlador);
         break;
+    }
+    if(numPer < 3){
+        jugadores[numJugador].asignar_controlador(controlador, numPer);
+    } else if(numPer = 3){
+        jugadores[numJugador].asignar_controlador(controlador);
     }
     personaje->seleccionar();
 }
@@ -308,7 +314,7 @@ bool Juego::seleccionarPersonaje(int numjugador){
     if(nodo != 0){
         personaje = nodo->obtenerDato();
         if(personaje->estaSeleccionado() == false){
-            asignarPersonaje(numjugador, personaje);
+            asignarPersonaje(numjugador, 3, personaje);
             personaje->asignarJugador(numjugador + 1);
             personajeSeleccionado = true;
         }
@@ -371,7 +377,7 @@ int Juego::finPartida(){
         personajesPerdidos = 0;
         ControladorPersonaje** controladores = jugadores[i].devolverControladores();
         for(int j = 0; j < 3; j++){
-            if(controladores[j]->devolverPersonaje() == 0){
+            if(controladores[j] == 0){
                 personajesPerdidos++;
             }
         }
@@ -565,7 +571,7 @@ void Juego::guardarPartida(int jugador) {
                 string vida = to_string(actual->obtenerVida());
                 string energia = to_string(actual->obtenerEnergia());
                 linea = tipo + "," + nombre + "," + escudo + "," + vida + "," + energia + "," + fila + "," + columna + "," + adicional;
-                archivoPartida << linea + "\n" ;
+                archivoPartida << linea + ",\n" ;
 
             }
             else

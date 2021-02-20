@@ -48,6 +48,9 @@ class ControladorPersonaje
         //POS: devuelve un ptr con la ubicacion del personaje
         int* devolverUbicacion();
         //PRE:
+        //POS: devuelve el casillero donde se encuentra el personaje
+        Casillero* devolverCasillero();
+        //PRE:
         //POS: devuelve puntero a personaje
         Personaje* devolverPersonaje();
         // PRE: recibe las coordenadas del destino
@@ -58,8 +61,6 @@ class ControladorPersonaje
         // Retorna false si no lo puede ubicar
         // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
         bool ubicarPersonaje(int* destino);
-        // POS: fija personaje y el casillero en el que esta en 0
-        void morir();
         // PRE:
         // POS: Ataca
         virtual bool atacar(ControladorPersonaje** ControladoresEnemigo) = 0;

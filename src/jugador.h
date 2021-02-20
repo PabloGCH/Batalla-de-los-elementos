@@ -33,7 +33,15 @@ public:
 	// PRE: recibe un puntero tablero
 	// POS: asigna el tablero al atributo tablero de jugador
 	void asignarTablero(Tablero* tablero);
+	// PRE: recibe un controlador y un entero
+	// POS: Asigna el controlador en el vector controladores en el
+	// espacio indicado por el entero (USAR EN CARGAR PARTIDA)
+	void asignar_controlador(ControladorPersonaje* controlador, int numPer);
+	// PRE: recibe un controlador
+	// POS: Asigna el controlador en el primer espacio
+	// libre del vector controladores (USAR EN COMENZAR PARTIDA)
 	void asignar_controlador(ControladorPersonaje* controlador);
+
     bool procesarOpcion(int opcionElegida, int etapa, int personajeActual);
     void turno(int actual);
 	void asignar_rival(Jugador* rival);

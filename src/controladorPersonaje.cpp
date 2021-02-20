@@ -181,9 +181,8 @@ bool ControladorPersonaje::moverse(int* destino){
     return exito;
 }
 
-void ControladorPersonaje::morir(){
-    tablero->returnItem(ubicacion)->setCharacter(0);
-    personaje = 0;
+Casillero* ControladorPersonaje::devolverCasillero(){
+    return ptrCasillero;
 }
 
 int ControladorPersonaje::conocerDefensa(){

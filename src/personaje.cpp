@@ -21,7 +21,7 @@ int Personaje::devolverJugador(){
 }
 
 void Personaje::asignarEnergia(){
-    energia  = 100;
+    energia  = 10;
 }
 
 string Personaje::obtenerNombre(){

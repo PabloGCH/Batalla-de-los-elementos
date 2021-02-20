@@ -84,11 +84,10 @@ int PersonajeAgua::devolverTipo(){
     return TIPO_AGUA;
 }
 
-<<<<<<< HEAD
 void PersonajeAgua::asignarVecesAlimentado(int veces){
     vecesAlimentado = veces;
-=======
+}
+
 int PersonajeAgua::obtenerAlimentos() {
     return vecesAlimentado;
->>>>>>> 954386d6ecb296a397108b5bf70461a192a54d48
 }

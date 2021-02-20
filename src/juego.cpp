@@ -10,6 +10,8 @@ Juego::Juego(){
     if(partidaGuardada.fail()){
         partidaGuardada.close();
         cout << "No se encontro una partida guardada." << endl;
+        partidaCargada = false;
+        turnoActual = 0;
         ifstream archivo("../res/personajes.csv");
         if(archivo.is_open()){
             procesarArchivo(archivo);
@@ -20,6 +22,7 @@ Juego::Juego(){
     } else{
         cout << "Se encontro una partida guardada." << endl;
         cargarPartida(partidaGuardada);
+        partidaCargada = true;
         partidaGuardada.close();
     }
     srand(time(0));
@@ -28,7 +31,7 @@ Juego::Juego(){
 void Juego::cargarPartida(ifstream &partidaGuardada){
     int primerJugadorEntero = 0, escudoEntero, vidaEntero, energiaEntero;
     int tipoEntero, filaEntero, columnaEntero, extraEntero;
-    int ubicacion[0];
+    int ubicacion[2];
     string primerJugador, nombre, escudo, vida, energia, tipo, fila, columna, extra;
     Personaje* aux;
     getline(partidaGuardada, primerJugador, '\n');
@@ -62,15 +65,18 @@ void Juego::cargarPartida(ifstream &partidaGuardada){
             jugadores[i].devolverControladores()[j]->ubicarPersonaje(ubicacion);
         }
     }
-    partida(primerJugadorEntero - 1);
+    turnoActual = primerJugadorEntero - 1;
 }
 
 
 void Juego::iniciar(){
-    // si hay partida guardada
-
-    // si no hay partida guardada
-    opcionesPersonaje();
+    if(partidaCargada){
+        // si hay partida guardada
+        partida();
+    } else {
+        // si no hay partida guardada
+        opcionesPersonaje();
+    }
 }
 
 char Juego::recibirOpcion(char maxOpciones){
@@ -345,7 +351,7 @@ void Juego::comenzarJuego(){
         jug++;
     }
     if(!salir){
-        partida(0);
+        partida();
     }
 }
 
@@ -454,13 +460,13 @@ bool Juego::preguntarGuardado(int jugador) {
     return guardar;
 }
 
-void Juego::partida(int jug) {
+void Juego::partida() {
     int actual; 
     int segundo;
     int terminar = 0;
     int opcion = 0;
     bool guardado = false;
-    if(jug == 0){
+    if(!partidaCargada){
         actual = rand() % 2;
         if(actual == 0){
             segundo = 1;
@@ -472,7 +478,7 @@ void Juego::partida(int jug) {
         ubicarPersonajes(actual);
         ubicarPersonajes(segundo);
     } else {
-        actual = jug;
+        actual = turnoActual;
         if(actual == 0){
             segundo = 1;
         }
@@ -554,7 +560,6 @@ void Juego::guardarPartida(int jugador) {
                 else {
                     adicional = to_string(controladores[j]->conocerDefensa());
                 }
-
                 nombre = actual->obtenerNombre();
                 string escudo = to_string(actual->obtenerEscudo());
                 string vida = to_string(actual->obtenerVida());
@@ -564,11 +569,9 @@ void Juego::guardarPartida(int jugador) {
 
             }
             else
-                archivoPartida << 0;
+                archivoPartida << 0 + "\n";
         }
-
     }
-    cout << "Partida guardad con éxito" << endl;
+    cout << "Partida guardada con éxito" << endl;
     archivoPartida.close();
-
 }

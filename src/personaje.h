@@ -45,6 +45,10 @@ public:
     //POS: retorna el jugador
     int devolverJugador();
 
+    // PRE: recibe un entero
+    // POS: asigna ese entero a variable vida
+    void asignarVida(int num);
+
     // Metodo abstracto. Cada clase hija debe implementar su metodo alimentar.
     virtual bool alimentar() = 0;
 

@@ -93,4 +93,8 @@ void Personaje::recuperarEnergia(){
     cout << nombre << " recupero " << cambio << " de energia." << endl;
 }
 
+void Personaje::asignarVida(int num){
+    this->vida = num;
+}
+
 Personaje::~Personaje(){}

@@ -1,7 +1,7 @@
-2
-Agua,Burbuja,0,80,18,4,4,1
+1
+Agua,Burbuja,0,80,8,4,4,1
 Fuego,Chispita,2,30,8,5,5,0
-Tierra,Cuarzo,3,70,3,6,6,1
+Tierra,Cuarzo,1,70,8,6,6,0
 Tierra,Onix,2,10,3,1,1,1
 Aire,Pedito,2,90,13,2,2,0
 Aire,Ventisca,2,80,13,3,3,0

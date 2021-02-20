@@ -41,9 +41,6 @@ public:
     //POS: Retorna entero que indica el tipo
     int devolverTipo();
 
-    //PRE:
-    //POS: Retorna la cantidad de veces que fue alimentado el perosnaje
-    int obtenerAlimentos();
 };
 
 

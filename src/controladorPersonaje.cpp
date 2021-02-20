@@ -186,6 +186,7 @@ void ControladorPersonaje::morir(){
     personaje = 0;
 }
 
+<<<<<<< HEAD
 int ControladorPersonaje::conocerDefensa(){
     if (personaje->seEstaDefendiendo()){
         return 1;
@@ -193,5 +194,7 @@ int ControladorPersonaje::conocerDefensa(){
     else
         return 0;
 }
+=======
+>>>>>>> parent of c7fd1b0... Merge branch 'main' of https://github.com/PabloGCH/tp3Algo into main
 
 ControladorPersonaje::~ControladorPersonaje(){}

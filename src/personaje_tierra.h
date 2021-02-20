@@ -31,8 +31,6 @@ public:
 
     //POS: Retorna entero que indica el tipo
     int devolverTipo();
-
-    int obtenerAlimentos();
 };
 
 #endif //ESCRITORIO_PERSONAJE_TIERRA_H

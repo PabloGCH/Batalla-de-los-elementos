@@ -87,6 +87,7 @@ int PersonajeAgua::devolverTipo(){
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void PersonajeAgua::asignarVecesAlimentado(int veces){
     vecesAlimentado = veces;
@@ -107,4 +108,8 @@ void PersonajeAgua::asignarVecesAlimentado(int veces){
 int PersonajeAgua::obtenerAlimentos() {
     return vecesAlimentado;
 >>>>>>> 03c2050... Solucionados algunos errores despues del merge
+=======
+void PersonajeAgua::asignarVecesAlimentado(int veces){
+    vecesAlimentado = veces;
+>>>>>>> parent of c7fd1b0... Merge branch 'main' of https://github.com/PabloGCH/tp3Algo into main
 }

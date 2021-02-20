@@ -47,3 +47,7 @@ bool PersonajeAire::defender() {
 int PersonajeAire::devolverTipo(){
     return TIPO_AIRE;
 }
+
+int PersonajeAire::obtenerAlimentos() {
+    return 0;
+}

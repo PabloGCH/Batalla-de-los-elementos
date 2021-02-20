@@ -93,3 +93,7 @@ bool PersonajeTierra::defender(){
 int PersonajeTierra::devolverTipo(){
     return TIPO_TIERRA;
 }
+
+int PersonajeTierra::obtenerAlimentos() {
+    return 0;
+}

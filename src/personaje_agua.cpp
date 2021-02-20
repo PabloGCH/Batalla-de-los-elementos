@@ -83,3 +83,7 @@ bool PersonajeAgua::defender(){
 int PersonajeAgua::devolverTipo(){
     return TIPO_AGUA;
 }
+
+int PersonajeAgua::obtenerAlimentos() {
+    return vecesAlimentado;
+}

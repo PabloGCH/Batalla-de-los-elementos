@@ -90,3 +90,7 @@ bool PersonajeFuego::defender(){
 int PersonajeFuego::devolverTipo(){
     return TIPO_FUEGO;
 }
+
+int PersonajeFuego::obtenerAlimentos() {
+    return 0;
+}

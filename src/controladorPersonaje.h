@@ -70,6 +70,8 @@ class ControladorPersonaje
         void se_curo();
         //Pos: reinicia el escudo del personaje a su valor original
         void reiniciar_escudo();
+        //POS: devuelve un entero dependiendo de si el personaje defendio o no
+        int conocerDefensa();
         virtual ~ControladorPersonaje();
     private:
         // POS: Evalua el coste de los nodos circundantes y guarda su en costo[]

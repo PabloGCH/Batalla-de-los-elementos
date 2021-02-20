@@ -67,7 +67,7 @@ bool ControladorTierra::defensa() {
 	if(seDefiende) {
 		personaje->asignarEstaDefendiendo(true);
 	}
-    return seDefiende;
+    return 0;
 }
 
 ControladorTierra::ControladorTierra(Personaje* personaje, Tablero* tablero) {

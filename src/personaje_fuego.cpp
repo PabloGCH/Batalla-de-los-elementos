@@ -33,8 +33,8 @@ bool PersonajeFuego::alimentar() {
         vidaFinal = obtenerVida();
         recargarEnergia();
         energiaFinal = obtenerEnergia();
-        std::cout << obtenerNombre() << " se alimenta de madera. Recuperó: " << vidaFinal - vidaInicial << " puntos de vida.\nVIDA: " << obtenerVida() << std::endl;
-        std::cout << obtenerNombre() << " Recuperó: " << energiaFinal - energiaInicial  << " puntos de energía.\nENERGIA: " << obtenerEnergia() << std::endl;
+        std::cout << obtenerNombre() << " se alimenta de madera. Recupero " << vidaFinal - vidaInicial << " puntos de vida";
+        std::cout << " Y " << energiaFinal - energiaInicial  << " puntos de energía." << std::endl;
         return true;
     }else{
         std::cout << obtenerNombre() << " no tiene suficiente madera para alimentarse. Su vida es: " << obtenerVida() << " y su energía es: "<< obtenerEnergia() <<std::endl;
@@ -69,16 +69,17 @@ void PersonajeFuego::recibirAtaque(string tipo, int casosTierra) {
     }
     vida -= danio;
     cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<< danio <<endl;
-    cout<<"VIDA: "<< obtenerVida()<<endl;
-
 }
 
 bool PersonajeFuego::defender(){
+    int vidaInicial;
+    int vidaFinal;
     if (obtenerEnergia() >= 10){
         energia -= 10;
+        vidaInicial = vida;
         vida += 10;
-        cout<<"El personaje "<< obtenerNombre() <<" aumentó su vida"<<endl;
-        cout<<"VIDA: "<< obtenerVida() <<endl;
+        vidaFinal = vida;
+        cout<<"El personaje "<< obtenerNombre() <<" utilizo defensa. Perdio 10 puntos de energia y se curo " << vidaFinal - vidaInicial << " puntos de vida" <<endl;
         return true;
     }
     else{

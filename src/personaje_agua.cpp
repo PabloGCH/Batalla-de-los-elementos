@@ -9,7 +9,7 @@ bool PersonajeAgua::alimentar() {
     int energiaInicial;
     int energiaFinal;
     if(vecesAlimentado == LIMITE_ALIMENTACION){
-        std::cout << "ATENCION!!!. " << obtenerNombre() << " no puede alimentarse mas.\nENERGIA: " << obtenerEnergia() << std::endl;
+        cout << "ATENCION!!!. " << obtenerNombre() << " no puede alimentarse mas." << endl;
         return false;
     }
     if(vecesAlimentado < LIMITE_ALIMENTACION && energia < MAX_ENERGIA) {
@@ -22,10 +22,10 @@ bool PersonajeAgua::alimentar() {
             energiaFinal = obtenerEnergia();
         }
         vecesAlimentado++;
-        std::cout << obtenerNombre() << " se alimenta de Plancton. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        std::cout << obtenerNombre() << " se alimenta de Plancton. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia." << std::endl;
         return true;
     }else{
-        std::cout << obtenerNombre() << " llego al maximo posible de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        std::cout << obtenerNombre() << " llego al maximo posible de energia." << std::endl;
         return false;
     }
 
@@ -54,10 +54,10 @@ void PersonajeAgua::recibirAtaque(string tipo, int casosTierra) {
     }
     vida -= danio;
     cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<< danio <<endl;
-    cout<<"VIDA: "<< obtenerVida() <<endl;
 }
 
 bool PersonajeAgua::defender(){
+    int vidaInicial = vida, vidaFinal;
     if (obtenerEnergia() >= DEFENSA_AGUA && obtenerVida() <= MAX_VIDA){
         restarEnergia(DEFENSA_AGUA);
         if (obtenerVida() + 50 > MAX_VIDA){
@@ -66,8 +66,8 @@ bool PersonajeAgua::defender(){
         else{
             vida += 50;
         }
-        cout << "El personaje " << obtenerNombre() << " utilizó aumentó su vida" << endl;
-        cout << "VIDA: "<< obtenerVida()  << endl;
+        vidaFinal = vida;
+        cout << "El personaje " << obtenerNombre() << " utilizó defensa y se curo " << vidaFinal - vidaInicial << " puntos de vida" <<endl;
         return true;
     }
     else if (obtenerEnergia() < DEFENSA_AGUA){

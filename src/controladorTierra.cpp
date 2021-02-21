@@ -29,6 +29,7 @@ int ControladorTierra::evaluarDir(Casillero* dir){
 }
 
 bool ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
+    system("clear");
     if (personaje -> obtenerEnergia() >= 6 ) {
         personaje->restarEnergia(6);
         for(int i = 0; i < 3; i++){
@@ -63,6 +64,7 @@ bool ControladorTierra::atacar(ControladorPersonaje** ControladoresEnemigo){
 }
 
 bool ControladorTierra::defensa() {
+    system("clear");
 	bool seDefiende = personaje->defender();
     return seDefiende;
 }

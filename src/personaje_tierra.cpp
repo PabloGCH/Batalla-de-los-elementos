@@ -21,7 +21,7 @@ bool PersonajeTierra::alimentar() {
             energia += ALIMENTO_TIERRA;
             energiaFinal = obtenerEnergia();
         }
-        std::cout << obtenerNombre() << " se alimenta de hierbas. Recuperó: " << energiaFinal - energiaInicial << " puntos de energia.\nENERGIA: " << obtenerEnergia() << std::endl;
+        std::cout << obtenerNombre() << " se alimento de hierbas y recuperó " << energiaFinal - energiaInicial << " puntos de energia" << std::endl;
         return true;
     }
 }
@@ -72,7 +72,6 @@ void PersonajeTierra::recibirAtaque(string tipo, int casosTierra) {
     }
     vida -= danio;
     cout<<"El personaje "<< obtenerNombre() <<" recibió un daño de "<< danio <<endl;
-    cout<<"VIDA: "<< obtenerVida() <<endl;
 }
 
 
@@ -80,8 +79,7 @@ bool PersonajeTierra::defender(){
     if (obtenerEnergia() >= 5){
         energia -= 5;
         escudo += 2;
-        cout <<"El personaje "<< obtenerNombre()  <<" aumentó su escudo " << endl;
-        cout <<"ESCUDO: "<< obtenerEscudo() << endl;
+        cout <<"El personaje "<< obtenerNombre()  <<" utilizo defensa, aumentando su escudo en 2 puntos " << endl;
         estaDefendiendo = true;
         return true;
     }

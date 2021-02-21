@@ -29,6 +29,7 @@ int ControladorAire::evaluarDir(Casillero* dir){
 }
 
 bool ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
+    system("clear");
     if(personaje->obtenerEnergia() >= ATAQUE_AIRE){
         personaje->restarEnergia(ATAQUE_AIRE);
         for(int i = 0; i < 3; i++){
@@ -45,15 +46,15 @@ bool ControladorAire::atacar(ControladorPersonaje** ControladoresEnemigo){
 
 bool ControladorAire::defensa() {
 	bool seDefiende = personaje->defender();
+    bool ubicar = false;
 	if (seDefiende){
-        bool ubicar = false;
 		while ( !ubicar ) {
             cout << "Ingrese la ubicacion donde se movera: " << endl;
             cout << "Fila: " ;
             cin >> ubicacion[0];
             cout << "" << endl;
             while (ubicacion[0] > 8 || ubicacion[0] < 1  ){
-                cout << "Ingrese la ubicacion donde se movera: " << endl;
+                cout << "Ingrese un valor valido" << endl;
                 cout << "Fila: " ;
                 cin >> ubicacion[0];
                 cout << "" << endl;
@@ -70,8 +71,11 @@ bool ControladorAire::defensa() {
             ptrCasillero->setCharacter(0);
             ubicar = ubicarPersonaje(ubicacion);
         }
-	}
-
+        system("clear");
+        cout << personaje->obtenerNombre() << " utilizo defensa y volo a otra zona del mapa" << endl;
+	} else {
+        cout << personaje->obtenerNombre() <<" no cuenta con la energía necesaria para defenderse"<<endl;
+    }
     return seDefiende;
 }
 

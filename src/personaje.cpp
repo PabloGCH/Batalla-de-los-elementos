@@ -55,11 +55,13 @@ void Personaje::restarEnergia(int puntos) {
 
 void Personaje::curar() {
 	vida += 10;
+    cout << nombre << " se curo 10 puntos de vida" << endl;
 }
 
 void Personaje::bajar_escudo() {
 	escudo -= 2;
     estaDefendiendo = false;
+    cout << nombre << " dejo de defenderse, su escudo se reducio en 2 puntos" << endl;
 }
 
 void Personaje::perder_vida() {

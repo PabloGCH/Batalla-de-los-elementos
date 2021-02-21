@@ -18,7 +18,12 @@ using namespace std;
 
 class Juego{
     public:
+
+        // POS: corrre el juego
         void iniciar();
+        Juego();
+        ~Juego();
+    private:
 
         // PRE: -
         // POS: agrega un nuevo personaje al diccionario.
@@ -40,10 +45,6 @@ class Juego{
         // POS: permite a un jugador seleccionar un personaje
         // si la seleccion tiene exito devuelve true, y sino devuelve false
         bool seleccionarPersonaje(int numJugador);
-
-
-        Juego();
-    private:
 
         // PRE: recibe un archivo de partida guardada
         // POS: carga la partida

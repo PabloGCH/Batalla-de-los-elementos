@@ -42,6 +42,7 @@ bool ControladorAgua::comprobarPosicon(int posicionAtacada[2]){
 }
 
 bool ControladorAgua::defensa() {
+    system("clear");
 	bool seDefiende = personaje->defender();
 	return seDefiende;
 }
@@ -62,14 +63,14 @@ bool ControladorAgua::atacar(ControladorPersonaje** ControladoresEnemigo){
             verificado = comprobarPosicon(posicionAtacada);
         }
         Personaje* enemigo = tablero->returnItem(posicionAtacada)->getCharacter();
-        for(int i = 0; i < 3; i++){
-            if(ControladoresEnemigo[i] != 0){
-                if(enemigo == ControladoresEnemigo[i]->devolverPersonaje()){
-                    enemigo -> recibirAtaque("agua", 0);
-                }
-            }
+        system("clear");
+        if(enemigo->devolverJugador() != personaje->devolverJugador()){
+            enemigo -> recibirAtaque("agua", 0);
+            return true;
+        } else{
+            cout << "No se pueden atacar personajes propios" << endl;
+            return false;
         }
-        return true;
     }
     else{
         cout << "El personaje no cuenta con la energia necesaria para atacar " << endl;

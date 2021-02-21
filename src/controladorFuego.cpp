@@ -29,6 +29,7 @@ int ControladorFuego::evaluarDir(Casillero* dir){
 }
 
 bool ControladorFuego::atacar(ControladorPersonaje** ControladoresEnemigo){
+    system("clear");
     if(this->personaje->obtenerEnergia() >= ATAQUE_FUEGO){
         this->personaje->restarEnergia(ATAQUE_FUEGO);
         for(int i = 0; i < 3; i++) {

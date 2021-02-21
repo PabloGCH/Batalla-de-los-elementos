@@ -6,7 +6,7 @@ PersonajeAire::PersonajeAire(string nombre, int escudo, int vida) : Personaje(no
 }
 
 bool PersonajeAire::alimentar(){
-    std::cout << obtenerNombre() << " no se alimenta.\nENERGIA: " << obtenerEnergia() << std::endl;
+    std::cout << obtenerNombre() << " no se alimenta" << std::endl;
     return false;
 }
 
@@ -27,7 +27,6 @@ void PersonajeAire::recibirAtaque(string tipo, int casosTierra) {
     }
     vida -= danio;
     cout << "El personaje "<< obtenerNombre() <<" recibió un daño de " << danio << endl;
-    cout <<"VIDA: "<< obtenerVida() << endl ;
 }
 
 bool PersonajeAire::defender() {

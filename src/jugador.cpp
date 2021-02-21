@@ -124,6 +124,7 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
         case 1:
             switch (opcionElegida) {
                 case 1:
+                    system("clear");
                     return controladores[personajeActual]->devolverPersonaje()->alimentar();
                 case 2:
                     controladores[personajeActual]->encontrarCaminos();
@@ -146,8 +147,10 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                         cin >> ubicacion[1];
                         cout << "" << endl;
                     }
+                    system("clear");
                     return controladores[personajeActual]->moverse(ubicacion);
                 case 3:
+                    system("clear");
                     cout << "Decidiste pasar a la siquiente etapa " << endl;
                     return true;
             }
@@ -164,6 +167,7 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     }
                     return defensa;
                 case 3:
+                    system("clear");
                     cout << "Usted decidió terminar el turno " << endl;
                     return true;
             }
@@ -204,6 +208,7 @@ void Jugador::turno(int actual){
     bool exito2 = false;
     for (int i = 0; i < 3; i++){
         if (controladores[i] != 0){
+            cout << "Turno del jugador " << actual  + 1 << endl << endl;
             // chequeo si es un personaje de tierra defendiendose
             detenerDefensa(controladores[i]);
             // chequeo si es un personaje de aire y si es asi recupera energia
@@ -216,6 +221,8 @@ void Jugador::turno(int actual){
             exito1 = procesarOpcion(opcion, 1, i);
             while ( !exito1 ){
                 cout << "El proceso seleccionado no tuvo exito, por favor seleccione otra opcion o pase a la siquiente etapa" << endl;
+                imprimirEstados(actual);
+                tablero->printBoard();
                 mostrarOpcionesPrimerEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito1 = procesarOpcion(opcion, 1, i);
@@ -223,13 +230,17 @@ void Jugador::turno(int actual){
             // Verifico si hay personajes muertos y si es asi los
             // retiro del tablero
             matarPersonajes();
-            tablero->printBoard();
             // Imprimir estado de los personajes (agregar)
+            cout << "Turno del jugador " << actual  + 1 << endl << endl;
+            imprimirEstados(actual);
+            tablero->printBoard();
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
             exito2 = procesarOpcion(opcion, 2, i);
             while ( !exito2 ){
                 cout << "El proceso elegido no realizó ningún cambio, seleccione otra opcion o termine el turno" << endl;
+                imprimirEstados(actual);
+                tablero->printBoard();
                 mostrarOpcionesSegudaEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito2 = procesarOpcion(opcion, 2, i);

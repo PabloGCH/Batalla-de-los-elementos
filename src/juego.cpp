@@ -7,6 +7,7 @@ Juego::Juego(){
         jugadores[i].asignarTablero(&tablero);
     }
     ifstream partidaGuardada("../res/partida.csv");
+    system("clear");
     if(partidaGuardada.fail()){
         partidaGuardada.close();
         cout << "No se encontro una partida guardada." << endl;
@@ -150,18 +151,15 @@ void Juego::opcionesPersonaje(){
             salir = true;
             break;
         }
-        cin.ignore();
     }
 }
 
 void Juego::mostrarDetalle() {
     string nombreBuscado;
     Nodo* encontrado;
-    cin.ignore();
     cout << "\tMOSTRAR DETALLE DE PERSONAJE." << endl <<
          "Ingrese el nombre del personaje a buscar en el diccionario: ";
     leerCadena(nombreBuscado);
-    system("clear");
     encontrado = diccionario.buscarPersonaje(nombreBuscado);
     while(!encontrado){
         cout << "\tEl personaje que intenta buscar NO existe." << endl
@@ -169,13 +167,15 @@ void Juego::mostrarDetalle() {
         mostrarPersonajes();
         cout << "Ingrese el nombre del personaje a buscar en el diccionario: ";
         leerCadena(nombreBuscado);
-        system("clear");
         encontrado = diccionario.buscarPersonaje(nombreBuscado);
     }
+    system("clear");
     encontrado->obtenerDato()->mostrarAtributos();
 }
 
 void Juego::mostrarPersonajes(){
+    system("clear");
+    cout << "===============PERSONAJES======================" << endl;
     diccionario.enOrden();
 }
 
@@ -187,16 +187,17 @@ void Juego::agregarPersonaje() {
     cout << "\tAGREGAR PERSONAJE." << endl;
     registrarElemento(elementoAgregar);
 
-    cout << "Ingrese el nombre del nuevo personaje: " << endl;
+    cout << "Ingrese el nombre del nuevo personaje: ";
     leerCadena(nombreAgregar);
     encontrado = diccionario.buscarPersonaje(nombreAgregar);
     while(encontrado){
-            cout << "El personaje que quiere agregar ya existe. Ingrese otro nombre para un nuevo personaje." << endl;
+            cout << "El personaje que quiere agregar ya existe. Ingrese otro nombre para un nuevo personaje: ";
             leerCadena(nombreAgregar);
             encontrado = diccionario.buscarPersonaje(nombreAgregar);
     }
     personajeAgregar = crearPersonaje(elementoAgregar, nombreAgregar);
     diccionario.insertarHoja(personajeAgregar);
+    system("clear");
 }
 
 void Juego::leerCadena(string &cadena){
@@ -244,7 +245,6 @@ Dato Juego::crearPersonaje(string elemento, string nombre, int escudo, int vida)
 }
 
 void Juego::registrarElemento(string &elementoAgregar){
-    cin.ignore();
     cout << "Ingrese el elemento del nuevo personaje ( AGUA, AIRE, TIERRA, FUEGO ): ";
     leerCadena(elementoAgregar);
     while(elementoAgregar != "Agua" && elementoAgregar != "Aire" && elementoAgregar != "Tierra" && elementoAgregar != "Fuego") {
@@ -311,6 +311,7 @@ bool Juego::seleccionarPersonaje(int numjugador){
     cin >> nombre;
     nombreMayuscula(nombre);
     nodo = diccionario.buscarPersonaje(nombre);
+    system("clear");
     if(nodo != 0){
         personaje = nodo->obtenerDato();
         if(personaje->estaSeleccionado() == false){
@@ -332,6 +333,7 @@ void Juego::comenzarJuego(){
     char opcion;
     int per = 0;
     int jug = 0;
+    system("clear");
     while(!salir && jug < 2){
         while(!salir && per < 3){
             imprimirOpcionesComenzar();
@@ -363,10 +365,10 @@ void Juego::comenzarJuego(){
 
 void Juego::eliminarPersonaje() {
     string eliminar;
-    cin.ignore();
     cout << "\tELIMINAR PERSONAJE DE LA LISTA." << endl
          << "Ingrese el nombre del personaje a eliminar: ";
     leerCadena(eliminar);
+    system("clear");
     diccionario.borrarNodo(eliminar);
 }
 
@@ -395,8 +397,8 @@ int Juego::finPartida(){
 void Juego::ubicarPersonajes(int jugador){
     int ubicacion[2];
     ControladorPersonaje** controladores = jugadores[jugador].devolverControladores();
-    cout << "Ubicando los personajes del jugador: " << endl;
     for (int i = 0; i < 3 ; i++){
+        cout << "Ubicando los personajes del jugador: " << jugador + 1<< endl;
         tablero.printBoard();
         bool ubicar = false;
         while ( !ubicar ) {
@@ -409,7 +411,7 @@ void Juego::ubicarPersonajes(int jugador){
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
-                cout << "Ingrese la ubicacion donde iniciara: " << endl;
+                cout << "Ingrese un valor valido: " << endl;
                 cout << "Fila: " ;
                 cin >> ubicacion[0];
                 cout << "" << endl;
@@ -422,11 +424,12 @@ void Juego::ubicarPersonajes(int jugador){
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
-                cout << "Ingrese la ubicacion donde iniciara: " << endl;
-                cout << "Fila: " ;
+                cout << "Ingrese un valor valido: " << endl;
+                cout << "Columna: " ;
                 cin >> ubicacion[1];
                 cout << "" << endl;
             }
+            system("clear");
             ubicar = controladores[i]->ubicarPersonaje(ubicacion);
         }
     }
@@ -436,9 +439,9 @@ bool Juego::preguntarGuardado(int jugador) {
     bool salir = false;
     bool guardar;
     char decision;
-    cout << "Jugador " << jugador << " deseas gaurdar la partida? " << endl;
-    cout << "1. SI" << endl;
-    cout << "2. NO " << endl;
+    cout << "Jugador " << jugador << " deseas guardar la partida? " << endl;
+    cout << "1. Guardar y salir." << endl;
+    cout << "2. Continuar " << endl;
     cout << "Seleccione una opcion: ";
     cin >> decision;
     cout << " "<< endl;
@@ -450,13 +453,14 @@ bool Juego::preguntarGuardado(int jugador) {
                 guardar = true;
                 break;
             case '2' :
+                system("clear");
                 salir = true;
                 guardar = false;
                 break;
             default:
                 cout << "Opción no valida, por favor seleccione una opción válida" << endl;
-                cout << "1. SI" << endl;
-                cout << "2. NO " << endl;
+                cout << "1. Guardar y salir." << endl;
+                cout << "2. Continuar " << endl;
                 cout << "Seleccione una opcion: ";
                 cin >> decision;
                 cout << "" << endl;
@@ -480,9 +484,12 @@ void Juego::partida() {
         else{
             segundo = 0;
         }
-        cout << "Comenzará el jugador " << actual + 1 << endl;
+        cout << "El jugador " << actual + 1 << " tendra el primer turno"<< endl;
         ubicarPersonajes(actual);
         ubicarPersonajes(segundo);
+        cout << "Todos los personajes fueron ubicados" << endl << endl;
+        tablero.printBoard();
+        cout << endl;
     } else {
         actual = turnoActual;
         if(actual == 0){
@@ -521,7 +528,7 @@ void Juego::partida() {
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 2";
     }
     else if (terminar == 3){
-        cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA";
+        cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA" << endl;
     }
 }
 
@@ -580,4 +587,8 @@ void Juego::guardarPartida(int jugador) {
     }
     cout << "Partida guardada con éxito" << endl;
     archivoPartida.close();
+}
+
+Juego::~Juego(){
+
 }

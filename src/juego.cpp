@@ -500,32 +500,36 @@ void Juego::partida() {
         }
     }
     while (terminar == 0) {
-        guardado = preguntarGuardado(actual + 1);
-        if (guardado){
-            guardarPartida(actual + 1);
-            terminar = 3;
-        }
-        else{
-            jugadores[actual].turno(actual);
-            guardado  = preguntarGuardado(segundo + 1);
+        if(terminar == 0){
+            guardado = preguntarGuardado(actual + 1);
             if (guardado){
-                guardarPartida(segundo + 1);
+                guardarPartida(actual + 1);
                 terminar = 3;
             }
             else{
-                jugadores[segundo].turno(segundo);
+                jugadores[actual].turno(actual);
+                terminar = finPartida();
+                if(terminar == 0){
+                    guardado  = preguntarGuardado(segundo + 1);
+                    if (guardado){
+                        guardarPartida(segundo + 1);
+                        terminar = 3;
+                    }
+                    else{
+                        jugadores[segundo].turno(segundo);
+                    }
+                }
+            }
+            if (terminar == 0){
+                terminar = finPartida();
             }
         }
-        if (terminar == 0){
-            terminar = finPartida();
-        }
-
     }
     if(terminar == 1){
-        cout << endl << endl << "EL GANADOR ES EL JUGADOR 1";
+        cout << endl << endl << "EL GANADOR ES EL JUGADOR 1" << endl;
     }
     else if(terminar == 2){
-        cout << endl << endl << "EL GANADOR ES EL JUGADOR 2";
+        cout << endl << endl << "EL GANADOR ES EL JUGADOR 2" << endl;
     }
     else if (terminar == 3){
         cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA" << endl;

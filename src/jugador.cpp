@@ -1,4 +1,4 @@
-#include "jugador.h"
+#include "../headers/jugador.h"
 
 Jugador::Jugador() {
     tablero = 0;

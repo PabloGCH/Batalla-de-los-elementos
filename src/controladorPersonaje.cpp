@@ -1,4 +1,4 @@
-#include "controladorPersonaje.h"
+#include "../headers/controladorPersonaje.h"
 
 ControladorPersonaje::ControladorPersonaje(){
     personaje = 0;

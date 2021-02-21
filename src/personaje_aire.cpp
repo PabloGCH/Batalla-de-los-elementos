@@ -1,4 +1,4 @@
-#include "personaje_aire.h"
+#include "../headers/personaje_aire.h"
 #include <iostream>
 
 PersonajeAire::PersonajeAire(string nombre, int escudo, int vida) : Personaje(nombre, escudo, vida){

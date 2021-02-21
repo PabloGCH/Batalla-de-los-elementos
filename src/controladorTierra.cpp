@@ -1,4 +1,4 @@
-#include "controladorTierra.h"
+#include "../headers/controladorTierra.h"
 
 
 

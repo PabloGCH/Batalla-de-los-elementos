@@ -1,4 +1,4 @@
-#include "personaje_agua.h"
+#include "../headers/personaje_agua.h"
 #include <iostream>
 
 PersonajeAgua::PersonajeAgua(string nombre, int escudo, int vida) : Personaje(nombre, escudo, vida){

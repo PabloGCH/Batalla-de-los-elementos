@@ -7,7 +7,7 @@
 #include "casillero.h"
 using namespace std;
 
-const char* const FILE_PATH = "../res/mapa.txt";
+const char* const FILE_PATH = "res/mapa.txt";
 const int NUM_FILAS = 8;
 const int NUM_COLUMNAS = 8;
 

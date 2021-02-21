@@ -1,4 +1,4 @@
-#include "personaje_tierra.h"
+#include "../headers/personaje_tierra.h"
 #include <iostream>
 
 PersonajeTierra::PersonajeTierra(string nombre, int escudo, int vida) : Personaje(nombre, escudo, vida) {

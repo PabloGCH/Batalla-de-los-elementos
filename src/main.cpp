@@ -3,9 +3,7 @@
 #include <unistd.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "controladorAgua.h"
-#include "controladorFuego.h"
-#include "juego.h"
+#include "../headers/juego.h"
 using namespace std;
 
 // hay que permitir que main reciba argumentos para poder usar SDL

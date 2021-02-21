@@ -1,4 +1,4 @@
-#include "sdlInit.h"
+#include "../headers/sdlInit.h"
 
 SdlInit::SdlInit(){
     if(SDL_Init(SDL_INIT_VIDEO) < 0){

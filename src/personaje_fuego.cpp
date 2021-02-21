@@ -1,4 +1,4 @@
-#include "personaje_fuego.h"
+#include "../headers/personaje_fuego.h"
 #include <iostream>
 
 PersonajeFuego::PersonajeFuego(string nombre, int escudo, int vida): Personaje(nombre, escudo, vida) {

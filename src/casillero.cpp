@@ -1,4 +1,4 @@
-#include "casillero.h"
+#include "../headers/casillero.h"
 using namespace std;
 
 Casillero::Casillero(int type){

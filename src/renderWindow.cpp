@@ -1,4 +1,4 @@
-#include "renderWindow.h"
+#include "../headers/renderWindow.h"
 
 RenderWindow::RenderWindow(){
     window = 0;

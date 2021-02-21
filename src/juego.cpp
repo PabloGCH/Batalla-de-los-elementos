@@ -1,4 +1,4 @@
-#include "juego.h"
+#include "../headers/juego.h"
 
 Juego::Juego(){
     jugadores[0].asignar_rival(&jugadores[1]);
@@ -6,14 +6,14 @@ Juego::Juego(){
     for(int i = 0; i < 2; i++){
         jugadores[i].asignarTablero(&tablero);
     }
-    ifstream partidaGuardada("../res/partida.csv");
+    ifstream partidaGuardada("res/partida.csv");
     system("clear");
     if(partidaGuardada.fail()){
         partidaGuardada.close();
         cout << "No se encontro una partida guardada." << endl;
         partidaCargada = false;
         turnoActual = 0;
-        ifstream archivo("../res/personajes.csv");
+        ifstream archivo("res/personajes.csv");
         if(archivo.is_open()){
             procesarArchivo(archivo);
             archivo.close();

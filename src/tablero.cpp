@@ -1,4 +1,4 @@
-#include "tablero.h"
+#include "../headers/tablero.h"
 
 
 void Tablero::printBoard(){

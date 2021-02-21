@@ -1,4 +1,4 @@
-#include "assetManager.h"
+#include "../headers/assetManager.h"
 
 
 void AssetManager::storeAsset(SDL_Texture* texture, int pos){

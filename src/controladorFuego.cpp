@@ -1,4 +1,4 @@
-#include "controladorFuego.h"
+#include "../headers/controladorFuego.h"
 
 
 

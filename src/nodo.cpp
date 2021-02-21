@@ -1,4 +1,4 @@
-#include "nodo.h"
+#include "../headers/nodo.h"
 
 Nodo::Nodo(Dato d) {
     dato = d;

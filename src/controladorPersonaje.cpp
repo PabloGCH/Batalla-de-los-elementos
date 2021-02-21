@@ -162,10 +162,8 @@ bool ControladorPersonaje::moverse(int* destino){
                 if(auxCasillero->getCharacter() == 0){
                     auxCasillero->setCharacter(personaje);
                 }
-                //imprimo tablero
-                system("clear");
-                tablero->printBoard();
-                sleep(2);
+                tablero->showBoard();
+                SDL_Delay(2000);
                 path.eliminar();
                 aux = path.consulta();
             }

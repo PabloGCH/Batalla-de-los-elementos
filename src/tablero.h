@@ -3,7 +3,7 @@
 #ifndef TABLERO_H_
 #define TABLERO_H_
 #include <fstream>
-
+#include "graphics.h"
 #include "casillero.h"
 using namespace std;
 
@@ -14,6 +14,7 @@ const int NUM_COLUMNAS = 8;
 class Tablero{
 	private:
 		Casillero* first;
+		Graphics graficos;
 	public:
 		//PRE: recibe un archivo donde se
 		// especifica el tipo de cada cacillero
@@ -23,8 +24,10 @@ class Tablero{
 		//POS: une las dos filas, la primera es la que esta arriba
 		// y la segunda es la que esta abajo
 		void linkRows(Casillero* firstPtr, Casillero* lastPtr);
-		//POS: Imprime todo el tablero
+		//POS: Imprime todo el tablero en consol
 		void printBoard();
+		//POS: muestra el tablero en una ventana aparte con SDL
+		void showBoard();
 		//PRE: recibe un archivo donde se
 		// especifica el tipo de cada cacillero
 		//POS: crea los cacilleros del tablero

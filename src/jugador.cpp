@@ -120,12 +120,14 @@ bool Jugador::verificarPosicion(int ingreso) {
 }
 
 bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
+    bool ret;
     switch (etapa) {
         case 1:
             switch (opcionElegida) {
                 case 1:
                     system("clear");
-                    return controladores[personajeActual]->devolverPersonaje()->alimentar();
+                    ret = controladores[personajeActual]->devolverPersonaje()->alimentar();
+                    break;
                 case 2:
                     controladores[personajeActual]->encontrarCaminos();
                     int ubicacion[2];
@@ -148,32 +150,37 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                         cout << "" << endl;
                     }
                     system("clear");
-                    return controladores[personajeActual]->moverse(ubicacion);
+                    ret = controladores[personajeActual]->moverse(ubicacion);
+                    break;
                 case 3:
                     system("clear");
                     cout << "Decidiste pasar a la siquiente etapa " << endl;
-                    return true;
+                    ret = true;
+                    break;
             }
             break;
         case 2:
             bool defensa;
             switch (opcionElegida) {
                 case 1:
-                    return controladores[personajeActual]->atacar(oponente->devolverControladores());
+                    ret = controladores[personajeActual]->atacar(oponente->devolverControladores());
+                    break;
                 case 2:
                     defensa = controladores[personajeActual]->defensa();
                     if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
                         curarPersonajes(controladores[personajeActual]);
                     }
-                    return defensa;
+                    ret = defensa;
+                    break;
                 case 3:
                     system("clear");
                     cout << "Usted decidió terminar el turno " << endl;
-                    return true;
+                    ret = true;
+                    break;
             }
             break;
-
     }
+    return ret;
 }
 
 void Jugador::imprimirPersonajes(ControladorPersonaje** cont){
@@ -214,7 +221,7 @@ void Jugador::turno(int actual){
             // chequeo si es un personaje de aire y si es asi recupera energia
             recuperarEnergia(controladores[i]->devolverPersonaje());
             imprimirEstados(actual);
-            tablero->printBoard();
+            tablero->showBoard();
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();
@@ -222,7 +229,7 @@ void Jugador::turno(int actual){
             while ( !exito1 ){
                 cout << "El proceso seleccionado no tuvo exito, por favor seleccione otra opcion o pase a la siquiente etapa" << endl;
                 imprimirEstados(actual);
-                tablero->printBoard();
+                tablero->showBoard();
                 mostrarOpcionesPrimerEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito1 = procesarOpcion(opcion, 1, i);
@@ -233,14 +240,14 @@ void Jugador::turno(int actual){
             // Imprimir estado de los personajes (agregar)
             cout << "Turno del jugador " << actual  + 1 << endl << endl;
             imprimirEstados(actual);
-            tablero->printBoard();
+            tablero->showBoard();
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
             exito2 = procesarOpcion(opcion, 2, i);
             while ( !exito2 ){
                 cout << "El proceso elegido no realizó ningún cambio, seleccione otra opcion o termine el turno" << endl;
                 imprimirEstados(actual);
-                tablero->printBoard();
+                tablero->showBoard();
                 mostrarOpcionesSegudaEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito2 = procesarOpcion(opcion, 2, i);

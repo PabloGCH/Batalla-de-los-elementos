@@ -399,7 +399,7 @@ void Juego::ubicarPersonajes(int jugador){
     ControladorPersonaje** controladores = jugadores[jugador].devolverControladores();
     for (int i = 0; i < 3 ; i++){
         cout << "Ubicando los personajes del jugador: " << jugador + 1<< endl;
-        tablero.printBoard();
+        tablero.showBoard();
         bool ubicar = false;
         while ( !ubicar ) {
             cout << "Ingrese la ubicacion donde iniciara: " << controladores[i]->devolverPersonaje()->obtenerNombre() << endl;
@@ -488,7 +488,7 @@ void Juego::partida() {
         ubicarPersonajes(actual);
         ubicarPersonajes(segundo);
         cout << "Todos los personajes fueron ubicados" << endl << endl;
-        tablero.printBoard();
+        tablero.showBoard();
         cout << endl;
     } else {
         actual = turnoActual;

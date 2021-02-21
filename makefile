@@ -1,7 +1,7 @@
 IDIR = headers
 LIBS = lib
 CC = g++
-CFLAGS = -I$(IDIR)
+CFLAGS = -I$(IDIR) -lm
 LFLAGS = -L$(LIBS) -lSDL2main -lSDL2 -lSDL2_image
 _DEPS = *.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))

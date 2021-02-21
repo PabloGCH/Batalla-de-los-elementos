@@ -1,5 +1,6 @@
+CURRENT_DIR = $(shell pwd)
 IDIR = headers
-LIBS = lib
+LIBS = $(CURRENT_DIR)/lib
 CC = g++
 CFLAGS = -I$(IDIR) -lm
 LFLAGS = -L$(LIBS) -lSDL2main -lSDL2 -lSDL2_image

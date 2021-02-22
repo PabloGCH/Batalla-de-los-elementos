@@ -1,6 +1,12 @@
 #include "../headers/assetManager.h"
 
 
+AssetManager::AssetManager(){
+    for(int i = 0; i < CANT_ASSETS; i++){
+        assets[i] = 0;
+    }
+}
+
 void AssetManager::storeAsset(SDL_Texture* texture, int pos){
     assets[pos] = texture;
 }
@@ -75,4 +81,13 @@ SDL_Texture* AssetManager::getCharacterTexture(int numJugador, int tipoPer){
             break;
     }
     return auxTexture;
+}
+
+
+AssetManager::~AssetManager(){
+    for(int i = 0; i < CANT_ASSETS; i++){
+        if(assets[i] != 0){
+            SDL_DestroyTexture(assets[i]);
+        }
+    }
 }

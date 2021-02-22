@@ -24,6 +24,7 @@ enum texturas{
 
 class AssetManager{
     public:
+        AssetManager();
         //PRE: Recibe una textura y un entero que indica donde en el vector guardarla
         //POS: Guarda una textura en el vector assets
         void storeAsset(SDL_Texture* texture, int pos);
@@ -37,6 +38,7 @@ class AssetManager{
         // del personaje
         //POS: Retorna la textura del personaje de ese elemento y jugador
         SDL_Texture* getCharacterTexture(int numJugador, int tipoPer);
+        ~AssetManager();
     private:
         SDL_Texture* assets[CANT_ASSETS];
 };

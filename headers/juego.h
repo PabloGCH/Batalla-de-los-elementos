@@ -2,6 +2,7 @@
 #define JUEGO_H
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
 #include <ctime>
 #include "jugador.h"
 #include "tablero.h"

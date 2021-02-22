@@ -525,14 +525,22 @@ void Juego::partida() {
             }
         }
     }
+    tablero.showBoard();
     if(terminar == 1){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 1" << endl;
+        SDL_Delay(3000);
     }
     else if(terminar == 2){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 2" << endl;
+        SDL_Delay(3000);
     }
     else if (terminar == 3){
         cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA" << endl;
+    }
+    if(terminar == 1 || terminar == 2){
+        if(remove("res/partida.csv") != 0){
+            cout << "Error al borrar archivo" << endl;
+        }
     }
 }
 

@@ -55,8 +55,10 @@ class Juego{
         // POS: devuelve un string que indica el tipo de personaje
         string tipoString(int tipo);
 
-
+        // POS: Muestra el menu donde se agregan, eliminan, o se hacen consultas
+        // sobre personajes
         void opcionesPersonaje();
+        // POS: Muestra el menu donde se elijen los personajes
         void comenzarJuego();
 
         //PRE: -
@@ -73,13 +75,14 @@ class Juego{
         //PRE: -
         //POS: Ubica a los personajes del jugador en el tablero
         void ubicarPersonajes(int jugador);
+        //POS: imprime las opciones del menu de agregar/eliminar/consultar personajes
         void imprimirOpcionesPersonajes();
+        //POS: imprime el menu de seleccion de personajes
         void imprimirOpcionesComenzar();
         // PRE: recibe un caracter el cual debe ser un numero que indique
         // la cantidad maxima de opciones
         // POS: recibe input y lo retorna 
         char recibirOpcion(char maxOpciones);
-        void pedirOpcionJugador(int i);
         
         // PRE: -
         // POS: Registra un elemento valido para la creacion de un personaje ( AIRE, AGUA, FUEGO, TIERRA )

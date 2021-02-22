@@ -6,15 +6,15 @@ class ControladorFuego : public ControladorPersonaje{
     private:
     public:
 
-        // PRE: ControladoresEnemigos debe tener 3 controladorPersonajes*
-        // POS: Ataca a los personajes* de cada controlador que este en el rango de ataque
-        //      ( misma fila, fila de arriba y  fila de abajo)
-        bool atacar(ControladorPersonaje** ControladoresEnemigos);
-
+        // POS: Utiliza su defensa, retorna true si tiene exito o false
+        // si falla
         bool defensa();
+        // PRE: Recibe un vector con los controladores de personaje del oponente
+        // POS: realiza su ataque, si tiene exito devuelve true, si falla devuelve false
+        bool atacar(ControladorPersonaje** ControladoresEnemigo);
+        // PRE: Recibe un puntero a casillero
+        // POS: Retorna el costo que supondria moverse a ese casillero
         int evaluarDir(Casillero* dir);
-
-        // Constructor
         ControladorFuego(Personaje* personaje, Tablero* tablero);
 };
 

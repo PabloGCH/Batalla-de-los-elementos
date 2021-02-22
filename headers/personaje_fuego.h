@@ -35,8 +35,9 @@ public:
     //POS: Retorna entero que indica el tipo
     int devolverTipo();
 
+    //No se usa en esta clase
     int obtenerAlimentos();
-
+    //No se usa en esta clase
     void asignarAlimentos(int cant);
 private:
 

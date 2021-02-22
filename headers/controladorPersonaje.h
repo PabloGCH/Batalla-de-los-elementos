@@ -61,10 +61,11 @@ class ControladorPersonaje
         // Retorna false si no lo puede ubicar
         // (SOLO USAR AL PRINCIPIO DE LA PARTIDA)
         bool ubicarPersonaje(int* destino);
-        // PRE:
-        // POS: Ataca
+        // PRE: Recibe un vector con los controladores de personaje del oponente
+        // POS: realiza su ataque, si tiene exito devuelve true, si falla devuelve false
         virtual bool atacar(ControladorPersonaje** ControladoresEnemigo) = 0;
-        //POS: el personaje se defiende
+        // POS: Utiliza su defensa, retorna true si tiene exito o false
+        // si falla
         virtual bool defensa() = 0;
         //POS: cura al personaje
         void se_curo();

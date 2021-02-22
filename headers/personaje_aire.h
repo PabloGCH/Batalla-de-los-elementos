@@ -33,7 +33,10 @@ public:
     //POS: Retorna entero que indica el tipo
     int devolverTipo();
 
+    //PRE: recibe un entero
+    //POS: lo asigna al atributo vecesAlimentado
     void asignarAlimentos(int cant);
+    //POS: retorna vecesAlimentado
     int obtenerAlimentos();
 
 };

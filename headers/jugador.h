@@ -43,9 +43,15 @@ public:
 	// POS: Asigna el controlador en el primer espacio
 	// libre del vector controladores (USAR EN COMENZAR PARTIDA)
 	void asignar_controlador(ControladorPersonaje* controlador);
-
+	// PRE: Recibe 3 enteros que indican que opcion se eligio, de que etapa es
+	// y el personaje
+	// POS: Ejecuta la opcion elegida
     bool procesarOpcion(int opcionElegida, int etapa, int personajeActual);
+	// PRE: Recibe un entero que indica el jugador
+	// POS: Permite al jugador darle ordenes a sus personajes
     void turno(int actual);
+	// PRE: Recibe un puntero a jugador
+	// POS: Lo asigna al atributo oponente
 	void asignar_rival(Jugador* rival);
 	// PRE: Recibe un personaje
 	// POS: Si el personaje es de fuego y no tiene energia recibe 5 de daño
@@ -54,9 +60,16 @@ public:
 	~Jugador();
 
 private:
+	//PRE: recibe enteros que indican el jugador y el personaje de este
+	//POS: imprime las opciones de la primera etapa
     void mostrarOpcionesPrimerEtapa(int jugadorActual, int personajeActual);
+	//PRE: recibe enteros que indican el jugador y el personaje de este
+	//POS: imprime las opciones de la primera etapa
     void mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual);
+	//POS: le pide al usuario que ingrese una opcion
     int solicitarOpcion();
+	//PRE: Recibe un entero que indica o una fila o una columna
+	//POS: Retorna bool si la posicion es valida
     bool verificarPosicion(int ingreso);
 };
 

@@ -29,7 +29,8 @@ moverla hacia un lado de la pantalla y enfocar solo la terminal.
 Esto es debido a que todos los inputs se dan mediante la terminal
 y no en eventos de SDL, y al no recibir eventos la computadora
 puede llegar a la conclusion erronea de que el programa 
-no responde.
+no responde (Si aparece el mensaje cliquear esperar, despues de 2
+o 3 veces deja de aparecer).
 =================================================================
                           COMENTARIOS
 

@@ -539,7 +539,9 @@ void Juego::partida() {
     }
     if(terminar == 1 || terminar == 2){
         if(remove("res/partida.csv") != 0){
-            cout << "Error al borrar archivo" << endl;
+            cout << "Error al borrar partida guardada" << endl;
+        } else{
+            cout << "Exito al eliminar partida guardada" << endl;
         }
     }
 }
@@ -564,7 +566,7 @@ string Juego::tipoString(int tipo){
 }
 
 void Juego::guardarPartida(int jugador) {
-    ofstream archivoPartida("../res/partida.csv", ios::out);
+    ofstream archivoPartida("res/partida.csv", ios::out);
     archivoPartida << jugador << "\n";
     for (int i = 0; i < 2; i++) {
         ControladorPersonaje **controladores = jugadores[i].devolverControladores();

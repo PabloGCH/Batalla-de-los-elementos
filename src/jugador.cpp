@@ -74,14 +74,16 @@ void Jugador::matarPersonajes(){
 	}
 }
 void Jugador::mostrarOpcionesPrimerEtapa(int jugadorActual, int personajeActual){
-    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
+    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? ";
+    cout << "(Esta en la fila " << controladores[personajeActual]->devolverUbicacion()[0] << ", columna " << controladores[personajeActual]->devolverUbicacion()[1] << ")" << endl;
     cout << "1. Alimentarse " << endl;
     cout << "2. Moverse " << endl;
     cout << "3. Pasar siguiente etapa " << endl;
 };
 
 void Jugador::mostrarOpcionesSegudaEtapa(int jugadorActual, int personajeActual){
-    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? " << endl;
+    cout << "Jugador " << jugadorActual + 1 << " qué deseas que haga " << controladores[personajeActual]->devolverPersonaje()->obtenerNombre() << " en esta etapa? ";
+    cout << "(Esta en la fila " << controladores[personajeActual]->devolverUbicacion()[0] << ", columna " << controladores[personajeActual]->devolverUbicacion()[1] << ")" << endl;
     cout << "1. Atacar " << endl;
     cout << "2. Defenderse " << endl;
     cout << "3. Pasar opción" << endl;

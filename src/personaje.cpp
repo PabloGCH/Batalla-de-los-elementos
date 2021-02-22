@@ -30,7 +30,7 @@ int Personaje::devolverJugador(){
 }
 
 void Personaje::asignarEnergia(){
-    energia  = 8;
+    energia  = rand() % 20 +1;
 }
 
 string Personaje::obtenerNombre(){

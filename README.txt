@@ -13,8 +13,9 @@ necesario introducir lo siguiente en la terminal:
         sudo apt-get install libsdl2-image-dev
 
 - Una vez tenga todas las librerias solo es necesario escribir
-"make" (sin las comillas) en la terminal. Al finalizar creara
-un archivo llamado "Bdle" el cual es el ejecutable del juego
+"make" (sin las comillas) en la terminal (en el directorio
+donde esta el trabajo,). Al finalizar creara un archivo 
+llamado "Bdle" el cual es el ejecutable del juego
 =================================================================
                           IMPORTANTE
 

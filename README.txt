@@ -2,7 +2,7 @@
                           COMPILACION
 
 - Es necesario instalar las libreria de SDL2 y un complemento
-de esta llamado SDL2_image para hacerlo para ello solo es
+de esta llamado SDL2_image para compilarlo para ello solo es
 necesario introducir lo siguiente en la terminal:
     Para SDL2:
 

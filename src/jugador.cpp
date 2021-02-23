@@ -169,7 +169,7 @@ bool Jugador::procesarOpcion(int opcionElegida, int etapa, int personajeActual){
                     break;
                 case 2:
                     defensa = controladores[personajeActual]->defensa();
-                    if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA){
+                    if ( controladores[personajeActual]->devolverPersonaje()->devolverTipo() == TIPO_AGUA and defensa){
                         curarPersonajes(controladores[personajeActual]);
                     }
                     ret = defensa;

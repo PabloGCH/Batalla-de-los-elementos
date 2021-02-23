@@ -168,6 +168,7 @@ bool ControladorPersonaje::moverse(int* destino){
                 aux = path.consulta();
             }
             ptrCasillero = auxCasillero;
+            personaje->restarEnergia(costo[coordToId(destino)]);
         } else{
             cout << "\nNo hay energia suficiente para moverse a esa posicion.\n";
             exito = false;

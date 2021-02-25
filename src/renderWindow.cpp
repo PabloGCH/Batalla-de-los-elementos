@@ -34,6 +34,7 @@ void RenderWindow::render(SDL_Texture* texture, int fila, int columna){
     dist.w = 64;
     dist.h = 64;
     SDL_RenderCopy(renderer, texture, &src, &dist);
+
 }
 
 void RenderWindow::display(){
@@ -44,6 +45,7 @@ SDL_Window* RenderWindow::getWindow(){
 }
 
 RenderWindow::~RenderWindow(){
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 }
 

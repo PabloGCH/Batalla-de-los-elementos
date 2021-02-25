@@ -76,7 +76,7 @@ bool ControladorAire::defensa() {
 	} else {
         cout << personaje->obtenerNombre() <<" no cuenta con la energía necesaria para defenderse"<<endl;
     }
-    tablero->showBoard();
+    tablero->printBoard();
     return seDefiende;
 }
 

@@ -99,31 +99,3 @@ Tablero::~Tablero(){
 		}
 	}
 }
-
-void Tablero::showBoard(){
-	graficos.windowClear();
-    SDL_Texture* auxTexture = 0;
-    Casillero* current;
-	Casillero* below;
-    int fila = 0;
-    int columna = 0;
-	below = first;
-	while(below != 0){
-		current = below;
-		below = current->getDown();
-		while(current != 0){
-			Personaje* auxPer = current->getCharacter();
-			auxTexture = graficos.getTerrainTexture(current->getType());
-			graficos.renderTexture(auxTexture, fila, columna);
-			if(auxPer != 0){
-				auxTexture = graficos.getCharacterTexture(auxPer->devolverJugador(), auxPer->devolverTipo());
-				graficos.renderTexture(auxTexture, fila, columna);
-			}
-			current = current->getRight();
-            columna++;
-		}
-        columna = 0;
-        fila++;
-	}
-    graficos.display();
-}

@@ -399,7 +399,7 @@ void Juego::ubicarPersonajes(int jugador){
     ControladorPersonaje** controladores = jugadores[jugador].devolverControladores();
     for (int i = 0; i < 3 ; i++){
         cout << "Ubicando los personajes del jugador: " << jugador + 1<< endl;
-        tablero.showBoard();
+        tablero.printBoard();
         bool ubicar = false;
         while ( !ubicar ) {
             cout << "Ingrese la ubicacion donde iniciara: " << controladores[i]->devolverPersonaje()->obtenerNombre() << endl;
@@ -488,7 +488,7 @@ void Juego::partida() {
         ubicarPersonajes(actual);
         ubicarPersonajes(segundo);
         cout << "Todos los personajes fueron ubicados" << endl << endl;
-        tablero.showBoard();
+        tablero.printBoard();
         cout << endl;
     } else {
         actual = turnoActual;
@@ -525,14 +525,14 @@ void Juego::partida() {
             }
         }
     }
-    tablero.showBoard();
+    tablero.printBoard();
     if(terminar == 1){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 1" << endl;
-        SDL_Delay(3000);
+        sleep(2);
     }
     else if(terminar == 2){
         cout << endl << endl << "EL GANADOR ES EL JUGADOR 2" << endl;
-        SDL_Delay(3000);
+        sleep(2);
     }
     else if (terminar == 3){
         cout << endl << endl << "PARTIDA TERMINADA PORQUE UN JUGADOR DECIDIO GUARDAR LA PARTIDA" << endl;

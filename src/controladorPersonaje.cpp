@@ -146,6 +146,7 @@ bool ControladorPersonaje::moverse(int* destino){
     if(tablero->returnItem(destino)->getCharacter() == 0){
         if(costo[coordToId(destino)] < personaje->obtenerEnergia()){
             //inicializo
+            exito = true;
             for(int i = 0; i < 2; i++){ubicacion[i] = destino[i];}
             while(aux != actualID){
                 path.agregar(aux);
@@ -153,7 +154,6 @@ bool ControladorPersonaje::moverse(int* destino){
             }
             aux = path.consulta();
             while(aux != finPila){
-                exito = true;
                 if(auxCasillero->getCharacter() == personaje){
                     auxCasillero->setCharacter(0);
                 }
@@ -162,11 +162,13 @@ bool ControladorPersonaje::moverse(int* destino){
                 if(auxCasillero->getCharacter() == 0){
                     auxCasillero->setCharacter(personaje);
                 }
-                tablero->showBoard();
-                SDL_Delay(2000);
+                system("clear");
+                tablero->printBoard();
+                sleep(2);
                 path.eliminar();
                 aux = path.consulta();
             }
+            system("clear");
             ptrCasillero = auxCasillero;
             personaje->restarEnergia(costo[coordToId(destino)]);
         } else{

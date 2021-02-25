@@ -223,7 +223,7 @@ void Jugador::turno(int actual){
             // chequeo si es un personaje de aire y si es asi recupera energia
             recuperarEnergia(controladores[i]->devolverPersonaje());
             imprimirEstados(actual);
-            tablero->showBoard();
+            tablero->printBoard();
             // Imprimir estado de los personajes (agregar)
             mostrarOpcionesPrimerEtapa(actual, i);
             opcion = solicitarOpcion();
@@ -231,7 +231,7 @@ void Jugador::turno(int actual){
             while ( !exito1 ){
                 cout << "El proceso seleccionado no tuvo exito, por favor seleccione otra opcion o pase a la siquiente etapa" << endl;
                 imprimirEstados(actual);
-                tablero->showBoard();
+                tablero->printBoard();
                 mostrarOpcionesPrimerEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito1 = procesarOpcion(opcion, 1, i);
@@ -242,14 +242,14 @@ void Jugador::turno(int actual){
             // Imprimir estado de los personajes (agregar)
             cout << "Turno del jugador " << actual  + 1 << endl << endl;
             imprimirEstados(actual);
-            tablero->showBoard();
+            tablero->printBoard();
             mostrarOpcionesSegudaEtapa(actual, i);
             opcion = solicitarOpcion();
             exito2 = procesarOpcion(opcion, 2, i);
             while ( !exito2 ){
                 cout << "El proceso elegido no realizó ningún cambio, seleccione otra opcion o termine el turno" << endl;
                 imprimirEstados(actual);
-                tablero->showBoard();
+                tablero->printBoard();
                 mostrarOpcionesSegudaEtapa(actual, i);
                 opcion = solicitarOpcion();
                 exito2 = procesarOpcion(opcion, 2, i);

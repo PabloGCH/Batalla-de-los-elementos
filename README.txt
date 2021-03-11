@@ -1,3 +1,5 @@
+Trabajo practico realizado para aprobar la cursada de Algoritmos y Programacion 2
+
 =================================================================
                           COMPILACION
 - Para compilar solo es necesario escribir

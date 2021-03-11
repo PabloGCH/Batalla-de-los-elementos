@@ -1,4 +1,4 @@
-Trabajo practico realizado para aprobar la cursada de Algoritmos y Programacion 2
+Trabajo practico grupal realizado para aprobar la cursada de Algoritmos y Programacion II
 
 =================================================================
                           COMPILACION
